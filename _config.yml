@@ -1,0 +1,7 @@
+excerpt_separator: ""
+pygments: true
+markdown: kramdown
+title: print(mente)
+tagline: 
+description: Compartilhando o aprendizado
+paginate: 5
