@@ -1,37 +1,30 @@
----
-layout: default
-title: Home
----
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha primeira página web!</title>
+</head>
+<body>
+    <h1>Em h1: A primeira página do cara, mano! Deixa ele...</h1>
+    <h2>Em h2: Isso aqui é um subtítulo</h2>
+    <h3>h3... Em sub-subtítulo??</h3>
+    <h4>EXISTE ATÉ h4??? É o que? Um sub-sub-subtítulo?</h4>
+    <p>Manoooo!! Essa aqui deveria ser minha primeira página web. Só não é
+    porque já fiz umas pequeeeenas brincadeiras com html antes... De qualquer
+    modo, estou muito feliz: estou fazendo tudo isso no VIM!
+    Agora estou fazendo um teste: estou digitando em um parágrafo novo, apesar
+    de não ter digitado nada para quebrar a linha. Ficarei decepcionado se o
+    navegador interpretar esta quebra de linha sem que um código o diga para
+    fazê-lo.
+    <b>Este texto aqui tá em negrito! (Não é?)</b></p>
+    <b>Este outro também, pois, apesar de estar fora da tag p, está na tag b.</b>
+    "Este texto entre aspas não possui tags. Isso me faz concluir que a
+    utilização de tags apenas dá estilo para o parágrafo."
+    <h1>Outro quadro</h1>
+    <p>Agora, um poema: <i>Rosas são vermelhas, borboletas são doces e
+    cabô</i>. <small>
+Podia até ser do Shakespeare, mas é uma modificação minha de um
+    poema tradicional inglês</small></p>
 
-<div class="posts">
-  {% for post in paginator.posts %}
-  <div class="post">
-    <h1 class="post-title">
-      <a href="{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </h1>
-
-    <span class="post-date">{{ post.date | date_to_string }}</span>
-
-    {{ post.content }}
-  </div>
-  {% endfor %}
-</div>
-
-<div class="pagination">
-  {% if paginator.next_page %}
-    <a class="pagination-item older" href="/page{{paginator.next_page}}">Older</a>
-  {% else %}
-    <span class="pagination-item older">Older</span>
-  {% endif %}
-  {% if paginator.previous_page %}
-    {% if paginator.page == 2 %}
-      <a class="pagination-item newer" href="/">Newer</a>
-    {% else %}
-      <a class="pagination-item newer" href="/page{{paginator.previous_page}}">Newer</a>
-    {% endif %}
-  {% else %}
-    <span class="pagination-item newer">Newer</span>
-  {% endif %}
-</div>
+</body>
+</html>
