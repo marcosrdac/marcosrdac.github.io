@@ -37,7 +37,7 @@ Tipo para os reais.
 Tipo numérico para os complexos.
 
 {% highlight python3 %}
->>> 2 + 3j         # forma padrão "a + bi | a, b ∉ R"; j = i = sqrt(-1)
+>>> 2 + 3j         # forma padrão "a + bi | a, b ∈ R"; j = i = sqrt(-1)
 (2+3j)
 
 >>> (2+3j)         # dá pra mandar desse jeito diferentoso que ele retorna,
@@ -50,4 +50,4 @@ Tipo numérico para os complexos.
 {% endhighlight %}
 
 
-Não acabou ainda, Emerson. Tô terminando isso aqui ainda. uashuahsuahsuha
+Não acabou ainda, Emerson e Miss. Free Hugs. Ainda tô começando isso aqui! uashuahsuahsuha
