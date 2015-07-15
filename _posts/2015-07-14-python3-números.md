@@ -21,7 +21,7 @@ Tipo de dados para números inteiros.
 
 ### float
 
-Tipo para os reais ~~Mc's~~. 
+Tipo para os reais. 
 
 {% highlight python3 %}
 >>> 6.2831853072   # isto é um float; um número racional. Na verdade, se você
@@ -48,3 +48,6 @@ Tipo numérico para os complexos.
 
 >>> 
 {% endhighlight %}
+
+
+Não acabou ainda, Emerson. Tô terminando isso aqui ainda. uashuahsuahsuha
