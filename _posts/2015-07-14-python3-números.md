@@ -29,7 +29,7 @@ Tipo para os reais.
                    # não sabe, tenha sua mente explodida lendo sobre o "Tau"!
 {% endhighlight %}
 
-*Float* vem do inglês *floating point* - números "de ponto flutuante" - assim chamados por usarem notação matemática similar à científica, mas em base 2, o que facilita cálculos de números fracionários nas máquinas digitais. Existe um problema com os *floating point numbers*. Leia sobre ele [aqui]({* post_url problemas-com-floating-numbers *}).
+*Float* vem do inglês *floating point* - números "de ponto flutuante" - assim chamados por usarem notação matemática similar à científica, mas em base 2, o que facilita cálculos envolvendo números fracionários nas máquinas digitais. Existe um problema com os *floating point numbers*. Leia sobre ele [aqui]({* post_url problemas-com-floating-numbers *}). ~~me lembre de fazer esse post!~~
 
 
 ### complex
@@ -37,13 +37,13 @@ Tipo para os reais.
 Tipo numérico para os complexos.
 
 {% highlight python3 %}
->>> 2 + 3j         # forma padrão "a + bi | a, b ∈ R"; j = i = sqrt(-1)
+>>> 2 + 3j  # forma padrão "a + bi | a, b ∈ R"; j = i = sqrt(-1)
 (2+3j)
 
->>> (2+3j)         # dá pra mandar desse jeito diferentoso que ele retorna,
-(2+3j)             # também
+>>> (2+3j)  # também dá pra mandar desse jeito diferentoso que ele retorna
+(2+3j)
 
->>> 5j             # dá pra fazer assim, também, no caso de não haver um 
+>>> 5j      # E assim, no caso de a parte real ser 0.
 5j
 
 >>> 
