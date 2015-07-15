@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Marcos Reinan de Assis Conceição</title>
+    <description>Testing...</description>
+    <link>http://yourdomain.com/</link>
+    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 15 Jul 2015 00:29:34 -0300</pubDate>
+    <lastBuildDate>Wed, 15 Jul 2015 00:29:34 -0300</lastBuildDate>
+    <generator>Jekyll v2.2.0</generator>
+    
+      <item>
+        <title>Python 3 - Aula 1: Números</title>
+        <description>&lt;p&gt;Existem três tipos de dados para números na versão atual do Python. Seja introduzido a eles e a como lidar com eles abaixo.&lt;/p&gt;
+
+&lt;h2 id=&quot;tipos-de-dados-numricos&quot;&gt;Tipos de dados numéricos&lt;/h2&gt;
+
+&lt;h3 id=&quot;int-obs-engloba-o-antigo-tipo-long&quot;&gt;int (obs.: engloba o antigo tipo &lt;em&gt;long&lt;/em&gt;)&lt;/h3&gt;
+
+&lt;p&gt;Tipo de dados para números inteiros.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python3&quot; data-lang=&quot;python3&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;              &lt;span class=&quot;c&quot;&gt;# bem chato, mesmo... A perfeição é chata.&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;float&quot;&gt;float&lt;/h3&gt;
+
+&lt;p&gt;Tipo para os reais ~~Mc’s~~. &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python3&quot; data-lang=&quot;python3&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;6.2831853072&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;# isto é um float; um número racional. Na verdade, se você&lt;/span&gt;
+&lt;span class=&quot;mf&quot;&gt;6.2831853072&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;# sabe que número é esse, sabe que ele não é racional. Se&lt;/span&gt;
+                   &lt;span class=&quot;c&quot;&gt;# não sabe, tenha sua mente explodida lendo sobre ele!&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Float&lt;/em&gt; vem do inglês &lt;em&gt;floating point&lt;/em&gt; - números “de ponto flutuante” - assim chamados por usarem notação matemática similar à científica, mas em base 2, o que facilita cálculos de números fracionários nas máquinas digitais. Existe um problema com os &lt;em&gt;floating point numbers&lt;/em&gt;. Leia sobre ele &lt;a href=&quot;{* post_url problemas-com-floating-numbers *}&quot;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;complex&quot;&gt;complex&lt;/h3&gt;
+
+&lt;p&gt;Tipo numérico para os complexos.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python3&quot; data-lang=&quot;python3&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;# forma padrão &amp;quot;a + bi | a, b ∉ R&amp;quot;; j = i = sqrt(-1)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;# dá pra mandar desse jeito diferentoso que ele retorna,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;             &lt;span class=&quot;c&quot;&gt;# também&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;             &lt;span class=&quot;c&quot;&gt;# dá pra fazer assim, também, no caso de não haver um &lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Tue, 14 Jul 2015 00:00:00 -0300</pubDate>
+        <link>http://yourdomain.com/2015/07/14/python3-n%C3%BAmeros/</link>
+        <guid isPermaLink="true">http://yourdomain.com/2015/07/14/python3-n%C3%BAmeros/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
