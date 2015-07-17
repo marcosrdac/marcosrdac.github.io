@@ -1,9 +1,9 @@
 # Site settings
 title: Marcos Reinan de Assis Conceição
-email: marcosrdac@gmail.com
+email: marcosrdac+blog@gmail.com
 description: "Testing..."
 baseurl: ""
-url: "http://yourdomain.com"
+url: "marcosrdac.github.com"
 twitter_username: marcosrdac
 github_username:  marcosrdac
 
