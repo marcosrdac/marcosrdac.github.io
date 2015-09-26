@@ -95,7 +95,7 @@ type(2.28/2.28)
 
 >>> type(2j / 2j)
 <class 'complex'>
-{{% endhighlight %}
+{% endhighlight %}
 
 
 ## Transformando tipos numéricos em outros
@@ -132,4 +132,4 @@ Traceback (most recent call last):
 
 >>> float(1.0)  # float
 1.0             # float
-{{% endhighlight %}
+{% endhighlight %}
