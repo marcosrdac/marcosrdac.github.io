@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "3ª parte [considerações sobre a moral]"
+title: "O Discurso do Método - 3ª parte: Considerações Sobre a Moral [fichamento]"
 ---
 
 Antes de chegar à moral perfeita -- depois do conhecimento de tudo ter sido alcançado --, Descartes cria para si uma moral provisória, sobre a qual pode criar a primeira, aludindo-a ao canteiro de uma obra. Divide esta moral primeira em quatro princípios e explicita-os. São eles:
@@ -18,7 +18,7 @@ Descartes diz também que qualquer escolha que subtrai do homem sua liberdade é
 Mesmo que ainda irresoluto nos juízos, dever-se-á ser assertivo nas ações, a fim de diminuir os erros. Por mais que o primeiro passo seja dado ao acaso, deve-continuar na mesma direção -- a menos que hajam obstáculos significantes no caminho -- para que, como fazem os que andam em caminhos aleatórios, não se perca. Pois, uma vez perdido no meio de uma floresta, para qualquer lugar que se ande, há de se encontrar uma saída.
 
 
-## Vence-te a ti mesmo antes da fortuna
+## Vencer-te a ti mesmo antes da fortuna
 
 Aqui Decartes expressa sua forte influência dos estóicos. Diz que além dos pensamentos, não temos controle sobre nada por inteiro. É interessante saber que isso não era unanimidade entre os pensadores contemporâneos a ele. Montaigne, por exemplo, tinha suas dúvidas quanto a isso. Crer nisso -- que pouco está sob nosso controle -- possibilita a *apatia* estóica como virtude que leva à *ataraxia*. Possibilita também o entendimento de que não devemos buscar o impossível e assim, sermos felizes.
 
