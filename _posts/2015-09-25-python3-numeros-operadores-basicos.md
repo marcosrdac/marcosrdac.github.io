@@ -7,7 +7,7 @@ title:  "Python 3 - Números: operadores básicos"
 Os operadores básicos do Python são:
 
 | sinal | função                |
-|:--:|:------------------------:|
+|:--:| ------------------------ |
 | +  | adição                   |
 | -  | subtração                |
 | *  | multiplicação            |
