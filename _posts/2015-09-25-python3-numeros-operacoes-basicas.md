@@ -8,11 +8,11 @@ title:  "Python 3 - Números: operações básicas"
 
 Os operadores básicos do Python são:
 
-* +  adição
-* -  subtração
-* *  multiplicação
+* \+  adição
+* \-  subtração
+* \*  multiplicação
 * /  divisão
-* ** exponenciação
+* \*\* exponenciação
 * // divisão inteira
 * %  resto da divisão inteira
 
