@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Python 3 - Números: operadores básicas" 
+title:  "Python 3 - Números: operadores básicos" 
 ---
 
 
