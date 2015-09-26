@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "O Discurso do Método - 3ª parte: Considerações Sobre a Moral [fichamento]"
+title: "O Discurso do Método - 3ª parte: Considerações Sobre a Moral [resumo]"
 ---
 
 Antes de chegar à moral perfeita -- depois do conhecimento de tudo ter sido alcançado --, Descartes cria para si uma moral provisória, sobre a qual pode criar a primeira, aludindo-a ao canteiro de uma obra. Divide esta moral primeira em quatro princípios e explicita-os. São eles:
