@@ -1,10 +1,8 @@
 ---
 layout: post
-title:  "Python 3 - Números: operações básicas" 
+title:  "Python 3 - Números: operadores básicas" 
 ---
 
-
-## Operações básicas
 
 Os operadores básicos do Python são:
 
