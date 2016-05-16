@@ -14,7 +14,7 @@ Existem três tipos de dados para números na versão atual do Python. Seja intr
 
 Tipo de dados para números inteiros (engloba o antigo tipo *long*).
 
-{% highlight python3 %}
+{% highlight python %}
 >>> 1  # bem chato, mesmo... A perfeição é chata.
 1
 {% endhighlight %}
@@ -24,7 +24,7 @@ Tipo de dados para números inteiros (engloba o antigo tipo *long*).
 
 Tipo para os reais. 
 
-{% highlight python3 %}
+{% highlight python %}
 >>> 6.2831853072  # isto é um float; um número racional. Na verdade, se você
 6.2831853072      # sabe que número é esse, sabe que ele não é racional. Se
                   # não sabe, tenha sua mente explodida lendo sobre o "Tau"!
@@ -37,7 +37,7 @@ Tipo para os reais.
 
 Tipo numérico para os complexos.
 
-{% highlight python3 %}
+{% highlight python %}
 >>> 2 + 3j  # forma padrão "a + bi | a, b ∈ R"; j = i = sqrt(-1)
 (2+3j)
 
@@ -62,7 +62,7 @@ A ordem de abrangência numérica (em ordem crescente) é a seguinte:
 
 Para provar isso no Python, vou utilizar a função type(), que retorna o tipo (seja número, lista, string, ou classe que for) da informação posta entre os parêntesis (argumento).
 
-{% highlight python3 %}
+{% highlight python %}
 >>> type(1 + 1)
 <class 'int'>
 
@@ -104,7 +104,7 @@ Pode-se transformar um float num inteiro, cortando seus decimais, pela função 
 
 Aqui:
 
-{% highlight python3 %}
+{% highlight python %}
 >>> int(3.0)  # float
 3             # int
 
