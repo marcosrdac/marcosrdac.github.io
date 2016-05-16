@@ -150,6 +150,7 @@ a // b | divisão inteira
 a % b | resto da divisão inteira
 divmod(a, b) | retorna (a // b, x % y)
 abs(a) | módulo de *a*; é o mesmo operador usado para complexos (módulo)
+round(a[, n]) | arredonda número para *n* casas decimais; se *n* for omitido, será 0
 
 
 Obs.: a norma PEP-8 recomenda a utilização de espaços entre os operadores e os operandos para uma maior legibilidade.
@@ -201,3 +202,7 @@ Exemplos e explicações:
 
 {% endhighlight %}
 
+
+Operador | Função
+ :--- | :---
+a
