@@ -6,15 +6,18 @@ title:  "Python 3 - Números: Operadores, métodos e funções que os envolvem"
 
 Os operadores básicos do Python são:
 
-| sinal | função                |
-|:--:|:------------------------ |
-| +  | adição                   |
-| -  | subtração                |
-| *  | multiplicação            |
-| /  | divisão                  |
-| ** | exponenciação            |
-| // | divisão inteira          |
-| %  | resto da divisão inteira |
+Operador | Função
+ :--: | :---
+a + b | adição
+a - b | subtração
+a * b | multiplicação
+a / b | divisão
+a ** b | exponenciação
+a // b | divisão inteira
+a % b | resto da divisão inteira
+divmod(a, b) | retorna (a // b, x % y)
+abs(a) | módulo de *a*; é o mesmo operador usado para complexos (módulo)
+
 
 Obs.: a norma PEP-8 recomenda a utilização de espaços entre os operadores e os operandos para uma maior legibilidade.
 
@@ -44,6 +47,24 @@ Exemplos e explicações:
 
 >>> 5 % 2   # o resto de uma divisão inteira
 1           # 5/2 = 2; 5 = 2 * 2 (+ 1 de resto)
-{% endhighlight %}
 
+>>> divmod(5,2)
+(2, 1)
+>>> div, resto = divmod(5,2)
+>>> print(div)
+2
+>>> print(resto)
+1
+
+>>> abs(-2)        # módulo...   
+2
+>>> abs(-31.5)     # módulo...
+31.5
+>>> abs(-5+6j)      # módulo... Sim, é vetorial!
+7.810249675906654
+
+>>> 3+5j.conjugate()  # conjugado de 3+5j (3-5j)   
+(3-5j)
+
+{% endhighlight %}
 
