@@ -21,9 +21,9 @@ vamos declarar essas variáveis em um exemplo:
 pagAtual = 58  # página atual
 numPags = 277  # número de páginas do livro
 
-porcentagem = pagAtual / numPags * 100
+porcentagem = pagAtual / numPags * 100  # matemática do prézinho
 
-print(porcentagem)
+print(porcentagem)  # print é a função que imprime na tela seus argumentos conteúdos da variável porcentagem 
 {% endhighlight %}
 
 Salvei esse texto como porcentagem.py e rodei o programa com o Python 3:
@@ -32,3 +32,6 @@ Salvei esse texto como porcentagem.py e rodei o programa com o Python 3:
 marcosrdac@201604261604:~/Desktop$ python3 porcentagem.py 
 20.938628158844764
 {% endhighlight %}
+
+Wow! Já tá pronto... Mas eu não quero modificar o programa toda vez que for utilizá-lo. Vamos arrumá-lo:
+
