@@ -1,11 +1,12 @@
 ---
 layout: post
-title:  "Python 3 #1 - Números: o básico"
+title:  "Python 3 - #1: Tipologia básica de dados no Python 3"
 ---
 
-Existem três tipos de dados para números na versão atual do Python. Seja introduzido a eles e a como lidar com os mesmos abaixo.
 
 ## Tipos de dados numéricos
+
+Existem três tipos de dados para números na versão atual do Python. Seja introduzido a eles e a como lidar com os mesmos abaixo.
 
 ### O tipo "int"
 
