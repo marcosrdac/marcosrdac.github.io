@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Python 3 #2 - exercitando números"
+title:  "Python 3 - Exercitando tipos básicos"
 ---
 
 Que tal fazer um programinha simples pra exercitar o conhecimento de números em Python da aula passada?
