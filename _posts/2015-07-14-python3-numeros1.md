@@ -100,7 +100,7 @@ type(2.28/2.28)
 
 ## Transformando tipos numéricos em outros
 
-Pode-se transformar um float num inteiro, cortando seus decimais, pela função int(umFloatQualquer). Pode-se ainda transformar um inteiro num float pela função float(umIntQualquer). pode-se passar qualquer um destes para complex, o tipo numérico mais abrangente, por meio da função complex(umNúmeroQualquer), mas a recíproca não é verdadeira. Caso um int ou float seja transformado para seu próprio tipo, nenhum erro será acionado. Nada acontecerá, além do retorno do argumento dado.
+Pode-se transformar um float num inteiro, cortando seus decimais, pela função *int(umFloatQualquer)*. Pode-se ainda transformar um inteiro num float pela função *float(umIntQualquer)*. pode-se passar qualquer um destes para complex, o tipo numérico mais abrangente, por meio da função *complex(umNúmeroQualquer)*, mas a recíproca não é verdadeira. Na realidade, a função *complex* toma dois argumentos: o primeiro e o segundo serão, respectivamente, as partes real e imaginária do complexo a ser retornado; se o segundo argumento é omitido, ele é tomado por 0.  Caso um número seja transformado em seu próprio tipo, nenhum erro será acionado. Nada acontecerá, além do retorno do argumento dado. 
 
 Aqui:
 
@@ -116,9 +116,6 @@ Aqui:
 
 >>> complex(3.1, 4.56)  #float
 (3.1+4.56j)             # complex
-                        # perceba que *complex(a, b)* toma dois argumentos:
-                        # *a* e *b* se tornam, respectivamente, a parte real e a imaginária
-                        # se o segunto argumento for omitido, a parte imaginária será 0.
 
 >>> int(1j)  # vai dar erro; a parte complexa não é simplesmente cortada
 Traceback (most recent call last):
@@ -159,7 +156,7 @@ Obs.: a norma PEP-8 recomenda a utilização de espaços entre os operadores e o
 
 Exemplos e explicações:
 
-{% highlight python3 %}
+{% highlight python %}
 >>> 1 + 1  # soma
 2
 
