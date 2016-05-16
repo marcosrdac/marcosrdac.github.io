@@ -62,38 +62,38 @@ A ordem de abrangência numérica (em ordem crescente) é a seguinte:
 
 Para provar isso no Python, vou utilizar a função type(), que retorna o tipo (seja número, lista, string, ou classe que for) da informação posta entre os parêntesis (argumento).
 
-{% highlight python %}
-type(1 + 1)
+{% highlight python3 %}
+>>> type(1 + 1)
 <class 'int'>
 
-type(2 - 1)
+>>> type(2 - 1)
 <class 'int'>
 
-type(4 * 2)
+>>> type(4 * 2)
 <class 'int'>
 
-type(4 / 2)
+>>> type(4 / 2)
 <class 'float'>
 
-type(2 ** 2)
+>>> type(2 ** 2)
 <class 'int'>
 
-type(4 ** (1/2))
+>>> type(4 ** (1/2))
 <class 'float'>
 
-type(3 // 2)
+>>> type(3 // 2)
 <class 'int'>
 
-type(2j - 3)
+>>> type(2j - 3)
 <class 'complex'>
 
-type(3 * 2j)
+>>> type(3 * 2j)
 <class 'complex'>
 
 type(2.28/2.28)
 <class 'float'>
 
-type(2j / 2j)
+>>> type(2j / 2j)
 <class 'complex'>
 {% endhighlight %}
 
@@ -118,14 +118,8 @@ Aqui:
 (3.1+4.56j)             # complex
 
 >>> int(1j)  # vai dar erro; a parte complexa não é simplesmente cortada
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  TypeError: can't convert complex to int
 
 >>> float(1j)  # igualmente
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  TypeError: can't convert complex to float
 
 >>> int(1)  # int
 1           # int
