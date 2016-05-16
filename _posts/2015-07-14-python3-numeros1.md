@@ -200,9 +200,8 @@ Exemplos e explicações:
 >>> 3+5j.conjugate()  # conjugado de 3+5j (3-5j)   
 (3-5j)
 
+>>> round(3.45, 1)
+3.5
+>>> round(3.45)
+3
 {% endhighlight %}
-
-
-Operador | Função
- :--- | :---
-a
