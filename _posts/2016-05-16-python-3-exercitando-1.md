@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Python 3 - Exercitando tipos básicos"
+title:  "Python 3 - Exercitando #1: Tipologia básica de dados"
 ---
 
 Que tal fazer um programinha simples pra exercitar o conhecimento de números em Python da aula passada?
