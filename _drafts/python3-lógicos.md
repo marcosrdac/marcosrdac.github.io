@@ -1,5 +1,0 @@
-## booleans
-
-## cadeias
-
-##mapeamentos

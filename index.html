@@ -1,21 +1,121 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Página HTML</title>
+    <link href="style.css" rel="stylesheet">
+</head>
 
-<div class="home">
+<body>
 
-  <h1>Posts</h1>
+  <h1>Página HTML</h1>
 
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        {{ post.excerpt }}
-      </li>
-    {% endfor %}
-  </ul>
+    <p class="btn">Isto é 
+    
+    um parágrafo.</p>
+    <p>Isto é outro parágrafo.</p>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  <h2>Subtítulo</h2>
+    <p>Você pode utilizar seis diferentes níveis para headers.</p>
+    <p>Abaixo, uma quebra de quadro.</p>
 
-</div>
+    <hr>
+
+    <h1>Formatação de texto</h1>
+
+    <i>Texto em itálico.</i>
+    <b>Texto em negrito.</b>
+    <strike>Texto cortado.</strike>
+    <big>Texto em caracteres grandes.</big>
+    <small>Texto em caracteres pequenos.</small>
+    [Este texto entre colchetes não possui tags, desta forma não possui propriedades especiais. <br> Apesar disto, posso quebrar a linha com a tag de elemento br.]
+
+  <br><br>
+
+  <h1>Listas e tabelas</h1>
+
+    <p>Lista 1 (enumerada) </p>
+
+      <ol>
+        <li class="item1">Item 1</li>
+        <li class="item2">Item 2</li>
+        <li class="item3">Item 3</li>
+        <li class="item4">Item 4</li>
+        <li class="item5">Item 5</li>
+      </ol>
+
+
+    <p>Lista 2 (em tópicos)</p>
+
+      <ul>
+        <li class="item1">Item 1</li>
+        <li class="item2">Item 2</li>
+        <li class="item3">Item 3</li>
+        <li class="item4">Item 4</li>
+        <li class="item5">Item 5</li>
+      </ul>
+
+
+    <p>Tabela 1</p>
+    
+    <center> 
+
+      <table border="1" width="50%">
+        <tr>
+          <td>Célula A1</td>
+          <td>Célula B1</td>
+          <td>Célula C1</td>
+        </tr>
+        <tr>
+          <td>Célula A2</td>
+          <td>Célula B2</td>
+          <td>Célula C2</td>
+        </tr>
+      </table>
+
+    </center>
+
+
+    <p>Tabela 2</p>
+
+    <center>
+      
+      <table border="1" width="200" height="125">
+        <tr>
+          <td rowspan="3" colspan="3"><center>3</center></td> 
+          <td rowspan="5" colspan="5"><center>5</center></td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+          <td><center>1</center></td>
+          <td rowspan="2" colspan="2"><center>2</center></td>
+        </tr>
+        <tr>
+          <td><center>1</center></td>
+        </tr>
+      </table>
+
+    </center>
+
+  <br>
+
+  <h1>Atributos</h1>
+
+    <p style="background-color: #091B2A; color: #cedde5"> Tags podem receber atributos pontualmente por meio do modificador style. Cores básicas podem ser escritas diretamente, ao invés da notação hexadecimal (i.e., black).</p>
+    <p> O código utilizado aqui possui a mesma linguagem dos documentos CSS; Entretanto há outras formas de se produzir o mesmo efeito. </p>
+
+  <h1>Links</h1>
+  
+    <a href="link.html">Este link te leva a uma página vazia</a>
+
+    <br><br>
+
+  <h1>Imagens</h1>
+
+    <center><img src="mount_scenery_pexels.jpg" title="Mount Scenery - Pexels" alt="" width="100%"></center>
+
+</body>
+</html>
