@@ -1,3 +1,8 @@
+body{
+  background-color: #cedde5;
+  font-family:Ubuntu Mono;
+}
+
 p, b {
   color: #091B2A;
 }
@@ -5,6 +10,11 @@ p, b {
 h1, h2, h3, h4, h5, h6{
   margin: 0;
   color: #091B2A;
+}
+
+.bgemph{
+  color: #cedde5;
+  background-color: #091B2A;
 }
 
 a:link{
@@ -16,16 +26,3 @@ a:visited{
   color: #507698;
   text-decoration: none;
 }
-
-body{
-  background-color: #cedde5;
-  font-family:Ubuntu Mono;
-}
-
-h3.bgemph{
-  /* text-align: center; */
-  color: #cedde5;
-  background-color: #091B2A;
-  font-weight:bold;
-}
-
