@@ -21,3 +21,11 @@ body{
   background-color: #cedde5;
   font-family:Ubuntu Mono;
 }
+
+h3.bgemph{
+  /* text-align: center; */
+  color: #cedde5;
+  background-color: #091B2A;
+  font-weight:bold;
+}
+
