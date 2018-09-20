@@ -15,6 +15,7 @@ h1, h2, h3, h4, h5, h6{
 .bgemph{
   color: #cedde5;
   background-color: #091B2A;
+  padding: 10px 20px;
 }
 
 a:link{
@@ -24,5 +25,30 @@ a:link{
 
 a:visited{
   color: #507698;
+  text-decoration: none;
+}
+
+/* navbar */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #091B2A;
+}
+
+.navbar > li >a{
+  color:black;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  text-align: left;
+  padding: 10px 20px;
   text-decoration: none;
 }

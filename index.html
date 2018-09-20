@@ -1,19 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <title>Marcos Conceição</title>
-    <link href="style.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <link href="style.css" rel="stylesheet">
+  <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+  <title>Marcos Conceição</title>
 </head>
 
 <body>
 
-  <h1 align="right">Marcos Reinan de Assis Conceição</h1> <br> <br>
- 
-<h2 class="bgemph"> 20180920 Fiz um script para blogar! </h2>
+  <h1 class="bgemph" align="right">Marcos Reinan de Assis Conceição <br> <br></h1>
 
-<p>Investi 30 minutos numa modificação do meu sistema de arquivos e produção de um script, hoje. Ele pega o arquivo de layout deste blog, bem como meus posts salvos em html puro -- localizados numa determinada pasta --, e junta tudo num único arquivo, "index.html", que se torna este site aqui! O script foi feito em Python e é parte de minha busca por simplicidade. No futuro, farei algo para que eu só tenha que escrever os posts em markdown, não mais em html, porque escrever em html custa digitar mais... Não é natural para mim. No momento, o script está no meu repositório do GitHub que corresponde a este blog.</p>
+<ul>
+  <li><h3><a href="index.html">Home</a></h3></li>
+  <li><h3><a href="">News</a></h3></li>
+  <li><h3><a href="contact.html">Contact</a></h3></li>
+  <li><h3><a href="">About</a></h3></li>
+</ul>
+
+<br>
+ 
+<h2 class=bgemph> 20180920 Desenvolvimento de equação do potencial elétrico para um único eletrodo em subsuperfície - meio homogêneo e isotrópico</h2><br>
+
+<center>
+<div lang="latex">
+\vec{\nabla}^2 V = 0, \qquad V = V(r,\theta,\phi) = V(r)
+</div>
+<br>
+<div lang="latex">
+\longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) + {1 \over r^2 \sin \theta} {\partial \over \partial \theta}  \left( \sin \theta {\partial V\over \partial \theta} \right) + {1 \over r^2 \sin^2 \theta} {\partial^2 V \over \partial \phi^2} = 0
+</div>
+<br>
+<div lang="latex">
+\longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) = 0
+</div>
+<br>
+<div lang="latex">
+\longrightarrow \frac{\partial^2 V}{\partial r^2} + {2 \over r} {\partial V \over \partial r}= 0
+</div>
+<br>
+<div lang="latex">
+\longrightarrow {\partial V \over {\partial r}} = {C_1 \over {r^2}}, \qquad C_1 \in \Re
+</div>
+<br>
+<div lang="latex">
+\therefore V = -{C_1 \over {r}} + C_2, \qquad C_1, C_2 \in \Re
+</div>
+</center>
+    <br><h2 class="bgemph"> 20180920 Fiz um script para blogar! </h2>
+
+<p>Investi 30 minutos numa modificação do meu sistema de arquivos e na produção de um script, hoje. Ele pega o arquivo de layout deste blog, bem como meus posts salvos em html puro -- localizados numa determinada pasta --, e junta tudo num único arquivo, "index.html", que se torna este site aqui! O script foi feito em Python e é parte de minha busca por simplicidade. No futuro, farei algo para que eu só tenha que escrever os posts em markdown, não mais em html, porque escrever em html custa digitar mais... Não é natural para mim. No momento, o script está no meu repositório do GitHub que corresponde a este blog.</p>
     <br>  <h2 class="bgemph"> 20180918 monstro_sonolento </h2>
 <center>
   <p>
