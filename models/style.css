@@ -5,11 +5,13 @@ body{
 
 p, b {
   color: #091B2A;
+  padding: 0px 20px;
 }
 
 h1, h2, h3, h4, h5, h6{
   margin: 0;
   color: #091B2A;
+  padding: 0px 20px;
 }
 
 .bgemph{
@@ -38,17 +40,13 @@ ul {
   background-color: #091B2A;
 }
 
-.navbar > li >a{
-  color:black;
-}
-
 li {
   float: left;
 }
 
 li a {
   display: block;
-  text-align: left;
-  padding: 10px 20px;
+  text-align: center:;
+  padding: 10px 0px;
   text-decoration: none;
 }
