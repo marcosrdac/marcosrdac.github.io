@@ -30,6 +30,35 @@ a:visited{
   text-decoration: none;
 }
 
+.title_box{
+  margin: auto;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  width: 100%;
+}
+
+.container{
+  margin: auto;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  width: 80%;
+}
+
+.content_box{
+  float: left;
+  width:50%;
+  display: inline-block;
+  margin-right: 1%;
+  margin-left: 1%;
+}
+
+.lateral_box{
+  text-align: center;
+  float: left;
+  width:24%;
+  display: inline-block;
+}
+
 /* navbar */
 
 ul {

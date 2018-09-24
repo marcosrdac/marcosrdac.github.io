@@ -30,6 +30,7 @@ posts_dir = posts_dir[::-1]
 posts = [posts_dir_name+'/'+i for i in posts_dir]
 posts = [open(i).readlines()+['  ','  <br>'] for i in posts]
 posts = [i for i in itertools.chain.from_iterable(posts)]
+posts = [i.replace('--','—') for i in posts]
 
 
 index_file = open(index_file_name,'w')
@@ -41,6 +42,7 @@ for section in sections:
     section_file = open(sections_dir_name+'/_'+(section+'.html' if not('.html' in section)
                                              else section),'r')
     section_lines = section_file.readlines()
+    section_lines = [i.replace('--','—') for i in section_lines]
     section_file.close()
 
     section_file_name = section+'.html'
