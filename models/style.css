@@ -37,6 +37,12 @@ a:visited{
   width: 100%;
 }
 
+.footer_box{
+  margin: auto;
+  margin-top: 50%;
+  width: 100%;
+}
+
 .container{
   margin: auto;
   margin-top: 1%;
@@ -59,23 +65,9 @@ a:visited{
   display: inline-block;
 }
 
+
+.post{
+  margin-bottom: 1%;
+}
 /* navbar */
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #091B2A;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  text-align: center:;
-  padding: 10px 0px;
-  text-decoration: none;
-}

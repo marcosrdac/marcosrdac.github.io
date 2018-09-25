@@ -28,7 +28,7 @@ posts_dir = os.listdir(posts_dir_name)
 posts_dir.sort()
 posts_dir = posts_dir[::-1]
 posts = [posts_dir_name+'/'+i for i in posts_dir]
-posts = [open(i).readlines()+['  ','  <br>'] for i in posts]
+posts = [['<div class=post>']+open(i).readlines()+['</div>'] for i in posts]
 posts = [i for i in itertools.chain.from_iterable(posts)]
 posts = [i.replace('--','—') for i in posts]
 
