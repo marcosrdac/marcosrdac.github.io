@@ -5,19 +5,23 @@ body{
 
 p, b {
   color: #091B2A;
-  padding: 0px 20px;
+  padding: 0px 0px;
 }
 
 h1, h2, h3, h4, h5, h6{
   margin: 0;
   color: #091B2A;
-  padding: 0px 20px;
+  padding: 0px 0px;
 }
 
 .bgemph{
   color: #cedde5;
   background-color: #091B2A;
   padding: 10px 20px;
+}
+
+#lateral_title{
+  text-align: center;
 }
 
 a:link{
@@ -45,6 +49,11 @@ a:visited{
 
 .container{
   margin: auto;
+  width: 100%;
+}
+
+.main_container{
+  margin: auto;
   margin-top: 1%;
   margin-bottom: 1%;
   width: 80%;
@@ -52,22 +61,30 @@ a:visited{
 
 .content_box{
   float: left;
-  width:50%;
+  width:60%;
   display: inline-block;
   margin-right: 1%;
   margin-left: 1%;
 }
 
 .lateral_box{
-  text-align: center;
+  text-align: left;
   float: left;
-  width:24%;
+  width:18%;
   display: inline-block;
 }
 
-
-.post{
+.post_box{
   margin-bottom: 1%;
 }
-/* navbar */
 
+img {
+    border: 0px solid #ddd;
+    border-radius: 0px;
+    padding: 0px 0px;
+    display: block;
+}
+
+.inner{
+  margin: 10px 20px;
+}
