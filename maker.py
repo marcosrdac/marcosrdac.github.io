@@ -1,54 +1,80 @@
 import os
-import itertools
-
+import re
 
 content_sign = '<!-- contents here --!>'
-posts_dir_name = 'content/blog'
+posts_dir_name = '_content/blog/'
+output_posts_dir_name = 'content/blog/'
 index_file_name = 'index.html'
-page_file_name = 'models/_page.html'
-sections = ['contact', 'about']
-sections_dir_name = 'models'
+layout_file_name = 'style/layout.html'
+sections_dir_name = '_content/'
+output_sections_dir_name = 'content/'
 
 
-def make_page(content_lines, page, contents_start):
-    content = []
-    content += [i for i in page[:contents_start]]
-    content += [i for i in content_lines]
-    content += [i for i in page[contents_start+1:]]
-    return(content)
+layout_file = open(layout_file_name,'r')
+layout = layout_file.read()
+layout_file.close()
+layout = layout.split(content_sign)
+
+def get_relative_path_up(path):
+    return('../' * path.count('/'))
+
+def md_to_html(markdown_post):
+    ignored_tags = [ ''.join(['<',i,j,'>']) for i in ['','/']
+                            for j in ['center', 'div', 'h3', 'h4'] ]
+    ignored_tags.append('<div lang="latex">')
+
+    # achando texto entre --- e ---
+    meta_match = re.match(r'^-{3}(.*)-{3}', markdown_post, re.S)
+    # retirando quebras de linhas das strings, separando por linhas
+    meta_strings = meta_match.groups()[0].splitlines()[1:]
+    # separing keys and values
+    meta_ = [re.search(':', i,re.S).start() for i in meta_strings]
+    meta_ = [(i[:meta_[n]], i[meta_[n]+2:]) for (n,i) in enumerate(meta_strings)]
+    # creating dictionary
+    meta = dict(meta_)
+    
+    post = markdown_post[meta_match.end()+2:].splitlines()
+    post = [ '<h3>'+i[2:]+'</h3>' if (i!='' and i[0]=='#') else i for i in post ]
+    post = [ i+'<br>' if all(not(j in i) for j in ignored_tags) else i for i in post ]
+    post = '\n'.join(post)
+    post = '<div class="inner">\n<p>\n'+post+'\n</p>\n</div>\n\n'
+    title = ' '.join([meta['date'],meta['title']])
+    title = '<h3 class="bgemph">'+title+'</h3>\n\n'
+    return(title+post)
+
+def make_page(content_dir, layout):
+    posts = [ md_to_html(open(i).read()) for i in content_dir ]
+    index = layout[0]+''.join(posts)+layout[1]
+    return(index)
 
 
-page_file = open(page_file_name,'r')
-page = page_file.readlines()
+# blog
+content_dir_name = posts_dir_name
+flat_ls = [ content_dir_name+i for i in os.listdir(content_dir_name) ]
+content_dir = [ i for i in flat_ls if os.path.isfile(i) if '.md' in i  ]
+content_dir.sort(reverse=True)
+
+_layout = [ i.replace('{relative_path_up}',
+                get_relative_path_up(index_file_name))
+                for i in layout ]
+
+page_file = open(index_file_name,'w')
+page_file.write(make_page(content_dir, _layout))
 page_file.close()
 
-contents_start = [n for (n,l) in enumerate(page) if content_sign in l][0]
+# pages
+content_dir_name = sections_dir_name
 
-posts_dir = os.listdir(posts_dir_name)
-posts_dir.sort()
-posts_dir = posts_dir[::-1]
-posts = [posts_dir_name+'/'+i for i in posts_dir]
-[['<div class=post>']+open(i).readlines()+['</div>'] for i in posts]
-posts = [ ['\n<div class=post_box>\n']+open(i).readlines()+['\n</div>\n'] for i in posts]
-posts = [ i for j in posts for i in j]
-posts = [i.replace('--','—') for i in posts]
+pages = [ i[:-3] for i in os.listdir(content_dir_name)
+                if os.path.isfile(content_dir_name+i)
+                    if '.md' in i ]
+content_dir = [ content_dir_name+i for i in pages ]
 
+_layout = [ i.replace('{relative_path_up}',
+                get_relative_path_up(content_dir[0]))
+                for i in layout ]
 
-index_file = open(index_file_name,'w')
-index_file.writelines(make_page(posts,
-                                page,
-                                contents_start))
-
-for section in sections:
-    section_file = open(sections_dir_name+'/_'+(section+'.html' if not('.html' in section)
-                                             else section),'r')
-    section_lines = section_file.readlines()
-    section_lines = [i.replace('--','—') for i in section_lines]
-    section_file.close()
-
-    section_file_name = section+'.html'
-    section_file = open(section_file_name,'w')
-    section_file.writelines(make_page(section_lines,
-                                      page,
-                                      contents_start))
-    section_file.close()
+for i, page in enumerate(pages):
+    page_file = open(output_sections_dir_name+page+'.html','w')
+    page_file.write(make_page([content_dir[i]+'.md'], _layout))
+    page_file.close()

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-  <link href="models/style.css" rel="stylesheet">
+  <link href="style/style.css" rel="stylesheet">
   <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
   <title>Marcos Reinan de Assis Conceição</title>
 </head>
@@ -23,9 +23,9 @@
     <div class="lateral_box">
       <h3 class="bgemph">links</h3>
       <div class="inner">
-        <a href="index.html">home</a><br>
-        <a href="contact.html">contact</a><br>
-        <a href="about.html">about</a><br>
+      <a href="index.html">home</a><br>
+      <a href="content/contact.html">contact</a><br>
+      <a href="content/about.html">about</a><br>
       </div>
     </div>
 
@@ -33,166 +33,161 @@
     <!-- contents --!>
     <div class="content_box">
 
+<h3 class="bgemph">20180920 Desenvolvimento da equação do potencial elétrico para um único eletrodo de corrente em subsuperfície homogênea e isotrópica</h3>
 
-<div class=post_box>
-<h2 class=bgemph> 20180920 Desenvolvimento da equação do potencial elétrico para um único eletrodo de corrente em subsuperfície homogênea e isotrópica</h2>
 <div class="inner">
 <p>
 <div lang="latex">
-\vec{\nabla}^2 V = 0, \qquad V = V(r,\theta,\phi) = V(r)
+\vec{\nabla}^2 V = 0, \qquad V = V(r,\theta,\phi) = V(r)<br>
 </div>
 <br>
 <div lang="latex">
-\longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) + {1 \over r^2 \sin \theta} {\partial \over \partial \theta}  \left( \sin \theta {\partial V\over \partial \theta} \right) + {1 \over r^2 \sin^2 \theta} {\partial^2 V \over \partial \phi^2} = 0
+\longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) + {1 \over r^2 \sin \theta} {\partial \over \partial \theta}  \left( \sin \theta {\partial V\over \partial \theta} \right) + {1 \over r^2 \sin^2 \theta} {\partial^2 V \over \partial \phi^2} = 0<br>
 </div>
 <br>
 <div lang="latex">
-\longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) = 0
+\longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) = 0<br>
 </div>
 <br>
 <div lang="latex">
-\longrightarrow \frac{\partial^2 V}{\partial r^2} + {2 \over r} {\partial V \over \partial r}= 0
+\longrightarrow \frac{\partial^2 V}{\partial r^2} + {2 \over r} {\partial V \over \partial r}= 0<br>
 </div>
 <br>
 <div lang="latex">
-\longrightarrow {\partial V \over {\partial r}} = {C_1 \over {r^2}}, \qquad C_1 \in \Re
+\longrightarrow {\partial V \over {\partial r}} = {C_1 \over {r^2}}, \qquad C_1 \in \Re<br>
 </div>
 <br>
 <div lang="latex">
-\therefore V = -{C_1 \over {r}} + C_2, \qquad C_1, C_2 \in \Re
+\therefore V = -{C_1 \over {r}} + C_2, \qquad C_1, C_2 \in \Re<br>
+</div>
+<br>
+donde <span lang="latex">C_2</span> pode ser arbitrariamente escolhido como 0:<br>
+<br>
+<div lang="latex">
+\therefore V = -{C_1 \over {r}}, \qquad C_1 \in \Re<br>
 </div>
 </p>
-<p>
-donde <span lang="latex">C_2</span> pode ser arbitrariamente escolhido como 0:
-</p>
-<p>
-<div lang="latex">
-\therefore V = -{C_1 \over {r}}, \qquad C_1 \in \Re
-</div>
-</p>
-
 </div>
 
-</div>
+<h3 class="bgemph">20180920 Fiz um script para blogar! </h3>
 
-<div class=post_box>
-<h2 class="bgemph"> 20180920 Fiz um script para blogar! </h2>
 <div class="inner">
-<p>Investi 30 minutos numa modificação do meu sistema de arquivos e na produção de um script, hoje. Ele pega o arquivo de layout deste blog, bem como meus posts salvos em html puro — localizados numa determinada pasta —, e junta tudo num único arquivo, "index.html", que se torna este site aqui! O script foi feito em Python e é parte de minha busca por simplicidade. No futuro, farei algo para que eu só tenha que escrever os posts em markdown, não mais em html, porque escrever em html custa digitar mais... Não é natural para mim. No momento, o script está no meu repositório do GitHub que corresponde a este blog.</p>
+<p>
+Investi 30 minutos numa modificação do meu sistema de arquivos e na produção de um script, hoje. Ele pega o arquivo de layout deste blog, bem como meus posts salvos em html puro -- localizados numa determinada pasta --, e junta tudo num único arquivo, "index.html", que se torna este site aqui! O script foi feito em Python e é parte de minha busca por simplicidade. No futuro, farei algo para que eu só tenha que escrever os posts em markdown, não mais em html, porque escrever em html custa digitar mais... Não é natural para mim. No momento, o script está no meu repositório do GitHub que corresponde a este blog.<br>
+</p>
 </div>
 
-</div>
+<h3 class="bgemph">20180918 monstro_sonolento</h3>
 
-<div class=post_box>
-<h2 class="bgemph"> 20180918 monstro_sonolento </h2>
 <div class="inner">
+<p>
 <center>
-  <p>
-hoje me vi um monstro <br>
-cristão <br>
-quero dizer que fui tentado <br>
-por qualquer demônio <br>
-porque quero ser cristão <br> <br>
-porque agora sofro muito <br>
-quero me limpar por minha boca com entidades <br>
-quero me limpar por minha boca com tratos e conversas <br>
-quero desabar, pois vejo que é tudo tão egoico <br> <br>
-e me pergunto a um deus <br>
-que destino ele guarda para mim <br>
-em sua onisciência <br>
-que destino tem um monstro? <br> <br>
-bem, para toda contingência <br>
-não é apenas tautologia moral <br>
-desta vez, é deformação e malevolência <br>
-é encarceramento em autodefesa <br> <br>
-cultivarei meu sofrimento irresponsável <br>
-cultivarei para que ele me marque <br>
-não quero limpar minha boca, senão com água <br>
-muito menos com a ajuda deste papel... <br> <br>
-  </p>
+hoje me vi um monstro<br>
+cristão<br>
+quero dizer que fui tentado<br>
+por qualquer demônio<br>
+porque quero ser cristão<br>
+<br>
+porque agora sofro muito<br>
+quero me limpar por minha boca com entidades<br>
+quero me limpar por minha boca com tratos e conversas<br>
+quero desabar, pois vejo que é tudo tão egoico<br>
+<br>
+e me pergunto a um deus<br>
+que destino ele guarda para mim<br>
+em sua onisciência<br>
+que destino tem um monstro?<br>
+<br>
+bem, para toda contingência<br>
+não é apenas tautologia moral<br>
+desta vez, é deformação e malevolência<br>
+é encarceramento em autodefesa<br>
+<br>
+cultivarei meu sofrimento irresponsável<br>
+cultivarei para que ele me marque<br>
+não quero limpar minha boca, senão com água<br>
+muito menos com a ajuda deste papel...<br>
 </center>
+</p>
 </div>
 
-</div>
+<h3 class="bgemph">20180811 mounting_the_goat</h3>
 
-<div class=post_box>
-<h2 class="bgemph">20180811 mounting_the_goat</h2>
 <div class="inner">
-<center>
 <p>
+<center>
 still I try to read you <br>
 from a picture <br>
 shooted so long ago <br>
-</p>
-
-<p>
+<br>
 were you always like him, <br>
 the one near the sofa? <br>
 and what did I mean? <br>
-</p>
-
-<p>
+<br>
 or were you like him <br>
 the one by the pestle? <br>
 ...actually it's a line we're in <br>
-</p>
-
-<p>
+<br>
 have I abbandoned you? <br>
 killed you with no mercy? <br>
 I think I've embraced you <br>
 I think I'm mounting the goat <br>
-</p>
-
-<p>
+<br>
 you suffer from your <br>
 deadly zombie beliefs <br>
 viruses plotted in your brain... <br>
 both of us may never understand <br>
 how could you leave the game? <br>
-</p>
-
-<p>
+<br>
 come on, hug me tight <br>
 for my hands are cold <br>
 and I need your soul <br>
 to clean my knife <br>
-</p>
-
-<p>
+<br>
 you once said <br>
 you're through the bridge <br>
 now I comprise... <br>
-</p>
-
-<p>
+<br>
 yes, so do I! <br>
 but still you laugh <br>
 seeing me cry <br>
-</p>
 </center>
+</p>
 </div>
 
-</div>
-
-<div class=post_box>
-  <h2 class="bgemph"> 20150727 O Discurso do Método - 3ª parte: Considerações Sobre a Moral [resumo] </h2>
+<h3 class="bgemph">20150727 O Discurso do Método - 3ª parte: Considerações Sobre a Moral [resumo]</h3>
 
 <div class="inner">
-  <p>Antes de chegar à moral perfeita – depois do conhecimento de tudo ter sido alcançado –, Descartes cria para si uma moral provisória, sobre a qual poderia criar a primeira, aludindo-a ao canteiro de uma obra. Divide esta moral primeira em quatro princípios e explicita-os. São eles:</p>
-  <h3>Obedecer às leis e aos costumes locais e conservar em si a religião de seu Deus</h3>
-  <p>O pensador renascentista afirma que o primeiro ponto de sua moral básica diz respeito à religião. Segundo ele, Deus sempre o permitiu agir sob moderação e assim conseguir evoluir seu espírito, e, portanto, a religião tem valor capital para sua moral. A moderação é chave para agir corretamente, pois os excessos são, pelos dados do real, geralmente resultantes de coisas ruins.</p>
-  <p>Descartes diz também que qualquer escolha que subtrai do homem sua liberdade é um excesso. As leis, apesar disso, são um excesso válido, pois “remediam a inconstância dos espíritos fracos” – algo que Hobbes discutirá melhor –. Caso haja dúvida sobre como agir, fazer como os mais sensatos locais fazem, a fim de não iniciar muito longe da verdade.</p>
-  <h3>Ser resoluto nas ações</h3>
-  <p>Mesmo que ainda irresoluto nos juízos, dever-se-á ser assertivo nas ações, a fim de diminuir os erros. Por mais que o primeiro passo seja dado ao acaso, deve-continuar na mesma direção – a menos que hajam obstáculos significativos no caminho – para que, ao contrário do que andam em caminhos aleatórios, não se perca. Pois, uma vez perdido no meio de uma floresta, para qualquer lugar que se ande o suficiente, há de se encontrar uma saída.</p>
-  <h3>Vencer-te a ti mesmo antes da fortuna</h3>
-  <p>Aqui Decartes expressa sua forte influência dos estóicos. Diz que além dos pensamentos, não temos controle sobre nada por inteiro. É interessante saber que isso não era unanimidade entre os pensadores contemporâneos a ele. Montaigne, por exemplo, tinha suas dúvidas quanto a isso. Crer nisso – que pouco está sob nosso controle – possibilita a <em>apatia</em> estóica como virtude que leva à <em>ataraxia</em>. Possibilita também o entendimento de que não devemos buscar o impossível e assim, sermos felizes.</p>
-  <h3>Tentar cada vez mais melhorar o juízo</h3>
-  <p>Descartes afirmava que devemos cada vez mais melhorar a capacidade de bem julgar as coisas. Só desta forma nos aproximamos mais do conhecimento da verdade. “Basta bem julgar para bem proceder, e julgar o melhor possivel para agir da melhor maneira.”. Diz ainda que os antigos valores que antes foram tomados como importantes não podem virar-se completamente inúteis, e a partir do julgamento, devemos procurar pelas partes boas dos mesmos.</p>
-  <p>Ainda antes de completar a terceira parte do livro, o autor faz uma consideração sobre um ponto sobre o qual é, ainda hoje, mal-interpretado. A de que sua dúvida sobre todos os assuntos não é como a dos céticos. Estes últimos duvidavam sem razão e por isso são criticados. Eles entendiam que o estado padrão, natural e final de todo pensamento é a dúvida, pois não é possível conhecer o real. Descartes concordava que o real é incognoscível, mas se diferencia no sentido que tomava da dúvida. A “dúvida” de Descartes diz respeito a saber da eterna e incontornável possibilidade de não ter a descrição correta do real, sendo ela não um obstáculo, mas uma razão para chegar a uma conclusão sobre ele que se possa considerar segura: “todo o meu propósito só tendia a me dar segurança e me afastar a areia movediça e a areia para encontrar a rocha e a argila” – para quem está por fora, rocha e argila são estágios extremos, o que é uma alusão ao seu desejo de chegar a pontos fixos. A rocha é o princípio, a argila, o produto final da meteorização.</p>
+<p>
+Antes de chegar à moral perfeita – depois do conhecimento de tudo ter sido alcançado –, Descartes cria para si uma moral provisória, sobre a qual poderia criar a primeira, aludindo-a ao canteiro de uma obra. Divide esta moral primeira em quatro princípios e explicita-os. São eles:<br>
+<br>
+<br>
+<h3>Obedecer às leis e aos costumes locais e conservar em si a religião de seu Deus</h3>
+<br>
+O pensador renascentista afirma que o primeiro ponto de sua moral básica diz respeito à religião. Segundo ele, Deus sempre o permitiu agir sob moderação e assim conseguir evoluir seu espírito, e, portanto, a religião tem valor capital para sua moral. A moderação é chave para agir corretamente, pois os excessos são, pelos dados do real, geralmente resultantes de coisas ruins.<br>
+<br>
+Descartes diz também que qualquer escolha que subtrai do homem sua liberdade é um excesso. As leis, apesar disso, são um excesso válido, pois “remediam a inconstância dos espíritos fracos” – algo que Hobbes discutirá melhor –. Caso haja dúvida sobre como agir, fazer como os mais sensatos locais fazem, a fim de não iniciar muito longe da verdade.<br>
+<br>
+<br>
+<h3>Ser resoluto nas ações</h3>
+<br>
+Mesmo que ainda irresoluto nos juízos, dever-se-á ser assertivo nas ações, a fim de diminuir os erros. Por mais que o primeiro passo seja dado ao acaso, deve-continuar na mesma direção – a menos que hajam obstáculos significativos no caminho – para que, ao contrário do que andam em caminhos aleatórios, não se perca. Pois, uma vez perdido no meio de uma floresta, para qualquer lugar que se ande o suficiente, há de se encontrar uma saída.<br>
+<br>
+<br>
+<h3>Vencer-te a ti mesmo antes da fortuna</h3>
+<br>
+Aqui Decartes expressa sua forte influência dos estóicos. Diz que além dos pensamentos, não temos controle sobre nada por inteiro. É interessante saber que isso não era unanimidade entre os pensadores contemporâneos a ele. Montaigne, por exemplo, tinha suas dúvidas quanto a isso. Crer nisso – que pouco está sob nosso controle – possibilita a *apatia* estóica como virtude que leva à *ataraxia*. Possibilita também o entendimento de que não devemos buscar o impossível e assim, sermos felizes.<br>
+<br>
+<br>
+<h3>Tentar cada vez mais melhorar o juízo</h3>
+<br>
+Descartes afirmava que devemos cada vez mais melhorar a capacidade de bem julgar as coisas. Só desta forma nos aproximamos mais do conhecimento da verdade. “Basta bem julgar para bem proceder, e julgar o melhor possivel para agir da melhor maneira.”. Diz ainda que os antigos valores que antes foram tomados como importantes não podem virar-se completamente inúteis, e a partir do julgamento, devemos procurar pelas partes boas dos mesmos.<br>
+<br>
+Ainda antes de completar a terceira parte do livro, o autor faz uma consideração sobre um ponto sobre o qual é, ainda hoje, mal-interpretado. A de que sua dúvida sobre todos os assuntos não é como a dos céticos. Estes últimos duvidavam sem razão e por isso são criticados. Eles entendiam que o estado padrão, natural e final de todo pensamento é a dúvida, pois não é possível conhecer o real. Descartes concordava que o real é incognoscível, mas se diferencia no sentido que tomava da dúvida. A “dúvida” de Descartes diz respeito a saber da eterna e incontornável possibilidade de não ter a descrição correta do real, sendo ela não um obstáculo, mas uma razão para chegar a uma conclusão sobre ele que se possa considerar segura: “todo o meu propósito só tendia a me dar segurança e me afastar a areia movediça e a areia para encontrar a rocha e a argila” – para quem está por fora, rocha e argila são estágios extremos, o que é uma alusão ao seu desejo de chegar a pontos fixos. A rocha é o princípio, a argila, o produto final da meteorização.<br>
+</p>
 </div>
 
-</div>
+
 
     </div>
 
@@ -202,7 +197,7 @@ seeing me cry <br>
       <img src="pictures/me.jpg" title="me" alt="photo of me" width="100%">
       <h3 class="bgemph" id="lateral_title">marcosrdac</h3>
       <div class="inner">
-        <p>Olá!</p>
+      <!-- <p>Futuramente, talvez, eu deva escrever algo aqui</p> --!>
       </div>
     </div>
 
