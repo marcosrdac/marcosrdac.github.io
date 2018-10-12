@@ -34,7 +34,7 @@ def md_to_html(markdown_post):
     meta = dict(meta_)
     
     post = markdown_post[meta_match.end()+2:].splitlines()
-    post = [ '<h3>'+i[2:]+'</h3>' if (i!='' and i[0]=='#') else i for i in post ]
+    post = [ '</p>\n<h3>'+i[2:]+'</h3>\n<p>' if (i!='' and i[0]=='#') else i for i in post ]
     post = [ i+'<br>' if all(not(j in i) for j in ignored_tags) else i for i in post ]
     post = '\n'.join(post)
     post = '<div class="inner">\n<p>\n'+post+'\n</p>\n</div>\n\n'
@@ -44,6 +44,7 @@ def md_to_html(markdown_post):
 
 def make_page(content_dir, layout):
     posts = [ md_to_html(open(i).read()) for i in content_dir ]
+    posts = [ i.replace('--', '—') for i in posts ]
     index = layout[0]+''.join(posts)+layout[1]
     return(index)
 

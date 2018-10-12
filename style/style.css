@@ -7,6 +7,7 @@ p, b {
   color: #091B2A;
   padding: 0px 0px;
   margin: 0px;
+  text-align: justify;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -25,14 +26,9 @@ h1, h2, h3, h4, h5, h6{
   text-align: center;
 }
 
-a:link{
-  color: #507698;
-  text-decoration: none;
-}
-
-a:visited{
-  color: #507698;
-  text-decoration: none;
+a:link, a:visited{
+  color: #091B2A;
+  text-decoration: underline;
 }
 
 .title_box{
