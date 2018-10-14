@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
   <link href="{relative_path_up}style/style.css" rel="stylesheet">
   <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
   <title>Marcos Reinan de Assis Conceição</title>
@@ -10,26 +10,34 @@
 
 <body>
 
-  <header>
+  <!-- Title --!>
+  <div class="title_box">
     <h1 class="bgemph" align="right">Marcos Reinan de Assis Conceição</h1>
+  </div>
     
-    <nav>
-      <ul>
-      <li><a href="{relative_path_up}index.html">home</a></li>
-      <li><a href="{relative_path_up}content/contact.html">contact</a></li>
-      <li><a href="{relative_path_up}content/about.html">about</a></li>
-      </ul>
-    <nav>
-  <header>
 
-  <div class="main-container">
+  <div class="main_container">
+
+
+    <!-- left box --!>
+    <div class="lateral_box">
+      <h3 class="bgemph">links</h3>
+      <div class="inner">
+      <a href="{relative_path_up}index.html">home</a><br>
+      <a href="{relative_path_up}content/contact.html">contact</a><br>
+      <a href="{relative_path_up}content/about.html">about</a><br>
+      </div>
+    </div>
+
+
     <!-- contents --!>
     <div class="content_box">
 
 <!-- contents here --!>
 
     </div>
-    
+
+    <!-- right box --!>
     <div class="lateral_box">
       <h3 class="bgemph" id="lateral_title">marcosrdac</h3>
       <img src="{relative_path_up}pictures/me.jpg" title="me" alt="photo of me" width="100%">
@@ -38,16 +46,12 @@
       </div>
     </div>
 
-
+  </div>
 
 
   <!-- Footer --!>
   <div class=footer_box>
     <center><img src="pictures/footer_lower.gif" title="footer" alt="" width="100%"></center>
-  </div>
-
-
-
   </div>
 
 </body>
