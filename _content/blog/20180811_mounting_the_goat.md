@@ -38,5 +38,5 @@ now I comprise...
 
 yes, so do I! 
 but still you laugh 
-seeing me cry 
+while seeing me cry 
 </center>
