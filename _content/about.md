@@ -35,7 +35,7 @@ Ouço músicas de muitos estilos, depende do tempo. Mas sempre ouço músicas!
 
 Gosto muito de podcasts, apesar de ouvir com baixa frequência hoje.
 
-Sou Geofísico em formação pela Universidade Federal da Bahia e técnico em Edificações pelo Instituto Federal de Educação, Ciência e Tecnologia da Bahia. Gosto muito das duas áreas, e pretendo trabalhar na interface entre as duas.
+Sou geofísico em formação pela Universidade Federal da Bahia, e técnico em Edificações pelo Instituto Federal de Educação, Ciência e Tecnologia da Bahia. Gosto muito das duas áreas, e pretendo trabalhar na interface entre as elas.
 
 Gosto de receber e-mails (só não me encha o saco).
 
