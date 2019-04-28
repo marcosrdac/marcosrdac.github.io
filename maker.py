@@ -1,3 +1,5 @@
+#!/bin/python3
+
 import os
 import re
 
@@ -32,7 +34,7 @@ def md_to_html(markdown_post):
     meta_ = [(i[:meta_[n]], i[meta_[n]+2:]) for (n,i) in enumerate(meta_strings)]
     # creating dictionary
     meta = dict(meta_)
-    
+
     post = markdown_post[meta_match.end()+2:].splitlines()
     post = [ '</p>\n<h3>'+i[2:]+'</h3>\n<p>' if (i!='' and i[0]=='#') else i for i in post ]
     post = [ i+'<br>' if all(not(j in i) for j in ignored_tags) else i for i in post ]

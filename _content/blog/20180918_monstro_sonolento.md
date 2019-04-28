@@ -22,7 +22,7 @@ que destino tem um monstro?
 
 bem, para toda contingência
 não é apenas tautologia moral
-desta vez, é deformação e malevolência
+desta vez é deformação, malevolência
 é encarceramento em autodefesa
 
 cultivarei meu sofrimento irresponsável

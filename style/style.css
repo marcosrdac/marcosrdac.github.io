@@ -4,12 +4,12 @@
     outline: none;
     box-sizing: border-box;
 }
- 
+
 body{
   background: #cedde5;
   color: #091B2A;
   -webkit-font-smoothing: antialiased;
-  font-family: 'Ubuntu Mono', monospace;
+  font-family: 'Hermit', 'Ubuntu Mono', monospace;
   font-weight: 300;
   font-weight: 400;
   height: auto !important;
