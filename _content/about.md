@@ -35,13 +35,13 @@ Ouço músicas de muitos estilos, depende do tempo. Mas sempre ouço músicas!
 
 Gosto muito de podcasts, apesar de ouvir com baixa frequência hoje.
 
-Sou geofísico em formação pela Universidade Federal da Bahia, e técnico em Edificações pelo Instituto Federal de Educação, Ciência e Tecnologia da Bahia. Gosto muito das duas áreas, e pretendo trabalhar na interface entre as elas.
+Sou geofísico em formação pela Universidade Federal da Bahia, e técnico em Edificações pelo Instituto Federal de Educação, Ciência e Tecnologia da Bahia. Gosto muito das duas áreas, e pretendo trabalhar na interface entre elas.
 
 Gosto de receber e-mails (só não me encha o saco).
 
 Tenho problemas em resolução e em procrastinação.
 
-Minha felicidade é um tecido de muitos fios, sendo que muitos deles são os meus amigos. Se eles estão para cima, eu subo em alegria; se eles estão para baixo, eu desabo. Mas este tecido tem muitos fios, e por isso é relativamente estável.
+Minha felicidade é um tecido de muitos fios, e muitos deles são os meus amigos. Se eles estão para cima, eu subo em alegria; se eles estão para baixo, eu desabo. Mas tecidos têm muitos fios, e por isso sou relativamente estável.
 
 Me afasto do que tenho conhecimento de que não gosto, pelo bem do meu corpo.
 
