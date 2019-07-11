@@ -2,6 +2,7 @@
 
 import os
 import re
+import markdown2
 
 content_sign = '<!-- contents here --!>'
 posts_dir_name = '_content/blog/'
@@ -12,17 +13,17 @@ sections_dir_name = '_content/'
 output_sections_dir_name = 'content/'
 
 
-layout_file = open(layout_file_name,'r')
-layout = layout_file.read()
-layout_file.close()
-layout = layout.split(content_sign)
+with open(layout_file_name,'r') as layout_file:
+    layout = layout_file.read()
+    layout_file.close()
+    layout = layout.split(content_sign)
 
 def get_relative_path_up(path):
     return('../' * path.count('/'))
 
 def md_to_html(markdown_post):
     ignored_tags = [ ''.join(['<',i,j,'>']) for i in ['','/']
-                            for j in ['center', 'div', 'h3', 'h4'] ]
+                            for j in ['center', 'div','h1', 'h2', 'h3', 'h4', 'h5', 'h6'] ]
     ignored_tags.append('<div lang="latex">')
 
     # achando texto entre --- e ---
@@ -36,12 +37,36 @@ def md_to_html(markdown_post):
     meta = dict(meta_)
 
     post = markdown_post[meta_match.end()+2:].splitlines()
-    post = [ '</p>\n<h3>'+i[2:]+'</h3>\n<p>' if (i!='' and i[0]=='#') else i for i in post ]
+    post = [ '</p>\n<h1>'+i[2:]+'</h1>\n<p>' if (i!='' and i[0]=='#') else i for i in post ]
     post = [ i+'<br>' if all(not(j in i) for j in ignored_tags) else i for i in post ]
     post = '\n'.join(post)
     post = '<div class="inner">\n<p>\n'+post+'\n</p>\n</div>\n\n'
     title = ' '.join([meta['date'],meta['title']])
-    title = '<h3 class="bgemph">'+title+'</h3>\n\n'
+    title = '<h1 class="bgemph">'+title+'</h1>\n\n'
+    return(title+post)
+
+def md_to_html(markdown_post):
+    ignored_tags = [ ''.join(['<',i,j,'>']) for i in ['','/']
+                            for j in ['center', 'div','h1', 'h2', 'h3', 'h4', 'h5', 'h6'] ]
+    ignored_tags.append('<div lang="latex">')
+
+    # achando texto entre --- e ---
+    meta_match = re.match(r'^-{3}(.*)-{3}', markdown_post, re.S)
+    # retirando quebras de linhas das strings, separando por linhas
+    meta_strings = meta_match.groups()[0].splitlines()[1:]
+    # separing keys and values
+    meta_ = [re.search(':', i,re.S).start() for i in meta_strings]
+    meta_ = [(i[:meta_[n]], i[meta_[n]+2:]) for (n,i) in enumerate(meta_strings)]
+    # creating dictionary
+    meta = dict(meta_)
+
+    post = markdown_post[meta_match.end()+2:].splitlines()
+    post = [ '</p>\n<h1>'+i[2:]+'</h1>\n<p>' if (i!='' and i[0]=='#') else i for i in post ]
+    post = [ i+'<br>' if all(not(j in i) for j in ignored_tags) else i for i in post ]
+    post = '\n'.join(post)
+    post = '<div class="inner">\n<p>\n'+post+'\n</p>\n</div>\n\n'
+    title = ' '.join([meta['date'],meta['title']])
+    title = '<h1 class="bgemph">'+title+'</h1>\n\n'
     return(title+post)
 
 def make_page(content_dir, layout):
