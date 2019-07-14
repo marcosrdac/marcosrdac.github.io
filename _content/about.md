@@ -1,6 +1,5 @@
 ---
-date: 20171012
-title: about
+title: sobre
 ---
 
 # site

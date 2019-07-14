@@ -1,5 +1,4 @@
 ---
-date: 20170926
 title: contact
 ---
 

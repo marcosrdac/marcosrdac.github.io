@@ -3,30 +3,28 @@ date: 20180918
 title: monstro_sonolento
 ---
 
-<center>
-hoje me vi um monstro
+<center>hoje me vi um monstro
 cristão
 quero dizer que fui tentado
 por qualquer demônio
-porque quero ser cristão
+porque quero ser cristão</center>
 
-porque agora sofro muito
+<center>porque agora sofro muito
 quero me limpar por minha boca com entidades
 quero me limpar por minha boca com tratos e conversas
-quero desabar, pois vejo que é tudo tão egoico
+quero desabar, pois vejo que é tudo tão egoico</center>
 
-e me pergunto a um deus
+<center>e me pergunto a um deus
 que destino ele guarda para mim
-em sua onisciência
-que destino tem um monstro?
+em sua onisciênciaque destino tem um monstro?
+</center>
 
-bem, para toda contingência
+<center>bem, para toda contingência
 não é apenas tautologia moral
 desta vez é deformação, malevolência
-é encarceramento em autodefesa
+é encarceramento em autodefesa</center>
 
-cultivarei meu sofrimento irresponsável
+<center>cultivarei meu sofrimento irresponsável
 cultivarei para que ele me marque
-não quero limpar minha boca, senão com água
-muito menos com a ajuda deste papel...
+não quero limpar minha boca, senão com águamuito menos com a ajuda deste papel...
 </center>
