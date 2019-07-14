@@ -100,13 +100,13 @@ img{
 
 /* layout specifics */
 footer {
+  background-color: #091B2A;
+  color: #cedde5;
   clear: both;
   text-align:center;
 }
 
 footer p{
-  background-color: #091B2A;
-  color: #cedde5;
   text-align: center;
   display: inline-block;
   width: 100%;
@@ -137,6 +137,11 @@ nav ul li a:focus{
 }
 
 @media only screen and (max-width: 600px) {
+  header a#logo {
+    font-size: 28px;
+    padding: 10px 20px;
+  }
+
   nav ul {
     display:block;
   }
