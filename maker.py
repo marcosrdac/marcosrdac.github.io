@@ -41,8 +41,10 @@ def md_to_html(mdt, path='#top'):
     return(html)
 
 def make_page(content, page_file_path, _split_layout):
-    split_layout = [ layout_half.replace(relpath_sign,
-                                         relpath('.', dirname(page_file_path)))
+    root_relpath = join(relpath('.', dirname(page_file_path)),'')
+    if root_relpath == './':
+        root_relpath = ''
+    split_layout = [ layout_half.replace(relpath_sign, root_relpath)
                             for layout_half in _split_layout ]
     page = ''.join([split_layout[0],
                     content,
@@ -74,7 +76,7 @@ for subpath in listdir(_content_dir_path):
         _dir_path = _path
         dir_path  =  path
         page_file_path = ''.join([dir_path,'.html'])
-        #page_file_path = 'index.html'
+        page_file_path = 'index.html'
 
         if not exists(path):
             mkdir(path)
