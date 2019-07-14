@@ -12,7 +12,7 @@ basic_layout_file_path  = 'style/basic_layout.html'
 content_sign = '<!-- content here --!>'
 relpath_sign = '<!-- relative path --!>'
 
-index_file_path = 'index.html'
+index_page_name = 'portfolio'
 
 _content_dir_path = '_content'
 content_dir_path  = 'content'
@@ -76,7 +76,6 @@ for subpath in listdir(_content_dir_path):
         _dir_path = _path
         dir_path  =  path
         page_file_path = ''.join([dir_path,'.html'])
-        page_file_path = 'index.html'
 
         if not exists(path):
             mkdir(path)
@@ -116,5 +115,10 @@ for subpath in listdir(_content_dir_path):
 
         with open(page_file_path, 'w') as page_file:
             page = make_page(page, page_file_path, _split_layout)
+            page_file.write(page)
+            page_file.close()
+
+    if splitext(subpath)[0] == index_page_name:
+        with open('index.html', 'w') as page_file:
             page_file.write(page)
             page_file.close()
