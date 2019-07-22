@@ -101,6 +101,7 @@ aside h1, aside h2, aside h3, aside h4, aside h5, aside h6{
 img{
   display : block;
   margin-top: .5em;
+  background-color: #091B2A;
   border: 1em solid;
   width: 100%;
 }
