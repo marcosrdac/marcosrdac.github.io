@@ -15,15 +15,30 @@ html {
 body {
   background: #cedde5;
   color: #091B2A;
-  /*-webkit-font-smoothing: antialiased;*/
-  font-family: 'Hermit', 'Ubuntu Mono', monospace;
+  font-family: 'Hermit', 'Ubuntu Mono', 'monospace';
   font-size: 0.8em;
   max-width: 75em;
 }
 
 p, h1, h2, h3, h4, h5, h6{
-  padding: 0.4em;
+  padding: 0em 0em .4em 0em; /* kljh */
   text-align: justify;
+}
+
+ul,ol,dl{
+  padding: 0em 0em 0.0em 1.2em; /* kljh */
+}
+
+li{
+}
+
+
+a, a:visited{
+  color: #091B2A;
+  text-decoration: underline;
+}
+a:focus{
+  text-decoration: none;
 }
 
 a#post_title, aside h1{
@@ -34,14 +49,15 @@ a#post_title, aside h1{
   text-decoration: none;
   background-color: #091B2A;
   color: #cedde5;
-  padding: 10px 20px;
+  padding: .8em;
+  /*padding: 10px 20px;*/
 }
 
 .inner{
-  margin: 10px 20px;
+  margin: .4em .8em .8em .8em;
 }
 
-.skip {
+.skip {    /* look for what's best for blind people! */
   position: absolute;
   margin-left: -999px;
 }
@@ -59,17 +75,6 @@ header a#logo {
   text-align: right;
   font-size: 32px;
   padding: 10px 20px;
-}
-
-a{
-  color: #091B2A;
-  text-decoration: underline;
-}
-a:visited{
-  color: #091B2A;
-}
-a:focus{
-  text-decoration: none;
 }
 
 
@@ -94,7 +99,15 @@ aside h1, aside h2, aside h3, aside h4, aside h5, aside h6{
 }
 
 img{
-    display: block;
+  display : block;
+  margin-top: .5em;
+  border: 1em solid;
+  width: 100%;
+}
+
+aside img#author, footer img{
+  margin: 0;
+  border: 0;
 }
 
 
@@ -112,9 +125,13 @@ footer p{
   width: 100%;
 }
 
+
+nav {
+  background-color:#091B2A;
+  color: #cedde5;
+}
 /* nav */
 nav ul {
-  background-color:#091B2A;
   text-align: center;
   padding: 0.2em;
 }
@@ -123,7 +140,6 @@ nav ul li {
   list-style-type: none;
 }
 nav ul li a {
-  color: #cedde5;
   padding:0.2em 2em;
   text-decoration: none;
 }

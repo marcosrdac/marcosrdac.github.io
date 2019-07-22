@@ -1,6 +1,7 @@
 ---
 date: 20180918
 title: monstro_sonolento
+type: poem
 ---
 
 <center>hoje me vi um monstro
