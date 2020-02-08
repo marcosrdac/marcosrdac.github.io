@@ -26,7 +26,7 @@ E junto a mim queira ficar...
 
 Eu sou **Marcos Conceição**. Recebi esse nome assim, e fiz dele o meu ao longo da minha vida.
 
-Moraria em um abraço quentinho e duradouro.
+Moraria em um abraço quente e duradouro.
 
 Passo muito tempo livre passeando por universos formalistas. Universos onde comunicação equivale a perfeição. Gosto disso.
 
