@@ -1,6 +1,7 @@
 ---
 date: 20180920
 title: Desenvolvimento da equação do potencial elétrico para um único eletrodo de corrente em subsuperfície homogênea e isotrópica
+draft: false
 ---
 
 <div lang="latex">
