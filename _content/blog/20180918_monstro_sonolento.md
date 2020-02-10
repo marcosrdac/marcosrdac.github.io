@@ -17,7 +17,8 @@ quero desabar, pois vejo que é tudo tão egoico</center>
 
 <center>e me pergunto a um deus
 que destino ele guarda para mim
-em sua onisciênciaque destino tem um monstro?
+em sua onisciência
+que destino tem um monstro?
 </center>
 
 <center>bem, para toda contingência
