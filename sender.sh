@@ -1,5 +1,4 @@
 #!/bin/bash
 
-git add -A
-git commit -m "$*"
-git push
+read commit_message -p "Commit message: "
+git add -A && git commit -m "Commit message: " && git push

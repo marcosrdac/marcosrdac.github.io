@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/env python
 # Program: Site compiler
 # Author:  Marcos Reinan de Assis Conceição (@marcosrdac)
 # GitHub:  marcosrdac
@@ -66,6 +66,7 @@ def md_to_html(mdt, path='#top', root_relpath=None):
                                            #'break-on-newline',
                                            'smarty-pants',
                                            'numbering',
+                                           'tables',
                                            'footnotes',
                                            'fenced-code-blocks',
                                            'wiki-tables'])

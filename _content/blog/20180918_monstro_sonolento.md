@@ -28,5 +28,6 @@ desta vez é deformação, malevolência
 
 <center>cultivarei meu sofrimento irresponsável
 cultivarei para que ele me marque
-não quero limpar minha boca, senão com águamuito menos com a ajuda deste papel...
+não quero limpar minha boca, senão com água
+muito menos com a ajuda deste papel
 </center>

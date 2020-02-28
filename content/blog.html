@@ -34,36 +34,87 @@
     <main id="main">
 
       <section>
-<a id='post_title' href="blog/20181012_pensando_conceitos.html">20181012 - Pensando Conceitos (incompleto)</a>
+<a id='post_title' href="blog/20200228_tui_file_managers_battle.html">20200228 - TUI file managers battle:</a>
 <div class="inner">
 
-<p>Desejo aqui discutir conceitos para usar eles com clareza e domínio no futuro. É um local descobertas feito por um amador: esteja ciente, quero me aventurar e chegar numa verdade, esbarrando em contradições como se elas fossem guias de pensamento. Aqui sou um completo desconhecedor &#8211; sou criança de novo!</p>
+<h1>Comparing <code>ranger</code>, <code>Vifm</code> and <code>LF</code> TUI file managers</h1>
 
-<h1>Simplicidade</h1>
+<p>Since two years ago, I&#8217;ve tried some terminal file managers and ended up finding three of my taste.</p>
 
-<p>Como princípio, quero afirmar que o simples se opõe ao que é composto ou complexo, e que estas duas últimas categorias diferem entre si porque segunda considera um segundo nível de composição, presente nas ligações entre as componentes de um sistema. Voltando ao conceito de simples, pode-se pensar no mesmo como absoluto, como uma oposição da unicidade à multiplicidade, mas isso não ajuda a classificar o mundo de forma útil. Desta forma, pode-se pensar em simplicidade como o <strong>inverso</strong> de ter muitas dependências. Pela graça de um exemplo, temos um copo, quando em comparação com uma xícara: topologicamente, um copo é descrito de forma tão simples quanto um plano o é (a forma de um copo é um plano contorcido), enquanto que uma xicara é composta de mais de um elemento: um plano contorcido e um buraco. </p>
+<p>The first one was <code>ranger</code>. It conquered me for being controlable via vim-like keys, having a vim-like config file, having 3 panes (the first showing the parent directory files, the middle one, the files at your directory, and the third, a preview of the selected folder/file), being able to show me pitures directly on the terminal via <code>w3m</code>, and also been written in <em>Python</em>, which was my first programming language! Then I perceived it was really a good piece of software, but this last &#8220;advatage&#8221; turned out to be a disgustful characteristic: anything written in <em>Python</em> is inherently slower than it might be. And <code>ranger</code> is really slow, sometimes as slow as a gui file browser.</p>
 
-<p>Simplicidade é uma abstração da relação entre uma luz monocromática e uma branca; entre teorias reducionistas e holísticas; entre sistemas isostáticos e hiperestáticos; entre &#8220;pedra&#8221; e &#8220;petróleo&#8221;; entre uma maçã e uma salada de frutas; entre as narrativas e o real.</p>
+<p>So I tried <code>Vifm</code> and loved it: it is written in <em>C</em>, that is a language that not only I comprehend, as it is usually refference in velocity marks. And <code>Vifm</code> is <em>de facto</em> way faster than <code>ranger</code>. I could also preview images here, both using w3m or, better, using <code>ueberzug</code>, that is much better (gets me no fickering or instabilities). Another thing I liked about <code>Vifm</code> was that its config files were even closer to <code>vim</code>&#8217;s than <code>ranger</code>&#8217;s were.</p>
 
-<p>Quando penso isso, penso imediatamente no enunciado da navalha de Occam, a <em>lex parsimoniae</em>: &#8220;as entidades não devem ser multiplicadas sem necessidade&#8221;. Este é um princípio epistemológico para a escolha das narrativas que se utiliza para explicar e validar o mundo. As &#8220;entidades&#8221; são aqui um termo geral para seres, elementos e premissas usadas para uma dada explicação. Ou seja, se existem duas ou mais explicações para um mesmo fenômeno, e todas o explicam mesma acurácia, deve-se dar preferência à explicação que depende do mínimo de entidades, de forma que elas existam por necessidade. Assim, a <em>lex parcimoniae</em> pode ser vista como um principio de preferência pelo que é mais simples.</p>
+<p>Well, the only thing that annoyed me was its panes. You always open to directories at once and looks at them both in panes. It makes te screen a mess by default. You could hide the seccond, but, if you wanted to preview a file with a pager or anything, you would have to reopen it and transform that seccond pane into a preview pane. I didn&#8217;t like it at all.</p>
 
-<p>É evidente que este é o pensamento tomado pela Ciência nos dias atuais. Usando um exemplo da biologia: a biogênese &#8211; processo de geração da vida &#8211; dos animais não-humanos, desde os gregos, foi explicada por meio de processos de geração espontânea a partir de matéria bruta. Mais do que isso: esta explicação se baseava em experimentos, de forma que existiam receitas para geração de seres vivos específicos. Até Francesco Redi, no século XIV, toda a sociedade culta Europeia acreditava que moscas eram naturalmente geradas a partir de material em putrefação. O fato é que, desde então, a sociedade científica só se encontrou significativamente polarizada entre defensores da geração espontânea e defensores da geração de vida a partir de semelhantes no século XIX. Não vou entrar em detalhes aqui, mas há um rico <a href="#a_ger_esp">artigo sobre este assunto</a>, cujo link está no final deste texto. </p>
+<p>So some time ago I&#8217;ve discovered <code>LF</code>. <code>LF</code> is basically <code>ranger</code>, but almost as fast as <code>Vifm</code>, as it is well written in <em>Go</em>. It has some advantages, though: you can create functions inside the config file, and you write it in <em>shell script</em>, not in <em>Python</em> (it has never made sense). Also, the overall advage is: it launches a daemon at the first time you launch the program. And what it means? It means you can copy a file at one instance of <code>LF</code>, open another one in another terminal or multiplexer section, and then paste the file there! It is just amazing, something I missed in my previous TUI file managers. The only current disavantage is: image previwing is still not easily solved. I&#8217;m trying to make it work, though!</p>
 
-<p>Quero deixar claro que, em dado momento da história, houve duas explicações para geração ordinária da vida. Enquanto as teorias de geração espontânea tomavam a premissa &#8211; nada óbvia &#8211; de que partículas complexas como moléculas e suas composições vivas, como ratos, poderiam surgir de matéria inanimada, como roupas sujas e feno, além de muitas vezes se utilizar de entidades metafísicas como Deus ou princípios ativos da vida, e realmente conseguiam explicar a realidade com acurácia razoável, e isso é certo, porque este pensamento sobreviveu satisfatoriamente por milênios. Por outro lado, a narrativa científica atual sobre este assunto prescinde da necessidade destas entidades. Suas premissas são mais evidentes: moleculas complexas podem ser geradas quando, em um local com condições de pressão e temperatura propícias, existam componentes químicos capazes de reagir para as formar. Por mais que determinada configuração bioquímica seja improvável de ser criada sem precedência semelhante, se as condições necessárias forem satisfeitas por tempos suficientemente grandes, isso pode ocorrer (o que é um ponto de falseabilidade científica). Alguns aglomerados de moléculas podem adquirir evoluir quimicamente e obter a capacidade de se reproduzir, ou seja, ganhar vida, em alguma instância, ainda que muito simples; supõe-se que isto deve ter acontecido algumas vezes durante a história da Terra, muitas vezes sem sucesso a longo prazo, mas que a principal forma de geração de vida complexa não seja esta: a forma mais frequentemente observada de geração de vida não parte de materia inerte, mas de seres vivos existentes anteriormente. A evolução interliga os passos entre uma das gerações abiogênicas da vida num passado de bilhões de anos atrás e a formação dos seres complexos existentes atualmente, e isso tudo se torna claro porque existiram probabilidades baixas e tempos suficientemente grandes para que tais acontecimentos ocorressem durante a evolução do planeta.</p>
+<p>So I&#8217;ll make them three be evaluated in a table:</p>
 
-<p>Assim, das duas teorias de geração da vida que um dia batalharam por aceitação científica, se sobrepôs a que explica o fenômeno melhor e, essencialmente, a que necessita de menos premissas &#8211; possui a menor quantidade de entidades. Este mesmo padrão é observado em outras Ciências, além da biologia (i.e. neurociência, física, química) e representa uma tendencia ao reducionismo, principalmente no que se refere aos desenvolvimento posteriorees aos positivismos dos séculos XIX e XX.</p>
+<table>
+<thead>
+<tr>
+  <th>Atribute \ File manager</th>
+  <th align="center">ranger</th>
+  <th align="center">vifm</th>
+  <th align="center"><strong>lf</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Velocity</td>
+  <td align="center">3</td>
+  <td align="center"><strong>10</strong></td>
+  <td align="center">9</td>
+</tr>
+<tr>
+  <td>Ease viewing of files</td>
+  <td align="center"><strong>10</strong></td>
+  <td align="center">3</td>
+  <td align="center"><strong>10</strong></td>
+</tr>
+<tr>
+  <td>Integrated multple instances</td>
+  <td align="center">0</td>
+  <td align="center">0</td>
+  <td align="center"><strong>10</strong></td>
+</tr>
+<tr>
+  <td>Improvability</td>
+  <td align="center">4</td>
+  <td align="center">8</td>
+  <td align="center"><strong>10</strong></td>
+</tr>
+<tr>
+  <td>Vim-like</td>
+  <td align="center">8</td>
+  <td align="center"><strong>9</strong></td>
+  <td align="center"><strong>9</strong></td>
+</tr>
+<tr>
+  <td>Image previews</td>
+  <td align="center">5</td>
+  <td align="center"><strong>8</strong></td>
+  <td align="center">0</td>
+</tr>
+<tr>
+  <td><strong>Rounded Normalized total</strong></td>
+  <td align="center">6</td>
+  <td align="center">7</td>
+  <td align="center"><strong>9</strong></td>
+</tr>
+</tbody>
+</table>
 
-<p>continuar&#8230;</p>
+<p>Then I conclude with my criteria that <code>LF</code> is the most switable TUI file manager for users like me. It is a very extensible tool and I recommend you to check my <em>lfrc</em> &#8212; the LF configuration file &#8212; settings in <a href="https://github.com/marcosrdac/dotfiles/blob/dotfiles_bspwm/.config/lf/lfrc">my dotfiles at GitHub</a>.</p>
 
-<h1>Referências</h1>
-
-<p><p id="a_ger_esp">ZAIA, Dimas AM. Da geração espontânea à química prebiótica. Química Nova, v. 26, n. 2, p. 260-264, 2003.<p></p>
-
-<p>Quando eu disser que quero simplicidade, não me julgues de forma leviana. Eu quero dizer de algo próximo da simplicidade, em oposição à complexidade, não à facilidade ou prática. É sobre usar o mínimo de elementos possível. Nisso não há implicitamente uma relação com sofisticação ou pobreza, a princípio.</p>
+<p>For Arch users: both <code>ranger</code> and <code>vifm</code> are in Arch&#8217;s official repositories. You can install <code>LF</code> from AUR.</p>
 
 
 
 </div>
+
+
 
 
 <a id='post_title' href="blog/20180930_melhoria_no_script_de_postagem.html">20180930 - Melhoria no script de postagem</a>
@@ -155,7 +206,8 @@ desta vez é deformação, malevolência<br />
 
 <p><center>cultivarei meu sofrimento irresponsável<br />
 cultivarei para que ele me marque<br />
-não quero limpar minha boca, senão com águamuito menos com a ajuda deste papel&#8230;<br />
+não quero limpar minha boca, senão com água<br />
+muito menos com a ajuda deste papel<br />
 </center></p>
 
 
