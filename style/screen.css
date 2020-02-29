@@ -16,8 +16,8 @@ body {
   background: #cedde5;
   color: #091B2A;
   font-family: 'Hermit', 'Ubuntu Mono', 'monospace';
-  font-size: 0.8em;
-  max-width: 60em;
+  font-size: 0.9em;
+  max-width: 50em;
 }
 
 p, h1, h2, h3, h4, h5, h6{
@@ -100,6 +100,10 @@ aside{
   display : inline-block;
 }
 
+aside .inner#author {
+  text-align: right;
+}
+
 aside h1, aside h2, aside h3, aside h4, aside h5, aside h6{
   text-align: center;
 }
@@ -147,6 +151,7 @@ nav ul li {
 }
 nav ul li a {
   padding:0.2em 2em;
+  font-size: .9em;
   text-decoration: none;
   color:#cedde5;
 }

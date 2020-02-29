@@ -1,5 +1,5 @@
 ---
-title: TUI file managers battle:
+title: TUI file managers battle
 date: 20200228
 draft: false
 ---
