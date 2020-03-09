@@ -38,7 +38,7 @@ basic_layout_file_path  = 'style/basic_layout.html' # Basic layout used
 content_sign = '<!-- content here --!>'  # HTML sign to put contents
 relpath_sign = '<!-- root path --!>'     # HTML sign for root path
 
-index_page_name = 'portfolio'            # page chosen to be main
+index_page_name = 'blog'            # page chosen to be main
 
 _content_dir_path = '_content'           # input markdown folder
 content_dir_path  = 'content'            # output HTML folder
