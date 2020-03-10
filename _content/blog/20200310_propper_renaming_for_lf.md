@@ -1,5 +1,5 @@
 ---
-title: Proper renaming functionalities for LF
+title: Proper renaming for LF
 date: 20200310
 draft: false
 ---
