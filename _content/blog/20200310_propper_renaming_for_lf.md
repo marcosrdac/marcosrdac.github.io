@@ -9,7 +9,7 @@ I've definitely changed to *LF* file manager, but I still wanted the renaming po
 
 ## rename
 
-I've written this on my lfrc (inside `$HOME/.config/lf/`):
+I've written this on my *lfrc* (inside *$HOME/.config/lf/*):
 
 ```lf
 cmd rename %{{
@@ -83,7 +83,7 @@ Now:
 
 bulk-rename here reads to "rename various files in a text editor".
 
-My code for this functionality is inpired @blairdrummond's response at [github/gokcehan/lf/issues/149](https://github.com/gokcehan/lf/issues/149). It has grown a bit, so I'll tell you why you should use it first:
+My code for this functionality is inpired @EmmChriss's response at [github/gokcehan/lf/issues/149](https://github.com/gokcehan/lf/issues/149). It has grown a bit, so I'll tell you why you should use it first:
 
   1. You can rename various files in the program you've set for $EDITOR;
   2. Have you ever wanted to rename both a movie and its subtitle to the same name but not to bother with their extensions in the process? Here you can bulk-rename without extension (and the task easily becomes as simple as "yypGddZZ" at VIM screen). This is done by using *-n* option.
