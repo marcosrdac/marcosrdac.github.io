@@ -54,7 +54,7 @@ map c
 map cW &lf -remote "send $id push :rename<space>"
 ```
 
-What this line does is, whenever *cW* is pressed from *LF*, user is prompted with our rename function. This approach is certainly useful, but it turns out that *LF* freezes a little when ":" is pushed, as it is leaving normal mode and entering command mode. For it being frozen, sometimes the next character after ":" is not typed and we end up with `:ename -n ` afterr pressing "cW" at a file... So, to avoid it, we can send two push commands to lf:
+What this line does is, whenever *cW* is pressed from *LF*, user is prompted with our rename function. This approach is certainly useful, but it turns out that *LF* freezes a little when ":" is pushed, as it is leaving normal mode and entering command mode. For it being frozen, sometimes the next character after ":" is not typed and we end up with `:ename -n ` after pressing "cW" at a file... So, to avoid it, we can send two push commands to lf:
   1. one for sending just ":";
   2. another one for sending the rest of the text.
 
