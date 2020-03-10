@@ -71,6 +71,7 @@ map cw &lf -remote "send $id push :" && fn=$(basename $f) && ext="${fn##*.}" && 
 ```
 
 Now:
+
   - *A*: prompts filename and puts cursor at the end of it;
   - *I*: prompts filename and puts cursor at it's begining
   - *a*: prompts filename and puts cursor right before the first "." (before extension);

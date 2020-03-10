@@ -101,12 +101,15 @@ map a  &amp;lf -remote "send $id push :" &amp;&amp; fn=$(basename $f) &amp;&amp;
 map cw &amp;lf -remote "send $id push :" &amp;&amp; fn=$(basename $f) &amp;&amp; ext="${fn##*.}" &amp;&amp; go_back=0 &amp;&amp; [ $(echo $fn | grep "\." 2&gt;/dev/null) ] &amp;&amp; go_back=$(echo "$ext" | wc -c) &amp;&amp; fn="" &amp;&amp; ext=".$ext" || ext=""; fn=$(printf "$ext" &amp;&amp; awk 'BEGIN{for(c=0;c&lt;'$go_back';c++) printf "&lt;left&gt;"}') &amp;&amp; lf -remote "send $id push $(echo "rename $fn" | sed 's/\s/&lt;space&gt;/g')"
 </code></pre>
 
-<p>Now:
-  - <em>A</em>: prompts filename and puts cursor at the end of it;
-  - <em>I</em>: prompts filename and puts cursor at it&#8217;s begining
-  - <em>a</em>: prompts filename and puts cursor right before the first &#8220;.&#8221; (before extension);
-  - <em>cw</em>: prompts filename after extension, puts cursor before it;
-  - <em>cW</em> and <em>C</em>: nothing is prompted as default for new filename;</p>
+<p>Now:</p>
+
+<ul>
+<li><em>A</em>: prompts filename and puts cursor at the end of it;</li>
+<li><em>I</em>: prompts filename and puts cursor at it&#8217;s begining</li>
+<li><em>a</em>: prompts filename and puts cursor right before the first &#8220;.&#8221; (before extension);</li>
+<li><em>cw</em>: prompts filename after extension, puts cursor before it;</li>
+<li><em>cW</em> and <em>C</em>: nothing is prompted as default for new filename;</li>
+</ul>
 
 <h2>bulk-rename</h2>
 
