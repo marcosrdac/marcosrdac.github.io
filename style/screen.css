@@ -194,6 +194,7 @@ pre, table {
 
 pre {
   display: block;
+  overflow: auto;
   margin: .4em 1em;
 }
 

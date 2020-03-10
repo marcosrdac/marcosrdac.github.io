@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport"     content="width=device-width, initial-scale=1.0">
+    <meta name="author"       content="Marcos Reinan de Assis Conceição">
+    <meta name="Description"  content="">
+    <title>Marcos Conceição</title>
+    <!-- CSS -->
+    <link href="../../style/screen.css" rel="stylesheet" media="screen, projection">
+    <!-- Scripts -->
+    <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+  </head>
+
+
+  <body>
+
+    <header>
+      <a id="logo" href="../../index.html">Marcos Conceição</a>
+    </header>
+
+
+    <nav>
+      <ul>
+        <li><a href="../../content/portfolio.html">portfólio</a></li>
+        <li><a href="../../content/services.html">serviços_oferecidos</a></li>
+        <li><a href="../../content/contact.html">contato</a></li>
+        <li><a href="../../content/about.html">sobre</a></li>
+        <li><a href="../../content/blog.html">blog</a></li>
+      </ul>
+    </nav>
+
+
+    <main id="main">
+
+      <section>
+<a id='post_title' href="20200310_renaming_for_lf.html">20200310 - Proper renaming functionalities for LF</a>
+<div class="inner">
+
+<p>I&#8217;ve definitely changed to <em>LF</em> file manager, but I still wanted the renaming power I&#8217;ve had in other TUI file managers, like <em>ranger</em> and <em>VIFM</em>&#8217;s &#8220;I&#8221;, &#8220;A&#8221; and &#8220;a&#8221; mappings, or their &#8220;bulk-rename&#8221; function. So today I&#8217;m going to show you how to get those functionalities in <em>LF</em>.</p>
+
+<h2>rename</h2>
+
+<p>I&#8217;ve written this on my lfrc (inside <code>$HOME/.config/lf/</code>):</p>
+
+<pre><code>cmd rename %{{
+  base="$(dirname "$f")"
+  srcfn=$(basename -- "$f")
+  srcext="${srcfn##*.}"
+  srcfn="$(basename "$f" ".$srcext")"
+  srcdot="" &amp;&amp; [ ! -z $srcext ] &amp;&amp; srcdot="."
+
+  filename_only="" ; extension_only=""
+  case $1 in
+    -n)
+      filename_only=true &amp;&amp; shift
+      dst="$base/$@$srcdot$srcext" ;;
+    -e)
+      extension_only=true &amp;&amp; shift
+      dst="$base/$srcfn$srcdot$@" ;;
+    *) dst="$base/$@" ;;
+  esac
+
+  please=''
+  for path in $f $dst
+  do
+    [ ! -w $(dirname "$path") ] &amp;&amp; please='sudo' &amp;&amp; break
+  done
+  [ $# -eq 0 ] &amp;&amp; echo "Destination not given." &amp;&amp; exit 1
+  [ -e "$dst" ] &amp;&amp; printf "  Not renamed: "$dst" exists." || $please mv "$f" "$dst"
+}}
+</code></pre>
+
+<p>It is a rename function for the current file your cursor points to. Inside <em>LF</em>, type the following while pointing to &#8220;somefile.png":</p>
+
+<pre><code>:rename someanotherfile.png
+</code></pre>
+
+<p>Now &#8220;somefile.png&#8221; is called someanotherfile.png&#8221;</p>
+
+<p>With <em>-n</em> option for rename, as in <code>:rename -n newname</code>, it just renames the filename, without extension. In the other hand, with the <em>-e</em> option, as in <code>:rename -e jpg</code>, it just changes the file extension to &#8220;jpg&#8221;. Anyway, options are really just fancy stuff. Look at how we are going to use this function in our mappings:</p>
+
+<pre><code># unmap c (default to "clear" selection)
+map c
+map cW &amp;lf -remote "send $id push :rename&lt;space&gt;"
+</code></pre>
+
+<p>What this line does is, whenever <em>cW</em> is pressed from <em>LF</em>, user is prompted with our rename function. This approach is certainly useful, but it turns out that <em>LF</em> freezes a little when &#8220;:&#8221; is pushed, as it is leaving normal mode and entering command mode. For it being frozen, sometimes the next character after &#8220;:&#8221; is not typed and we end up with <code>:ename -n</code> afterr pressing &#8220;cW&#8221; at a file&#8230; So, to avoid it, we can send two push commands to lf:
+  1. one for sending just &#8220;:&#8221;;
+  2. another one for sending the rest of the text.</p>
+
+<p>Our final polished mappings become:</p>
+
+<pre><code># unmap c (default to "clear" selection)
+map c
+map cW &amp;lf -remote "send $id push :" &amp;&amp; lf -remote "send $id push $(echo "rename " | sed 's/\s/&lt;space&gt;/g')"
+map C  &amp;lf -remote "send $id push :" &amp;&amp; lf -remote "send $id push $(echo "rename " | sed 's/\s/&lt;space&gt;/g')"
+map A  &amp;lf -remote "send $id push :" &amp;&amp; lf -remote "send $id push $(echo "rename $(basename $f)" | sed 's/\s/&lt;space&gt;/g')"
+map I  &amp;lf -remote "send $id push :" &amp;&amp; lf -remote "send $id push $(echo "rename $(basename $f)" | sed 's/\s/&lt;space&gt;/g')" &amp;&amp; lf -remote "send $id push $(echo "&lt;home&gt;lllllll" | sed 's/l/&lt;right&gt;/g')"
+map a  &amp;lf -remote "send $id push :" &amp;&amp; fn=$(basename $f) &amp;&amp; ext="${fn##*.}" &amp;&amp; go_back=0 &amp;&amp; [ $(echo $fn | grep "\." 2&gt;/dev/null) ] &amp;&amp; go_back=$(echo "$ext" | wc -c); fn=$(printf "$fn" &amp;&amp; awk 'BEGIN{for(c=0;c&lt;'$go_back';c++) printf "&lt;left&gt;"}') &amp;&amp; lf -remote "send $id push $(echo "rename $fn" | sed 's/\s/&lt;space&gt;/g')"
+map cw &amp;lf -remote "send $id push :" &amp;&amp; fn=$(basename $f) &amp;&amp; ext="${fn##*.}" &amp;&amp; go_back=0 &amp;&amp; [ $(echo $fn | grep "\." 2&gt;/dev/null) ] &amp;&amp; go_back=$(echo "$ext" | wc -c) &amp;&amp; fn="" &amp;&amp; ext=".$ext" || ext=""; fn=$(printf "$ext" &amp;&amp; awk 'BEGIN{for(c=0;c&lt;'$go_back';c++) printf "&lt;left&gt;"}') &amp;&amp; lf -remote "send $id push $(echo "rename $fn" | sed 's/\s/&lt;space&gt;/g')"
+</code></pre>
+
+<p>Now:
+  - <em>A</em>: prompts filename and puts cursor at the end of it;
+  - <em>I</em>: prompts filename and puts cursor at it&#8217;s begining
+  - <em>a</em>: prompts filename and puts cursor right before the first &#8220;.&#8221; (before extension);
+  - <em>cw</em>: prompts filename after extension, puts cursor before it;
+  - <em>cW</em> and <em>C</em>: nothing is prompted as default for new filename;</p>
+
+<h2>bulk-rename</h2>
+
+<p>This is in my lfrc:</p>
+
+<pre><code>cmd bulk-rename ${{
+  case $1 in
+    # do not query extensions for renaming
+    -n) mode="no-exts" ;;
+    # only rename extensions
+    -e) mode="only-exts" ;;
+    # rename entire filepaths
+    -A) mode="all-path" ;;
+    # else, just rename filenames
+  esac
+  # mk tmp files
+  oldnames=$(mktemp /tmp/lf-bulk-oldnames.XXXXXXXXXX)
+  newnames=$(mktemp /tmp/lf-bulk-newnames.XXXXXXXXXX)
+  if [ "$mode" != "all-path" ]
+  then
+    dirnames=$(mktemp /tmp/lf-bulk-dirnames.XXXXXXXXXX)
+    aux=$(mktemp /tmp/lf-bulk-aux.XXXXXXXXXX)
+  fi
+  # query selected files or all files in directory
+  if [ -n "$fs" ]
+  then
+    index="$fs"
+  else
+    index="$(ls $(dirname "$f"))"
+  fi
+  # separate and save useful variables in files
+  for path in $index
+  do
+    dir="$(dirname "$path")"
+    fullfilename=$(basename -- "$path")
+    filename="${fullfilename%.*}"  # must be here
+    ext="" &amp;&amp; [ $(echo $fullfilename | grep "\." 2&gt;/dev/null) ] &amp;&amp; ext="${fullfilename##*.}"
+
+    case "$mode" in
+      "all-path") echo "$(realpath "$path")" &gt;&gt; $oldnames ;;
+      "no-exts")
+        echo "$filename" &gt;&gt; $oldnames
+        [ "$ext" != "" ] &amp;&amp; ext=".$ext"
+        echo "$ext" &gt;&gt; $aux
+        ;;
+      "only-exts")
+        echo "$ext" &gt;&gt; $oldnames
+        echo $filename &gt;&gt; $aux
+        ;;
+      "") echo "$fullfilename" &gt;&gt; $oldnames ;;
+    esac
+    [ "$mode" != "all-path" ] &amp;&amp; echo "$dir" &gt;&gt; $dirnames
+  done
+  cp $oldnames $newnames
+  # interact with user
+  $EDITOR $newnames
+  # run mv on each path if they were modified
+  n=$(cat $oldnames | wc -l)
+  if [ $(cat $newnames | wc -l) -eq $n ]
+  then
+    counter=1
+    while [ $counter -le $((n+1)) ]
+    do
+      case $mode in
+        "no-exts")
+          dir="$(cat $dirnames | sed "${counter}q;d")"
+          old="$(cat $oldnames | sed "${counter}q;d")"
+          new="$(cat $newnames | sed "${counter}q;d")"
+          ext="$(cat $aux      | sed "${counter}q;d")"
+          old="$dir/$old$ext" ; new="$dir/$new$ext"
+        ;;
+        "all-path")
+          old="$(cat $oldnames | sed "${counter}q;d")"
+          new="$(cat $newnames | sed "${counter}q;d")"
+        ;;
+        "only-exts")
+          old="$(cat $oldnames | sed "${counter}q;d")"
+          new="$(cat $newnames | sed "${counter}q;d")"
+          filename="$(cat $aux | sed "${counter}q;d")"
+          echo $old $new
+          [ "$old" != "" ] &amp;&amp; old=".$old"
+          [ "$new" != "" ] &amp;&amp; new=".$new"
+          old="$dir/$filename$old"
+          new="$dir/$filename$new"
+        ;;
+        *)
+          dir="$(cat $dirnames | sed "${counter}q;d")"
+          old="$(cat $oldnames | sed "${counter}q;d")"
+          new="$(cat $newnames | sed "${counter}q;d")"
+          old="$dir/$old" ; new="$dir/$new"
+        ;;
+      esac
+      counter=$(($counter+1))
+      [ "$old" = "$new" ] &amp;&amp; continue
+      [ -e "$new" ] &amp;&amp; echo "File exists: $b" &amp;&amp; continue
+      # check write permission
+      please=''
+      for path in $old $new
+      do
+        [ ! -w $(dirname "$path") ] &amp;&amp; please='sudo' &amp;&amp; break
+      done
+      $please mv "$old" "$new"
+    done
+  else
+    echo "Number of filenames differ."
+  fi
+
+  # removing tmp files
+  rm $oldnames $newnames
+  if [ "$mode" != "all-path" ]
+  then
+    rm $dirnames
+    rm $aux
+  fi
+}}
+</code></pre>
+
+
+
+</div>
+
+
+      </section>
+
+      <aside>
+          <h1>autor</h1>
+          <img id=author src="../../pictures/me.gif" title="me" alt="photo of me" width="100%">
+          <h1>@marcosrdac</h1>
+          <div class="inner" id="author">
+            Marcos Conceição.
+            <br>
+            Apaixonado por Linux, machine learning e obras do <em>David Lynch</em>.
+            <br>
+            Graduando em Geofísica pela UFBa.
+            <br>
+            Técnico em Edificações pelo IFBa.
+          </div>
+      </aside>
+
+    </main>
+
+
+    <footer>
+      <img src="../../pictures/footer_sky.gif" title="footer" alt="" width="100%">
+      <p id=credit>Design: Marcos Conceição, 2019.</p>
+    </footer>
+
+  </body>
+</html>
