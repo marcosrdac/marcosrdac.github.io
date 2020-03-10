@@ -23,11 +23,11 @@ cmd rename %{{
   case $1 in
     -n)
       filename_only=true && shift
-      dst="$base/$@$srcdot$srcext" ;;
+      dst="$base/$1$srcdot$srcext" ;;
     -e)
       extension_only=true && shift
-      dst="$base/$srcfn$srcdot$@" ;;
-    *) dst="$base/$@" ;;
+      dst="$base/$srcfn$srcdot$1" ;;
+    *) dst="$base/$1" ;;
   esac
 
   please=''
