@@ -80,35 +80,71 @@
 
 <p>With <em>-n</em> option for rename, as in <code>:rename -n newname</code>, it just renames the filename, without extension. In the other hand, with the <em>-e</em> option, as in <code>:rename -e jpg</code>, it just changes the file extension to &#8220;jpg&#8221;. Anyway, options are really just fancy stuff. Look at how we are going to use this function in our mappings:</p>
 
-<pre><code># unmap c (default to "clear" selection)
+<pre><code># unmap c
 map c
+# make cW push ":rename " into lf
 map cW &amp;lf -remote "send $id push :rename&lt;space&gt;"
 </code></pre>
 
-<p>What this line does is, whenever <em>cW</em> is pressed from <em>LF</em>, user is prompted with our rename function. This approach is certainly useful, but it turns out that <em>LF</em> freezes a little when &#8220;:&#8221; is pushed, as it is leaving normal mode and entering command mode. For it being frozen, sometimes the next character after &#8220;:&#8221; is not typed and we end up with <code>:ename -n</code> after pressing &#8220;cW&#8221; at a file&#8230; So, to avoid it, we can send two push commands to lf:
+<p>What the third line above does is: whenever <em>cW</em> is pressed from <em>LF</em>, user is prompted with our rename function. This approach is certainly useful, but it turns out that <em>LF</em> freezes a little when &#8220;:&#8221; is pushed, as it is leaving normal mode and entering command mode. For it being frozen, sometimes the next character after &#8220;:&#8221; is not typed and we end up with <code>:ename -n</code> after pressing &#8220;cW&#8221; at a file&#8230; So, to avoid it, we can send two push commands to lf:
   1. one for sending just &#8220;:&#8221;;
   2. another one for sending the rest of the text.</p>
 
-<p>Our final polished mappings become:</p>
+<p>I created another command to push these vim-like renaming commands to screen, which is called &#8220;vim-rename&#8221;. Our final polished mappings become:</p>
 
-<pre><code># unmap c (default to "clear" selection)
-map c
-map cW &amp;lf -remote "send $id push :" &amp;&amp; lf -remote "send $id push $(echo "rename " | sed 's/\s/&lt;space&gt;/g')"
-map C  &amp;lf -remote "send $id push :" &amp;&amp; lf -remote "send $id push $(echo "rename " | sed 's/\s/&lt;space&gt;/g')"
-map A  &amp;lf -remote "send $id push :" &amp;&amp; lf -remote "send $id push $(echo "rename $(basename $f)" | sed 's/\s/&lt;space&gt;/g')"
-map I  &amp;lf -remote "send $id push :" &amp;&amp; lf -remote "send $id push $(echo "rename $(basename $f)" | sed 's/\s/&lt;space&gt;/g')" &amp;&amp; lf -remote "send $id push $(echo "&lt;home&gt;lllllll" | sed 's/l/&lt;right&gt;/g')"
-map a  &amp;lf -remote "send $id push :" &amp;&amp; fn=$(basename $f) &amp;&amp; ext="${fn##*.}" &amp;&amp; go_back=0 &amp;&amp; [ $(echo $fn | grep "\." 2&gt;/dev/null) ] &amp;&amp; go_back=$(echo "$ext" | wc -c); fn=$(printf "$fn" &amp;&amp; awk 'BEGIN{for(c=0;c&lt;'$go_back';c++) printf "&lt;left&gt;"}') &amp;&amp; lf -remote "send $id push $(echo "rename $fn" | sed 's/\s/&lt;space&gt;/g')"
-map cw &amp;lf -remote "send $id push :" &amp;&amp; fn=$(basename $f) &amp;&amp; ext="${fn##*.}" &amp;&amp; go_back=0 &amp;&amp; [ $(echo $fn | grep "\." 2&gt;/dev/null) ] &amp;&amp; go_back=$(echo "$ext" | wc -c) &amp;&amp; fn="" &amp;&amp; ext=".$ext" || ext=""; fn=$(printf "$ext" &amp;&amp; awk 'BEGIN{for(c=0;c&lt;'$go_back';c++) printf "&lt;left&gt;"}') &amp;&amp; lf -remote "send $id push $(echo "rename $fn" | sed 's/\s/&lt;space&gt;/g')"
+<pre><code>map c
+
+map a  vim-rename append word
+map I  vim-rename prepend word
+map A  vim-rename append WORD
+map C  vim-rename change WORD
+map cW vim-rename change WORD
+map cw vim-rename change word
+map ce vim-rename change extension
+
+
+cmd vim-rename &amp;{{
+  # entering command mode
+  lf -remote "send $id push :"
+  # setting variables
+  fn="$(basename $f)"
+  name="${fn%.*}"
+  [ $(echo "$fn" | grep "\." 2&gt;/dev/null) ] &amp;&amp; dot='.' &amp;&amp; ext="${fn##*.}"
+  # reading options
+  case "$@" in
+    'change WORD') fn='' ;;
+    'change word')
+      fn=$(printf "$dot$ext")
+      go_left=0 &amp;&amp; [ ! -z $dot ] &amp;&amp; go_left=$(echo "$ext" | wc -c)
+      move="$(awk 'BEGIN{ for(c=0; c&lt;'$go_left'; c++) printf "&lt;left&gt;" }')"
+      ;;
+    'prepend word')
+      go_right=$(echo 'rename' | wc -c)
+      move="&lt;home&gt;$(awk 'BEGIN{ for(c=0;c&lt;'$go_right';c++) printf "&lt;right&gt;" }')"
+      ;;
+    'append word')
+      go_left=0
+      [ ! -z $dot ] &amp;&amp; go_left=$(echo "$ext" | wc -c)
+      move="$(awk 'BEGIN{ for (c=0; c&lt;'$go_left'; c++) printf "&lt;left&gt;" }')"
+      ;;
+    'change extension')
+      fn="$name$dot"
+      ;;
+    'append WORD') ;;
+  esac
+  lf -remote "send $id push $(echo "rename $fn$move" | sed 's/\s/&lt;space&gt;/g')"
+}}
 </code></pre>
 
 <p>Now:</p>
 
 <ul>
-<li><em>A</em>: prompts filename and puts cursor at the end of it;</li>
-<li><em>I</em>: prompts filename and puts cursor at it&#8217;s begining</li>
-<li><em>a</em>: prompts filename and puts cursor right before the first &#8220;.&#8221; (before extension);</li>
-<li><em>cw</em>: prompts filename after extension, puts cursor before it;</li>
-<li><em>cW</em> and <em>C</em>: nothing is prompted as default for new filename;</li>
+<li><strong>A</strong>: &#8220;append WORD&#8221; &#8212; prompts filename and puts cursor at the end of it;</li>
+<li><strong>I</strong>: &#8220;prepend word&#8221; &#8212; prompts filename and puts cursor at it&#8217;s begining</li>
+<li><strong>a</strong>: &#8220;append word&#8221; &#8212; prompts filename and puts cursor right before the first &#8220;.&#8221; (before extension);</li>
+<li><strong>cw</strong>: &#8220;change word&#8221; &#8212; clears filename and puts cursof before extension (and dot, if existent);</li>
+<li><strong>ce</strong>: &#8220;change extension&#8221; &#8212; clears extension and puts cursof after filename (and dot, if existent); and</li>
+<li><strong>cW</strong> and <strong>C</strong>: &#8220;change WORD&#8221; &#8212; clear prompt for new filename.</li>
 </ul>
 
 <h2>bulk-rename</h2>
