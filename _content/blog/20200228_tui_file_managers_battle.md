@@ -1,10 +1,11 @@
 ---
 title: TUI file managers battle
+subtitle: Comparing `ranger`, `Vifm` and `LF`
 date: 20200228
 draft: false
 ---
 
-# Comparing `ranger`, `Vifm` and `LF` TUI file managers
+# 
 
 Since two years ago, I've tried some terminal file managers and ended up finding three of my taste.
 

@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
-. $WORKON_HOME/w/bin/activate
-python maker.py
+. $WORKON_HOME/m/bin/activate
+python ./maker.py

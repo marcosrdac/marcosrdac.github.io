@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport"     content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
     <meta name="Description"  content="">
     <title>Marcos Conceição</title>
     <!-- CSS -->
-    <link href="../../style/screen.css" rel="stylesheet" media="screen, projection">
+    <link href="../../style/style.css" rel="stylesheet" media="screen, projection">
     <!-- Scripts -->
     <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
   </head>
@@ -15,14 +16,14 @@
 
   <body>
 
-    <header>
-      <a id="logo" href="../../index.html">Marcos Conceição</a>
+    <header class="site-header">
+      <a href="../../index.html">Marcos Conceição</a>
     </header>
 
 
     <nav>
       <ul>
-        <li><a href="../../content/portfolio.html">portfólio</a></li>
+        <li><a href="../../content/portfolio.html">portefólio</a></li>
         <li><a href="../../content/services.html">serviços_oferecidos</a></li>
         <li><a href="../../content/contact.html">contato</a></li>
         <li><a href="../../content/about.html">sobre</a></li>
@@ -31,12 +32,15 @@
     </nav>
 
 
-    <main id="main">
+    <div class="page-container">
+      <main>
+        <header class="page-header">blog</header>
 
-      <section>
-<a id='post_title' href="20150727_o_discurso_do_metodo_3_parte_consideracoes_sobre_a_moral_resumo.html">20150727 - O Discurso do Método - 3ª parte: Considerações Sobre a Moral [resumo]</a>
-<div class="inner">
+<article>
+<header>
+<h1><a id='post_title' href='20150727_o_discurso_do_metodo_3_parte_consideracoes_sobre_a_moral_resumo.html'>20150727 O Discurso do Método - 3ª parte: Considerações Sobre a Moral [resumo]</a></h1>
 
+</header>
 <p>Antes de chegar à moral perfeita – depois do conhecimento de tudo ter sido alcançado –, Descartes cria para si uma moral provisória, sobre a qual poderia criar a primeira, aludindo-a ao canteiro de uma obra. Divide esta moral primeira em quatro princípios e explicita-os. São eles:</p>
 
 <h1>Obedecer às leis e aos costumes locais e conservar em si a religião de seu Deus</h1>
@@ -59,34 +63,28 @@
 
 <p>Ainda antes de completar a terceira parte do livro, o autor faz uma consideração sobre um ponto sobre o qual é, ainda hoje, mal-interpretado. A de que sua dúvida sobre todos os assuntos não é como a dos céticos. Estes últimos duvidavam sem razão e por isso são criticados. Eles entendiam que o estado padrão, natural e final de todo pensamento é a dúvida, pois não é possível conhecer o real. Descartes concordava que o real é incognoscível, mas se diferencia no sentido que tomava da dúvida. A “dúvida” de Descartes diz respeito a saber da eterna e incontornável possibilidade de não ter a descrição correta do real, sendo ela não um obstáculo, mas uma razão para chegar a uma conclusão sobre ele que se possa considerar segura: “todo o meu propósito só tendia a me dar segurança e me afastar a areia movediça e a areia para encontrar a rocha e a argila” – para quem está por fora, rocha e argila são estágios extremos, o que é uma alusão ao seu desejo de chegar a pontos fixos. A rocha é o princípio, a argila, o produto final da meteorização.</p>
 
-
-
-</div>
-
-
-      </section>
+</article>
+      </main>
 
       <aside>
-          <h1>autor</h1>
+        <header class="page-header">author</header>
+        <figure>
           <img id=author src="../../pictures/me.gif" title="me" alt="photo of me" width="100%">
-          <h1>@marcosrdac</h1>
-          <div class="inner" id="author">
-            Marcos Conceição.
-            <br>
-            Apaixonado por Linux, machine learning e obras do <em>David Lynch</em>.
-            <br>
-            Graduando em Geofísica pela UFBa.
-            <br>
-            Técnico em Edificações pelo IFBa.
-          </div>
+          <figcaption>marcosrdac</figcaption>
+        </figure>
+        <p>Marcos Conceição.</p>
+        <p>Apaixonado por Linux, machine learning e obras do <em>David Lynch</em>.</p>
+        <p>Graduando em Geofísica pela UFBa.</p>
+        <p>Técnico em Edificações pelo IFBa.</p>
       </aside>
-
-    </main>
+    </div>
 
 
     <footer>
-      <img src="../../pictures/footer_sky.gif" title="footer" alt="" width="100%">
-      <p id=credit>Design: Marcos Conceição, 2019.</p>
+      <figure>
+        <img src="../../pictures/footer_sky.gif" title="footer" alt="">
+        <p>Marcos Conceição, 2019.</p>
+      </figure>
     </footer>
 
   </body>

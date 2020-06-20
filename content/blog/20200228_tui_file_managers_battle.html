@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport"     content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
     <meta name="Description"  content="">
     <title>Marcos Conceição</title>
     <!-- CSS -->
-    <link href="../../style/screen.css" rel="stylesheet" media="screen, projection">
+    <link href="../../style/style.css" rel="stylesheet" media="screen, projection">
     <!-- Scripts -->
     <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
   </head>
@@ -15,14 +16,14 @@
 
   <body>
 
-    <header>
-      <a id="logo" href="../../index.html">Marcos Conceição</a>
+    <header class="site-header">
+      <a href="../../index.html">Marcos Conceição</a>
     </header>
 
 
     <nav>
       <ul>
-        <li><a href="../../content/portfolio.html">portfólio</a></li>
+        <li><a href="../../content/portfolio.html">portefólio</a></li>
         <li><a href="../../content/services.html">serviços_oferecidos</a></li>
         <li><a href="../../content/contact.html">contato</a></li>
         <li><a href="../../content/about.html">sobre</a></li>
@@ -31,13 +32,16 @@
     </nav>
 
 
-    <main id="main">
+    <div class="page-container">
+      <main>
+        <header class="page-header">blog</header>
 
-      <section>
-<a id='post_title' href="20200228_tui_file_managers_battle.html">20200228 - TUI file managers battle</a>
-<div class="inner">
-
-<h1>Comparing <code>ranger</code>, <code>Vifm</code> and <code>LF</code> TUI file managers</h1>
+<article>
+<header>
+<h1><a id='post_title' href='20200228_tui_file_managers_battle.html'>20200228 TUI file managers battle</a></h1>
+<p>Comparing `ranger`, `Vifm` and `LF`</p>
+</header>
+<h1> </h1>
 
 <p>Since two years ago, I&#8217;ve tried some terminal file managers and ended up finding three of my taste.</p>
 
@@ -110,34 +114,28 @@
 
 <p>For Arch users: both <code>ranger</code> and <code>vifm</code> are in Arch&#8217;s official repositories. You can install <code>LF</code> from AUR.</p>
 
-
-
-</div>
-
-
-      </section>
+</article>
+      </main>
 
       <aside>
-          <h1>autor</h1>
+        <header class="page-header">author</header>
+        <figure>
           <img id=author src="../../pictures/me.gif" title="me" alt="photo of me" width="100%">
-          <h1>@marcosrdac</h1>
-          <div class="inner" id="author">
-            Marcos Conceição.
-            <br>
-            Apaixonado por Linux, machine learning e obras do <em>David Lynch</em>.
-            <br>
-            Graduando em Geofísica pela UFBa.
-            <br>
-            Técnico em Edificações pelo IFBa.
-          </div>
+          <figcaption>marcosrdac</figcaption>
+        </figure>
+        <p>Marcos Conceição.</p>
+        <p>Apaixonado por Linux, machine learning e obras do <em>David Lynch</em>.</p>
+        <p>Graduando em Geofísica pela UFBa.</p>
+        <p>Técnico em Edificações pelo IFBa.</p>
       </aside>
-
-    </main>
+    </div>
 
 
     <footer>
-      <img src="../../pictures/footer_sky.gif" title="footer" alt="" width="100%">
-      <p id=credit>Design: Marcos Conceição, 2019.</p>
+      <figure>
+        <img src="../../pictures/footer_sky.gif" title="footer" alt="">
+        <p>Marcos Conceição, 2019.</p>
+      </figure>
     </footer>
 
   </body>

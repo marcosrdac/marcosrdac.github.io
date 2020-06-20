@@ -1,6 +1,5 @@
 ---
-title: portfólio
-draft: false
+page_name: portefólio
 ---
 
 Em construção.

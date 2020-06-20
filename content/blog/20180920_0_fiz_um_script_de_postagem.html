@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport"     content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
     <meta name="Description"  content="">
     <title>Marcos Conceição</title>
     <!-- CSS -->
-    <link href="../../style/screen.css" rel="stylesheet" media="screen, projection">
+    <link href="../../style/style.css" rel="stylesheet" media="screen, projection">
     <!-- Scripts -->
     <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
   </head>
@@ -15,14 +16,14 @@
 
   <body>
 
-    <header>
-      <a id="logo" href="../../index.html">Marcos Conceição</a>
+    <header class="site-header">
+      <a href="../../index.html">Marcos Conceição</a>
     </header>
 
 
     <nav>
       <ul>
-        <li><a href="../../content/portfolio.html">portfólio</a></li>
+        <li><a href="../../content/portfolio.html">portefólio</a></li>
         <li><a href="../../content/services.html">serviços_oferecidos</a></li>
         <li><a href="../../content/contact.html">contato</a></li>
         <li><a href="../../content/about.html">sobre</a></li>
@@ -31,42 +32,39 @@
     </nav>
 
 
-    <main id="main">
+    <div class="page-container">
+      <main>
+        <header class="page-header">blog</header>
 
-      <section>
-<a id='post_title' href="20180920_0_fiz_um_script_de_postagem.html">20180920 - Fiz um script de postagem</a>
-<div class="inner">
+<article>
+<header>
+<h1><a id='post_title' href='20180920_0_fiz_um_script_de_postagem.html'>20180920 Fiz um script de postagem</a></h1>
 
+</header>
 <p>Investi 30 minutos modificando o sistema de arquivos do blog e produzindo um script, hoje. Ele pega o layout deste blog, bem como meus posts salvos em html puro &#8211; localizados numa determinada pasta &#8211;, e junta tudo num único arquivo chamado &#8220;index.html&#8221;, que se torna a página que você está vendo. O script foi feito em Python e é parte de uma busca por simplicidade. No futuro, farei algo para que eu só tenha que escrever os posts em markdown, não mais em html, porque escrever em html custa mais aos meus dedos e ao diálogo entre o que escrevo e minha organização mental&#8230; Não é natural para mim. No momento, o script está no meu repositório do GitHub que corresponde a este blog.</p>
 
-
-
-</div>
-
-
-      </section>
+</article>
+      </main>
 
       <aside>
-          <h1>autor</h1>
+        <header class="page-header">author</header>
+        <figure>
           <img id=author src="../../pictures/me.gif" title="me" alt="photo of me" width="100%">
-          <h1>@marcosrdac</h1>
-          <div class="inner" id="author">
-            Marcos Conceição.
-            <br>
-            Apaixonado por Linux, machine learning e obras do <em>David Lynch</em>.
-            <br>
-            Graduando em Geofísica pela UFBa.
-            <br>
-            Técnico em Edificações pelo IFBa.
-          </div>
+          <figcaption>marcosrdac</figcaption>
+        </figure>
+        <p>Marcos Conceição.</p>
+        <p>Apaixonado por Linux, machine learning e obras do <em>David Lynch</em>.</p>
+        <p>Graduando em Geofísica pela UFBa.</p>
+        <p>Técnico em Edificações pelo IFBa.</p>
       </aside>
-
-    </main>
+    </div>
 
 
     <footer>
-      <img src="../../pictures/footer_sky.gif" title="footer" alt="" width="100%">
-      <p id=credit>Design: Marcos Conceição, 2019.</p>
+      <figure>
+        <img src="../../pictures/footer_sky.gif" title="footer" alt="">
+        <p>Marcos Conceição, 2019.</p>
+      </figure>
     </footer>
 
   </body>

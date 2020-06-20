@@ -1,8 +1,7 @@
 ---
-title: sobre
+title: site
+page_name: sobre
 ---
-
-# site
 
 Este site é um canal para mim. Deixando claro: eu não gosto de redes sociais -- elas me passam o sentimento de estar desperdiçando meu momento presente. Não há moral envolvida nisso; não julgo outras pessoas da mesma forma. É algo que meu corpo me comunica, e que eu acato com carinho. Entretanto existem razões para se usar redes sociais, entre elas: trocar mensagens, conhecer pessoas em algum nível, se interar da situação dos amigos... Coisas às quais se pode referir com a palavra "socializar".
 
@@ -15,45 +14,10 @@ Espero não ter soado muito possessivo. Pus esse conjunto de páginas na rede po
 Oportunas aqui as palavras de Johnny Alf na música "Eu e a Brisa":
 
 <center>
+<pre class="poetry">
 Fica, oh, brisa fica, pois talvez quem sabe
 O inesperado faça uma surpresa
 E traga alguém que queira te escutar
 E junto a mim queira ficar...
+</pre>
 </center>
-
-
-# eu
-
-Eu sou **Marcos Conceição**. Recebi esse nome assim, e fiz dele o meu ao longo da minha vida.
-
-Moraria em um abraço quente e duradouro.
-
-Passo muito tempo livre passeando por universos formalistas. Universos onde comunicação equivale a perfeição. Gosto disso.
-
-Ouço músicas de muitos estilos, depende do tempo. Mas sempre ouço músicas!
-
-Gosto muito de podcasts, apesar de ouvir com baixa frequência hoje.
-
-Sou geofísico em formação pela Universidade Federal da Bahia, e técnico em Edificações pelo Instituto Federal de Educação, Ciência e Tecnologia da Bahia. Gosto muito das duas áreas, e pretendo trabalhar na interface entre elas.
-
-Gosto de receber e-mails (só não me encha o saco).
-
-Tenho problemas em resolução e em procrastinação.
-
-Minha felicidade é um tecido de muitos fios, e muitos deles são os meus amigos. Se eles estão para cima, eu subo em alegria; se eles estão para baixo, eu desabo. Mas tecidos têm muitos fios, e por isso sou relativamente estável.
-
-Me afasto do que tenho conhecimento de que não gosto, pelo bem do meu corpo.
-
-Não gosto de expressões de reatividade.
-
-Me aproximo do que tenho conhecimento de que gosto, pelo bem do meu corpo.
-
-Gosto de expressões de afirmação.
-
-Gosto de simplicidade, e simplicidade não é sinônimo de facilidade.
-
-Sou homem e sou heterossexual.
-
-Gosto de trocar conversas, momentos e silêncio.
-
-Sou gente, gosto de gente.

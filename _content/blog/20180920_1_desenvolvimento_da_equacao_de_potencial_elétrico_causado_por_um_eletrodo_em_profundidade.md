@@ -4,12 +4,16 @@ title: Desenvolvimento da equação do potencial elétrico para um único eletro
 draft: false
 ---
 
+
 <div lang="latex">
 \vec{\nabla}^2 V = 0, \qquad V = V(r,\theta,\phi) = V(r)
 </div>
 
 <div lang="latex">
-\longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) + {1 \over r^2 \sin \theta} {\partial \over \partial \theta}  \left( \sin \theta {\partial V\over \partial \theta} \right) + {1 \over r^2 \sin^2 \theta} {\partial^2 V \over \partial \phi^2} = 0
+\longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) + {1 \over r^2 \sin \theta} {\partial \over \partial \theta}  \left( \sin \theta {\partial V\over \partial \theta} \right) + 
+</div>
+<div lang="latex">
+{1 \over r^2 \sin^2 \theta} {\partial^2 V \over \partial \phi^2} = 0
 </div>
 
 <div lang="latex">
@@ -28,8 +32,9 @@ draft: false
 \therefore V = -{C_1 \over {r}} + C_2, \qquad C_1, C_2 \in \Re
 </div>
 
-donde <span lang="latex">C_2</span> pode ser arbitrariamente escolhido como 0:
+donde <span lang="latex">C_2</span> pode ser arbitrariamente escolhido 0:
 
 <div lang="latex">
 \therefore V = -{C_1 \over {r}}, \qquad C_1 \in \Re
 </div>
+

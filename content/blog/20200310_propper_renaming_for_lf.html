@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport"     content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
     <meta name="Description"  content="">
     <title>Marcos Conceição</title>
     <!-- CSS -->
-    <link href="../../style/screen.css" rel="stylesheet" media="screen, projection">
+    <link href="../../style/style.css" rel="stylesheet" media="screen, projection">
     <!-- Scripts -->
     <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
   </head>
@@ -15,14 +16,14 @@
 
   <body>
 
-    <header>
-      <a id="logo" href="../../index.html">Marcos Conceição</a>
+    <header class="site-header">
+      <a href="../../index.html">Marcos Conceição</a>
     </header>
 
 
     <nav>
       <ul>
-        <li><a href="../../content/portfolio.html">portfólio</a></li>
+        <li><a href="../../content/portfolio.html">portefólio</a></li>
         <li><a href="../../content/services.html">serviços_oferecidos</a></li>
         <li><a href="../../content/contact.html">contato</a></li>
         <li><a href="../../content/about.html">sobre</a></li>
@@ -31,12 +32,15 @@
     </nav>
 
 
-    <main id="main">
+    <div class="page-container">
+      <main>
+        <header class="page-header">blog</header>
 
-      <section>
-<a id='post_title' href="20200310_propper_renaming_for_lf.html">20200310 - Proper renaming for LF</a>
-<div class="inner">
+<article>
+<header>
+<h1><a id='post_title' href='20200310_propper_renaming_for_lf.html'>20200310 Proper renaming for LF</a></h1>
 
+</header>
 <p>I&#8217;ve definitely changed to <em>LF</em> file manager, but I still wanted the renaming power I had with other TUI file managers, like <em>ranger</em> and <em>VIFM</em>&#8217;s &#8220;I&#8221;, &#8220;A&#8221; and &#8220;a&#8221; mappings, or their &#8220;bulk-rename&#8221; function. So today I&#8217;m going to show you how to get those functionalities in <em>LF</em>.</p>
 
 <h2>rename</h2>
@@ -73,18 +77,18 @@
 
 <p>It is a rename function for the current file your cursor points to. Inside <em>LF</em>, type the following while pointing to &#8220;somefile.png":</p>
 
-<pre><code>:rename someanotherfile.png
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="p">:</span>rename someanotherfile.png
+</code></pre></div>
 
 <p>Now &#8220;somefile.png&#8221; is called someanotherfile.png&#8221;</p>
 
 <p>With <em>-n</em> option for rename, as in <code>:rename -n newname</code>, it just renames the filename, without extension. In the other hand, with the <em>-e</em> option, as in <code>:rename -e jpg</code>, it just changes the file extension to &#8220;jpg&#8221;. Anyway, options are really just fancy stuff. Look at how we are going to use this function in our mappings:</p>
 
-<pre><code># unmap c
-map c
-# make cW push ":rename " into lf
-map cW &amp;lf -remote "send $id push :rename&lt;space&gt;"
-</code></pre>
+<div class="codehilite"><pre><span></span><code># unmap <span class="k">c</span>
+map <span class="k">c</span>
+# <span class="k">make</span> cW push <span class="s2">&quot;:rename &quot;</span> into <span class="k">lf</span>
+map cW &amp;<span class="k">lf</span> <span class="p">-</span>remote <span class="s2">&quot;send $id push :rename&lt;space&gt;&quot;</span>
+</code></pre></div>
 
 <p>What the third line above does is: whenever <em>cW</em> is pressed from <em>LF</em>, user is prompted with our rename function. This approach is certainly useful, but it turns out that <em>LF</em> freezes a little when &#8220;:&#8221; is pushed, as it is leaving normal mode and entering command mode. For it being frozen, sometimes the next character after &#8220;:&#8221; is not typed and we end up with <code>:ename -n</code> after pressing &#8220;cW&#8221; at a file&#8230; So, to avoid it, we can send two push commands to lf:
   1. one for sending just &#8220;:&#8221;;
@@ -278,34 +282,28 @@ cmd vim-rename &amp;{{
 
 <p>I hope you enjoy my codes!</p>
 
-
-
-</div>
-
-
-      </section>
+</article>
+      </main>
 
       <aside>
-          <h1>autor</h1>
+        <header class="page-header">author</header>
+        <figure>
           <img id=author src="../../pictures/me.gif" title="me" alt="photo of me" width="100%">
-          <h1>@marcosrdac</h1>
-          <div class="inner" id="author">
-            Marcos Conceição.
-            <br>
-            Apaixonado por Linux, machine learning e obras do <em>David Lynch</em>.
-            <br>
-            Graduando em Geofísica pela UFBa.
-            <br>
-            Técnico em Edificações pelo IFBa.
-          </div>
+          <figcaption>marcosrdac</figcaption>
+        </figure>
+        <p>Marcos Conceição.</p>
+        <p>Apaixonado por Linux, machine learning e obras do <em>David Lynch</em>.</p>
+        <p>Graduando em Geofísica pela UFBa.</p>
+        <p>Técnico em Edificações pelo IFBa.</p>
       </aside>
-
-    </main>
+    </div>
 
 
     <footer>
-      <img src="../../pictures/footer_sky.gif" title="footer" alt="" width="100%">
-      <p id=credit>Design: Marcos Conceição, 2019.</p>
+      <figure>
+        <img src="../../pictures/footer_sky.gif" title="footer" alt="">
+        <p>Marcos Conceição, 2019.</p>
+      </figure>
     </footer>
 
   </body>

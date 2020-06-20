@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport"     content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
     <meta name="Description"  content="">
     <title>Marcos Conceição</title>
     <!-- CSS -->
-    <link href="../../style/screen.css" rel="stylesheet" media="screen, projection">
+    <link href="../../style/style.css" rel="stylesheet" media="screen, projection">
     <!-- Scripts -->
     <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
   </head>
@@ -15,14 +16,14 @@
 
   <body>
 
-    <header>
-      <a id="logo" href="../../index.html">Marcos Conceição</a>
+    <header class="site-header">
+      <a href="../../index.html">Marcos Conceição</a>
     </header>
 
 
     <nav>
       <ul>
-        <li><a href="../../content/portfolio.html">portfólio</a></li>
+        <li><a href="../../content/portfolio.html">portefólio</a></li>
         <li><a href="../../content/services.html">serviços_oferecidos</a></li>
         <li><a href="../../content/contact.html">contato</a></li>
         <li><a href="../../content/about.html">sobre</a></li>
@@ -31,18 +32,25 @@
     </nav>
 
 
-    <main id="main">
+    <div class="page-container">
+      <main>
+        <header class="page-header">blog</header>
 
-      <section>
-<a id='post_title' href="20180920_1_desenvolvimento_da_equacao_de_potencial_elétrico_causado_por_um_eletrodo_em_profundidade.html">20180920 - Desenvolvimento da equação do potencial elétrico para um único eletrodo de corrente em subsuperfície homogênea e isotrópica</a>
-<div class="inner">
+<article>
+<header>
+<h1><a id='post_title' href='20180920_1_desenvolvimento_da_equacao_de_potencial_elétrico_causado_por_um_eletrodo_em_profundidade.html'>20180920 Desenvolvimento da equação do potencial elétrico para um único eletrodo de corrente em subsuperfície homogênea e isotrópica</a></h1>
 
+</header>
 <div lang="latex">
 \vec{\nabla}^2 V = 0, \qquad V = V(r,\theta,\phi) = V(r)
 </div>
 
 <div lang="latex">
-\longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) + {1 \over r^2 \sin \theta} {\partial \over \partial \theta}  \left( \sin \theta {\partial V\over \partial \theta} \right) + {1 \over r^2 \sin^2 \theta} {\partial^2 V \over \partial \phi^2} = 0
+\longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) + {1 \over r^2 \sin \theta} {\partial \over \partial \theta}  \left( \sin \theta {\partial V\over \partial \theta} \right) + 
+</div>
+
+<div lang="latex">
+{1 \over r^2 \sin^2 \theta} {\partial^2 V \over \partial \phi^2} = 0
 </div>
 
 <div lang="latex">
@@ -61,40 +69,34 @@
 \therefore V = -{C_1 \over {r}} + C_2, \qquad C_1, C_2 \in \Re
 </div>
 
-<p>donde <span lang="latex">C_2</span> pode ser arbitrariamente escolhido como 0:</p>
+<p>donde <span lang="latex">C_2</span> pode ser arbitrariamente escolhido 0:</p>
 
 <div lang="latex">
 \therefore V = -{C_1 \over {r}}, \qquad C_1 \in \Re
 </div>
 
-
-
-</div>
-
-
-      </section>
+</article>
+      </main>
 
       <aside>
-          <h1>autor</h1>
+        <header class="page-header">author</header>
+        <figure>
           <img id=author src="../../pictures/me.gif" title="me" alt="photo of me" width="100%">
-          <h1>@marcosrdac</h1>
-          <div class="inner" id="author">
-            Marcos Conceição.
-            <br>
-            Apaixonado por Linux, machine learning e obras do <em>David Lynch</em>.
-            <br>
-            Graduando em Geofísica pela UFBa.
-            <br>
-            Técnico em Edificações pelo IFBa.
-          </div>
+          <figcaption>marcosrdac</figcaption>
+        </figure>
+        <p>Marcos Conceição.</p>
+        <p>Apaixonado por Linux, machine learning e obras do <em>David Lynch</em>.</p>
+        <p>Graduando em Geofísica pela UFBa.</p>
+        <p>Técnico em Edificações pelo IFBa.</p>
       </aside>
-
-    </main>
+    </div>
 
 
     <footer>
-      <img src="../../pictures/footer_sky.gif" title="footer" alt="" width="100%">
-      <p id=credit>Design: Marcos Conceição, 2019.</p>
+      <figure>
+        <img src="../../pictures/footer_sky.gif" title="footer" alt="">
+        <p>Marcos Conceição, 2019.</p>
+      </figure>
     </footer>
 
   </body>
