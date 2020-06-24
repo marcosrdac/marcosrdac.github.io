@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
+
 :root {
   --bg: #cedde5;
   --bf: #cedde566;
@@ -5,13 +8,16 @@
   --fg: #091b2a;
 }
 
+html {
+}
 
 body {
   display: flex;
   flex-flow: column nowrap;
   max-width:50em;
   margin: auto;
-  font-family: 'Hermit', 'Ubuntu Mono', 'monospace';
+  font-family: 'Oxanium';
+  /*font-family: 'Oxanium', 'Hermit', 'Ubuntu Mono', 'monospace';*/
   /*margin:  0 auto;*/
   background-color: var(--bg);
   color: var(--fg);
@@ -27,14 +33,23 @@ a:focus{
 
 header.site-header {
   text-align: right;
+  background-color: var(--fg);
   padding: 14px;
 }
 
 header.site-header a {
-  color: var(--bg);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
   text-decoration: none;
-  font-size: 2em;
+  color: var(--bg);
   padding: 10px 20px;
+}
+
+header.site-header h1 {
+  text-align: inherit;
+  color: var(--bg);
+  margin: .2em;
 }
 
 nav {
@@ -176,7 +191,8 @@ span .latex {
 
 code {
   background: inherit;
-  padding: .2em;
+  font-family: 'Iceland';
+  padding: 4px;
 }
 
 pre, table {
@@ -202,7 +218,7 @@ pre code {
 
 /* tr:nth-child(even) {background: #091B2A22;} */
 th, td {
-  padding: .2em 1em;
+  padding: 4px 14px;
 }
 
 th {
@@ -213,6 +229,11 @@ th {
 
 
 footer {
+  background-color: var(--fg);
+  color: var(--bg);
+}
+
+footer p {
   text-align: center;
 }
 
