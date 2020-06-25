@@ -197,6 +197,8 @@ code {
 
 pre, table {
   background: var(--fg);
+  margin-left: auto;
+  margin-right: auto;
   color: var(--bg);
   padding: 14px;
 }
