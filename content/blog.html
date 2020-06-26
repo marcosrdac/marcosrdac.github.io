@@ -43,11 +43,11 @@
 <h1><a id='post_title' href='blog/20200310_propper_renaming_for_lf.html'>20200310 Proper renaming for LF</a></h1>
 
 </header>
-<p>I&#8217;ve definitely changed to <em>LF</em> file manager, but I still wanted the renaming power I had with other TUI file managers, like <em>ranger</em> and <em>VIFM</em>&#8217;s &#8220;I&#8221;, &#8220;A&#8221; and &#8220;a&#8221; mappings, or their &#8220;bulk-rename&#8221; function. So today I&#8217;m going to show you how to get those functionalities in <em>LF</em>.</p>
+<p>I&#8217;ve definitely changed to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger&#8217;s and VIFM&#8217;s &#8220;I&#8221;, &#8220;A&#8221; and &#8220;a&#8221; mappings, or their &#8220;bulk-rename&#8221; function. So today I&#8217;m going to show you how to get those functionalities in LF.</p>
 
 <h2>rename</h2>
 
-<p>I&#8217;ve written this on my <em>lfrc</em> (inside <em>$HOME/.config/lf/</em>):</p>
+<p>I&#8217;ve written this on my <code>lfrc</code> (inside <code>$HOME/.config/lf/</code>):</p>
 
 <pre><code>cmd rename %{{
   base="$(dirname "$f")"
@@ -56,15 +56,13 @@
   srcfn="$(basename "$f" ".$srcext")"
   srcdot="" &amp;&amp; [ ! -z $srcext ] &amp;&amp; srcdot="."
 
-  filename_only="" ; extension_only=""
   case $1 in
-    -n)
-      filename_only=true &amp;&amp; shift
+    -n)  # filename_only
       dst="$base/$1$srcdot$srcext" ;;
-    -e)
-      extension_only=true &amp;&amp; shift
+    -e)  # extension_only
       dst="$base/$srcfn$srcdot$1" ;;
-    *) dst="$base/$1" ;;
+    *)   # full rename
+      dst="$base/$1" ;;
   esac
 
   please=''
@@ -73,18 +71,20 @@
     [ ! -w $(dirname "$path") ] &amp;&amp; please='sudo' &amp;&amp; break
   done
   [ $# -eq 0 ] &amp;&amp; echo "Destination not given." &amp;&amp; exit 1
-  [ -e "$dst" ] &amp;&amp; printf "  Not renamed: "$dst" exists." || $please mv "$f" "$dst"
+  [ -e "$dst" ] &amp;&amp;
+    printf "  Not renamed: "$dst" exists." ||
+    $please mv "$f" "$dst"
 }}
 </code></pre>
 
-<p>It is a rename function for the current file your cursor points to. Inside <em>LF</em>, type the following while pointing to &#8220;somefile.png":</p>
+<p>It is a rename function for the current file your cursor points to. Use it yourself: inside LF, type the following while pointing to &#8220;somefile.png":</p>
 
 <div class="codehilite"><pre><span></span><code><span class="p">:</span>rename someanotherfile.png
 </code></pre></div>
 
-<p>Now &#8220;somefile.png&#8221; is called someanotherfile.png&#8221;</p>
+<p>Press enter, and now &#8220;somefile.png&#8221; is called someanotherfile.png&#8221;.</p>
 
-<p>With <em>-n</em> option for rename, as in <code>:rename -n newname</code>, it just renames the filename, without extension. In the other hand, with the <em>-e</em> option, as in <code>:rename -e jpg</code>, it just changes the file extension to &#8220;jpg&#8221;. Anyway, options are really just fancy stuff. Look at how we are going to use this function in our mappings:</p>
+<p>With <code>-n</code> option for rename, as in <code>:rename -n newname</code>, it just renames the filename, without extension. In the other hand, with the <code>-e</code> option, as in <code>:rename -e jpg</code>, it just changes the file extension to &#8220;jpg&#8221;. Anyway, options are really just fancy stuff. Look at how we are going to use this function in our mappings:</p>
 
 <div class="codehilite"><pre><span></span><code># unmap <span class="k">c</span>
 map <span class="k">c</span>
@@ -92,7 +92,7 @@ map <span class="k">c</span>
 map cW &amp;<span class="k">lf</span> <span class="p">-</span>remote <span class="s2">&quot;send $id push :rename&lt;space&gt;&quot;</span>
 </code></pre></div>
 
-<p>What the third line above does is: whenever <em>cW</em> is pressed from <em>LF</em>, user is prompted with our rename function. This approach is certainly useful, but it turns out that <em>LF</em> freezes a little when &#8220;:&#8221; is pushed, as it is leaving normal mode and entering command mode. For it being frozen, sometimes the next character after &#8220;:&#8221; is not typed and we end up with <code>:ename -n</code> after pressing &#8220;cW&#8221; at a file&#8230; So, to avoid it, we can send two push commands to lf:
+<p>What the third line above does is: whenever <code>cW</code> is pressed from LF, user is prompted with our rename function. This approach is certainly useful, but it turns out that LF freezes a little when &#8220;:&#8221; is pushed, as it is leaving normal mode and entering command mode. For it being frozen, sometimes the next character after &#8220;:&#8221; is not typed and we end up with <code>:ename -n</code> after pressing &#8220;cW&#8221; at a file&#8230; So, to avoid it, we can send two push commands to lf:
   1. one for sending just &#8220;:&#8221;;
   2. another one for sending the rest of the text.</p>
 
@@ -161,14 +161,14 @@ cmd vim-rename &amp;{{
 
 <ol>
 <li>You can rename various files in the program you&#8217;ve set for $EDITOR;</li>
-<li>Have you ever wanted to rename both a movie and its subtitle to the same name but not to bother with their extensions in the process? Here you can bulk-rename without extension (and the task easily becomes as simple as &#8220;yypGddZZ&#8221; at VIM screen). This is done by using <em>-n</em> option.</li>
-<li>Have you ever wanted to transform that bunch of free note text files into <em>.md</em>&#8217;s? You can rename just extensions! The option for this is <em>-e</em>.</li>
-<li>You can also rename including all filepath (using option <em>-A</em>);</li>
+<li>Have you ever wanted to rename both a movie and its subtitle to the same name but not to bother with their extensions in the process? Here you can bulk-rename without extension (and the task easily becomes as simple as &#8220;yypGddZZ&#8221; at VIM screen). This is done by using <code>-n</code> option.</li>
+<li>Have you ever wanted to transform that bunch of free note text files into <code>.md</code>&#8217;s? You can rename just extensions! The option for this is <code>-e</code>.</li>
+<li>You can also rename including all filepath (using option <code>-A</code>);</li>
 </ol>
 
-<p>Running <code>:bulk-rename</code> function in <em>LF</em> will take items in selection and show their names for edition in your text editor. If there are no items selected, all the current directory files are to be renamed, instead.</p>
+<p>Running <code>:bulk-rename</code> function in LF will take items in selection and show their names for edition in your text editor. If there are no items selected, all the current directory files are to be renamed, instead.</p>
 
-<p>Everything you need to do is sign a pact by adding this to your <em>lfrc</em>:</p>
+<p>Everything you need to do is sign a pact by adding this to your <code>lfrc</code>:</p>
 
 <pre><code>cmd bulk-rename ${{
   case $1 in

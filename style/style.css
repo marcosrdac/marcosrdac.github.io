@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');
 
 :root {
   --bg: #cedde5;
@@ -191,7 +192,7 @@ span .latex {
 
 code {
   background: inherit;
-  font-family: 'Iceland';
+  font-family: 'Inconsolata';
   padding: 4px;
 }
 

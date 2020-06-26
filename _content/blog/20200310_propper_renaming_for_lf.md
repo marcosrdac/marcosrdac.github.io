@@ -4,12 +4,12 @@ date: 20200310
 draft: false
 ---
 
-I've definitely changed to *LF* file manager, but I still wanted the renaming power I had with other TUI file managers, like *ranger* and *VIFM*'s "I", "A" and "a" mappings, or their "bulk-rename" function. So today I'm going to show you how to get those functionalities in *LF*.
+I've definitely changed to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger's and VIFM's "I", "A" and "a" mappings, or their "bulk-rename" function. So today I'm going to show you how to get those functionalities in LF.
 
 
 ## rename
 
-I've written this on my *lfrc* (inside *$HOME/.config/lf/*):
+I've written this on my `lfrc` (inside `$HOME/.config/lf/`):
 
 ```lf
 cmd rename %{{
@@ -19,15 +19,13 @@ cmd rename %{{
   srcfn="$(basename "$f" ".$srcext")"
   srcdot="" && [ ! -z $srcext ] && srcdot="."
 
-  filename_only="" ; extension_only=""
   case $1 in
-    -n)
-      filename_only=true && shift
+    -n)  # filename_only
       dst="$base/$1$srcdot$srcext" ;;
-    -e)
-      extension_only=true && shift
+    -e)  # extension_only
       dst="$base/$srcfn$srcdot$1" ;;
-    *) dst="$base/$1" ;;
+    *)   # full rename
+      dst="$base/$1" ;;
   esac
 
   please=''
@@ -36,17 +34,19 @@ cmd rename %{{
     [ ! -w $(dirname "$path") ] && please='sudo' && break
   done
   [ $# -eq 0 ] && echo "Destination not given." && exit 1
-  [ -e "$dst" ] && printf "  Not renamed: "$dst" exists." || $please mv "$f" "$dst"
+  [ -e "$dst" ] &&
+    printf "  Not renamed: "$dst" exists." ||
+    $please mv "$f" "$dst"
 }}
 ```
 
-It is a rename function for the current file your cursor points to. Inside *LF*, type the following while pointing to "somefile.png":
+It is a rename function for the current file your cursor points to. Use it yourself: inside LF, type the following while pointing to "somefile.png":
 ```vim
 :rename someanotherfile.png
 ```
-Now "somefile.png" is called someanotherfile.png"
+Press enter, and now "somefile.png" is called someanotherfile.png".
 
-With *-n* option for rename, as in `:rename -n newname`, it just renames the filename, without extension. In the other hand, with the *-e* option, as in `:rename -e jpg`, it just changes the file extension to "jpg". Anyway, options are really just fancy stuff. Look at how we are going to use this function in our mappings:
+With `-n` option for rename, as in `:rename -n newname`, it just renames the filename, without extension. In the other hand, with the `-e` option, as in `:rename -e jpg`, it just changes the file extension to "jpg". Anyway, options are really just fancy stuff. Look at how we are going to use this function in our mappings:
 
 ```vim
 # unmap c
@@ -55,7 +55,7 @@ map c
 map cW &lf -remote "send $id push :rename<space>"
 ```
 
-What the third line above does is: whenever *cW* is pressed from *LF*, user is prompted with our rename function. This approach is certainly useful, but it turns out that *LF* freezes a little when ":" is pushed, as it is leaving normal mode and entering command mode. For it being frozen, sometimes the next character after ":" is not typed and we end up with `:ename -n ` after pressing "cW" at a file... So, to avoid it, we can send two push commands to lf:
+What the third line above does is: whenever `cW` is pressed from LF, user is prompted with our rename function. This approach is certainly useful, but it turns out that LF freezes a little when ":" is pushed, as it is leaving normal mode and entering command mode. For it being frozen, sometimes the next character after ":" is not typed and we end up with `:ename -n ` after pressing "cW" at a file... So, to avoid it, we can send two push commands to lf:
   1. one for sending just ":";
   2. another one for sending the rest of the text.
 
@@ -123,13 +123,13 @@ bulk-rename here reads to "rename various files in a text editor".
 My code for this functionality is inpired by @EmmChriss's response at [github/gokcehan/lf/issues/149](https://github.com/gokcehan/lf/issues/149). It has grown a bit, so I'll tell you why you should use it first:
 
   1. You can rename various files in the program you've set for $EDITOR;
-  2. Have you ever wanted to rename both a movie and its subtitle to the same name but not to bother with their extensions in the process? Here you can bulk-rename without extension (and the task easily becomes as simple as "yypGddZZ" at VIM screen). This is done by using *-n* option.
-  3. Have you ever wanted to transform that bunch of free note text files into *.md*'s? You can rename just extensions! The option for this is *-e*.
-  4. You can also rename including all filepath (using option *-A*);
+  2. Have you ever wanted to rename both a movie and its subtitle to the same name but not to bother with their extensions in the process? Here you can bulk-rename without extension (and the task easily becomes as simple as "yypGddZZ" at VIM screen). This is done by using `-n` option.
+  3. Have you ever wanted to transform that bunch of free note text files into `.md`'s? You can rename just extensions! The option for this is `-e`.
+  4. You can also rename including all filepath (using option `-A`);
 
-Running `:bulk-rename` function in *LF* will take items in selection and show their names for edition in your text editor. If there are no items selected, all the current directory files are to be renamed, instead.
+Running `:bulk-rename` function in LF will take items in selection and show their names for edition in your text editor. If there are no items selected, all the current directory files are to be renamed, instead.
 
-Everything you need to do is sign a pact by adding this to your *lfrc*:
+Everything you need to do is sign a pact by adding this to your `lfrc`:
 
 ```lf
 cmd bulk-rename ${{
