@@ -1,5 +1,6 @@
 ---
 title: Proper renaming for LF
+subtitle: Prepend, append, change extension and more
 date: 20200310
 draft: false
 ---

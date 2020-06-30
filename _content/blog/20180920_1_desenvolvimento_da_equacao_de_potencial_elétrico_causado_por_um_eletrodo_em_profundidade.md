@@ -4,37 +4,34 @@ title: Desenvolvimento da equação do potencial elétrico para um único eletro
 draft: false
 ---
 
+<p>A equação laplaciana para o potencial é \(\vec{\nabla}^2 V = 0\). Além disso, \( V = V(r,\theta,\phi) = V(r) \), uma vez que o meio é homogêneo e isotrópico. Nestas condições, a equação laplaciana se escreve:</p>
 
-<div lang="latex">
-\vec{\nabla}^2 V = 0, \qquad V = V(r,\theta,\phi) = V(r)
-</div>
+<p>
+\( {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) +\)
+\( {1 \over r^2 \sin \theta} {\partial \over \partial \theta}  \left( \sin \theta {\partial V\over \partial \theta} \right) +\)
+\({1 \over r^2 \sin^2 \theta} {\partial^2 V \over \partial \phi^2} = 0\)
+</p>
 
-<div lang="latex">
-\longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) + {1 \over r^2 \sin \theta} {\partial \over \partial \theta}  \left( \sin \theta {\partial V\over \partial \theta} \right) + 
-</div>
-<div lang="latex">
-{1 \over r^2 \sin^2 \theta} {\partial^2 V \over \partial \phi^2} = 0
-</div>
+<p>
+\( \longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) = 0 \)
+</p>
 
-<div lang="latex">
-\longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) = 0
-</div>
+<p>
+\( \longrightarrow \frac{\partial^2 V}{\partial r^2} + {2 \over r} {\partial V \over \partial r}= 0 \)
+</p>
 
-<div lang="latex">
-\longrightarrow \frac{\partial^2 V}{\partial r^2} + {2 \over r} {\partial V \over \partial r}= 0
-</div>
+<p>
+\( \longrightarrow {\partial V \over {\partial r}} = {C_1 \over {r^2}}, \qquad C_1 \in \Re \)
+</p>
 
-<div lang="latex">
-\longrightarrow {\partial V \over {\partial r}} = {C_1 \over {r^2}}, \qquad C_1 \in \Re
-</div>
+<p>
+\[ \therefore V = -{C_1 \over {r}} + C_2, \qquad C_1, C_2 \in \Re \]
+</p>
 
-<div lang="latex">
-\therefore V = -{C_1 \over {r}} + C_2, \qquad C_1, C_2 \in \Re
-</div>
+<p>
+donde \(C_2\) pode ser arbitrariamente escolhido \(0\):
+</p>
 
-donde <span lang="latex">C_2</span> pode ser arbitrariamente escolhido 0:
-
-<div lang="latex">
-\therefore V = -{C_1 \over {r}}, \qquad C_1 \in \Re
-</div>
-
+<p>
+\[ \therefore V = -{C_1 \over {r}}, \qquad C_1 \in \Re \]
+</p>

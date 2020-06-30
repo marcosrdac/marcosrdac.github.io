@@ -9,10 +9,10 @@
     <meta name="Description"  content="">
     <title>Marcos Conceição</title>
     <!-- CSS -->
-    <!--<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">-->
-    <!-- Scripts -->
-    <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
     <link href="../style/style.css" rel="stylesheet" media="screen, projection">
+    <!-- Scripts -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
 
 
@@ -41,7 +41,7 @@
 <article>
 <header>
 <h1><a id='post_title' href='blog/20200310_propper_renaming_for_lf.html'>20200310 Proper renaming for LF</a></h1>
-
+<p>Prepend, append, change extension and more</p>
 </header>
 <p>I&#8217;ve definitely changed to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger&#8217;s and VIFM&#8217;s &#8220;I&#8221;, &#8220;A&#8221; and &#8220;a&#8221; mappings, or their &#8220;bulk-rename&#8221; function. So today I&#8217;m going to show you how to get those functionalities in LF.</p>
 
@@ -383,39 +383,37 @@ cmd vim-rename &amp;{{
 <h1><a id='post_title' href='blog/20180920_1_desenvolvimento_da_equacao_de_potencial_elétrico_causado_por_um_eletrodo_em_profundidade.html'>20180920 Desenvolvimento da equação do potencial elétrico para um único eletrodo de corrente em subsuperfície homogênea e isotrópica</a></h1>
 
 </header>
-<div lang="latex">
-\vec{\nabla}^2 V = 0, \qquad V = V(r,\theta,\phi) = V(r)
-</div>
+<p>A equação laplaciana para o potencial é \(\vec{\nabla}^2 V = 0\). Além disso, \( V = V(r,\theta,\phi) = V(r) \), uma vez que o meio é homogêneo e isotrópico. Nestas condições, a equação laplaciana se escreve:</p>
 
-<div lang="latex">
-\longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) + {1 \over r^2 \sin \theta} {\partial \over \partial \theta}  \left( \sin \theta {\partial V\over \partial \theta} \right) + 
-</div>
+<p>
+\( {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) +\)
+\( {1 \over r^2 \sin \theta} {\partial \over \partial \theta}  \left( \sin \theta {\partial V\over \partial \theta} \right) +\)
+\({1 \over r^2 \sin^2 \theta} {\partial^2 V \over \partial \phi^2} = 0\)
+</p>
 
-<div lang="latex">
-{1 \over r^2 \sin^2 \theta} {\partial^2 V \over \partial \phi^2} = 0
-</div>
+<p>
+\( \longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) = 0 \)
+</p>
 
-<div lang="latex">
-\longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) = 0
-</div>
+<p>
+\( \longrightarrow \frac{\partial^2 V}{\partial r^2} + {2 \over r} {\partial V \over \partial r}= 0 \)
+</p>
 
-<div lang="latex">
-\longrightarrow \frac{\partial^2 V}{\partial r^2} + {2 \over r} {\partial V \over \partial r}= 0
-</div>
+<p>
+\( \longrightarrow {\partial V \over {\partial r}} = {C_1 \over {r^2}}, \qquad C_1 \in \Re \)
+</p>
 
-<div lang="latex">
-\longrightarrow {\partial V \over {\partial r}} = {C_1 \over {r^2}}, \qquad C_1 \in \Re
-</div>
+<p>
+\[ \therefore V = -{C_1 \over {r}} + C_2, \qquad C_1, C_2 \in \Re \]
+</p>
 
-<div lang="latex">
-\therefore V = -{C_1 \over {r}} + C_2, \qquad C_1, C_2 \in \Re
-</div>
+<p>
+donde \(C_2\) pode ser arbitrariamente escolhido \(0\):
+</p>
 
-<p>donde <span lang="latex">C_2</span> pode ser arbitrariamente escolhido 0:</p>
-
-<div lang="latex">
-\therefore V = -{C_1 \over {r}}, \qquad C_1 \in \Re
-</div>
+<p>
+\[ \therefore V = -{C_1 \over {r}}, \qquad C_1 \in \Re \]
+</p>
 
 </article>
 <article>

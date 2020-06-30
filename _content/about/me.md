@@ -5,17 +5,17 @@ title: eu
 
 Eu sou **Marcos Conceição**. Recebi esse nome assim, e fiz dele o meu ao longo da minha vida.
 
-Moraria em um abraço quente e duradouro.
+Moraria num bom abraço.
 
 Passo muito tempo livre passeando por universos formalistas. Universos onde comunicação equivale a perfeição. Gosto disso.
 
 Ouço músicas de muitos estilos, depende do tempo. Mas sempre ouço músicas!
 
-Gosto muito de podcasts, apesar de ouvir com baixa frequência hoje.
+Gosto muito de *podcasts*, apesar de ouvir com baixa frequência hoje.
 
-Sou geofísico em formação pela Universidade Federal da Bahia, e técnico em Edificações pelo Instituto Federal de Educação, Ciência e Tecnologia da Bahia. Gosto muito das duas áreas, e pretendo trabalhar na interface entre elas.
+Sou geofísico em formação pela Universidade Federal da Bahia e me especializo na área de Ciência de Dados. Também sou técnico em Edificações pelo Instituto Federal de Educação, Ciência e Tecnologia da Bahia.
 
-Gosto de receber e-mails (só não me encha o saco).
+Gosto de me comunicar por e-mails (só não me encha o saco).
 
 Tenho problemas em resolução e em procrastinação.
 

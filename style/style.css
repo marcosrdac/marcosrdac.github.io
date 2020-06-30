@@ -217,6 +217,7 @@ pre {
 
 pre code {
   background: none;
+  /*font-size: small;*/
 }
 
 /* tr:nth-child(even) {background: #091B2A22;} */
