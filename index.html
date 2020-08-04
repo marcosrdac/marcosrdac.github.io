@@ -36,73 +36,562 @@
 
     <div class="page-container">
       <main>
-        <header class="page-header">sobre</header>
+        <header class="page-header">blog</header>
 
 <article>
 <header>
-<h1><a id='post_title' href='content/about/site.html'>site</a></h1>
-
+<h1><a id='post_title' href='content/blog/20200803_metaprogramming_in_julia.html'>20200803 3 functions, 1 easy block of code</a></h1>
+<p>a little of metaprogramming in julia</p>
 </header>
-<p>Este site é um canal para mim. Deixando claro: eu não gosto de redes sociais &#8211; elas me passam o sentimento de estar desperdiçando meu momento presente. Não há moral envolvida nisso; não julgo outras pessoas da mesma forma. É algo que meu corpo me comunica, e que eu acato com carinho. Entretanto, existem razões para se usar redes sociais, entre elas: trocar mensagens, conhecer pessoas em algum nível, se interar da situação dos amigos&#8230; Coisas às quais se pode referir com a palavra &#8220;socializar&#8221;.</p>
+<p>Have you ever needed to create three very similar functions? Today I&#8217;m showing you how to do that thing that you always wanted to do, in three minutes, using pure julia. I think I don&#8217;t even need to explain it for you to get what&#8217;s going on!</p>
 
-<p>Assim, o papel desde site é, em alguma medida, mitigar isso que me faz falta das redes sociais. É bom lembrar que essa necessidade de transcender a si é algo mais fundamental em nós do que o que se encontra no espaço do Facebook e do Instagram, por exemplo, e por essa razão que as pessoas ainda marcam encontros, mesmo com todas as possibilidades que a internet nos oferece hoje. Para mim, por exemplo, me falta espaço nesses locais para falar sobre coisas muito pessoais e sobre coisas muito técnicas; para produzir textos e ser livre em produção, para além das métricas dos &#8220;likes&#8221;. De fato, quero escrever aqui como um exercício que se volta quase completamente para mim mesmo &#8211; muito por isso, nunca tive um pensamento sério sobre implementar métricas de acesso ao site.</p>
+<p>Supose you want to create three functions in julia: \(f(x)=x\), \(g(x)=x^2\) and \(h(x)=x^3\). So you could workfully write:</p>
 
-<p>Algo que acho válido de colocar aqui: este site foi feito para ser simples. Tudo o que ele é foi escrito por minhas mãos: fonte, cores, diagramações, imagens&#8230; Tudo. Escrevo por meio de um editor de textos chamado VIM dentro de um terminal Linux, e sistematizo coisas repetitivas com a linguagem de programação Python. É minha intenção que o site pemaneça simples e que eu só use aqui coisas das quais que conheço.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">function</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">x</span>
+<span class="k">end</span>
 
-<p>Espero não ter soado muito possessivo. Pus esse conjunto de páginas na rede pois espero que isso aqui também seja seu. Sinta-se livre para usufruir do que eu expuser de útil, e converse comigo sobre qualquer coisa!</p>
+<span class="k">function</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">x</span><span class="o">^</span><span class="mi">2</span>
+<span class="k">end</span>
 
-<p>Oportunas aqui as palavras de Johnny Alf na música &#8220;Eu e a Brisa":</p>
+<span class="k">function</span> <span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">x</span><span class="o">^</span><span class="mi">3</span>
+<span class="k">end</span>
+</code></pre></div>
 
-<p><center></p>
+<p>But I know, when you were about to write &#8220;function&#8221; for the seccond time, you were already be thinking, &#8220;man, there must be a way for me to do it faster&#8230;&#8221;. <strong>And you would be right!</strong> Lets expand our objectives for 6 functions and do it without all this machine work!</p>
 
-<pre class="poetry">
-Fica, oh, brisa fica, pois talvez quem sabe
-O inesperado faça uma surpresa
-E traga alguém que queira te escutar
-E junto a mim queira ficar...
-</pre>
+<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">func</span> <span class="kp">in</span> <span class="p">(</span><span class="o">:</span><span class="n">f</span><span class="p">,</span> <span class="o">:</span><span class="n">g</span><span class="p">,</span> <span class="o">:</span><span class="n">h</span><span class="p">,</span> <span class="o">:</span><span class="n">i</span><span class="p">,</span> <span class="o">:</span><span class="n">j</span><span class="p">,</span> <span class="o">:</span><span class="n">k</span><span class="p">)</span>
 
-<p></center></p>
+  <span class="k">if</span>     <span class="n">func</span> <span class="o">==</span> <span class="o">:</span><span class="n">f</span>  <span class="n">E</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">elseif</span> <span class="n">func</span> <span class="o">==</span> <span class="o">:</span><span class="n">g</span>  <span class="n">E</span> <span class="o">=</span> <span class="mi">2</span>
+  <span class="k">elseif</span> <span class="n">func</span> <span class="o">==</span> <span class="o">:</span><span class="n">h</span>  <span class="n">E</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="k">elseif</span> <span class="n">func</span> <span class="o">==</span> <span class="o">:</span><span class="n">i</span>  <span class="n">E</span> <span class="o">=</span> <span class="mi">4</span>
+  <span class="k">elseif</span> <span class="n">func</span> <span class="o">==</span> <span class="o">:</span><span class="n">j</span>  <span class="n">E</span> <span class="o">=</span> <span class="mi">5</span>
+  <span class="k">elseif</span> <span class="n">func</span> <span class="o">==</span> <span class="o">:</span><span class="n">k</span>  <span class="n">E</span> <span class="o">=</span> <span class="mi">6</span>
+  <span class="k">end</span>
+
+  <span class="k">quote</span>
+    <span class="k">function</span> <span class="o">$</span><span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">x</span><span class="o">^$</span><span class="n">E</span>
+    <span class="k">end</span>
+  <span class="k">end</span> <span class="o">|&gt;</span> <span class="n">eval</span>
+
+<span class="k">end</span>
+</code></pre></div>
+
+<p>And you can then start using \(k(x)\) to get \(x^6\).</p>
+
+<h1>The downside</h1>
+
+<p>Although you might think that your code would then be slower at runtime, after all it&#8217;s all super high level, it will not. These definitions are run at parse time, before actual compilation. So, roughly speaking, the only downside is that compiling your code is going to take more time.</p>
+
+<h1>For those who want to understand what&#8217;s going on&#8230;</h1>
+
+<ul>
+<li>we enter a loop block at line 1. One iteration is done for each of the symbols f, g, h, i, j, k. At each iteration, func is assigned to one of them.</li>
+<li>then we enter the <code>if elseif</code> block. Depending on the symbol we are working on, we define a constant value E, the exponent used in the function.</li>
+<li>the next block <code>quote</code>s the code that we actually want to run: the function definition. We make use of the symbols previously defined by interpolating their values. For that we make use of the \$ operator.</li>
+<li>the end: all inside this quotation returns a block object and, by itself, does nothing. It only becomes code when put this result inside the <code>eval</code> function. I could indeed be done like this:</li>
+</ul>
+
+<div class="codehilite"><pre><span></span><code><span class="n">eval</span><span class="p">(</span>
+  <span class="k">quote</span>
+    <span class="k">function</span> <span class="o">$</span><span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">x</span><span class="o">^$</span><span class="n">E</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>but I think it&#8217;s prettier to pipe the quotation end to the eval function with <code>|&gt; eval</code>.</p>
 
 </article>
 <article>
 <header>
-<h1><a id='post_title' href='content/about/me.html'>eu</a></h1>
+<h1><a id='post_title' href='content/blog/20200310_propper_renaming_for_lf.html'>20200310 Proper renaming for LF</a></h1>
+<p>Prepend, append, change extension and more</p>
+</header>
+<p>[20200803 Disclaimer] I&#8217;ll probably post a new version for the bulk-rename part soon and link it here.</p>
+
+<p>I&#8217;ve definitely changed to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger&#8217;s and VIFM&#8217;s &#8220;I&#8221;, &#8220;A&#8221; and &#8220;a&#8221; mappings, or their &#8220;bulk-rename&#8221; function. So today I&#8217;m going to show you how to get those functionalities in LF.</p>
+
+<h2>rename</h2>
+
+<p>I&#8217;ve written this on my <code>lfrc</code> (inside <code>$HOME/.config/lf/</code>):</p>
+
+<pre><code>cmd rename %{{
+  base="$(dirname "$f")"
+  srcfn=$(basename -- "$f")
+  srcext="${srcfn##*.}"
+  srcfn="$(basename "$f" ".$srcext")"
+  srcdot="" &amp;&amp; [ ! -z $srcext ] &amp;&amp; srcdot="."
+
+  case $1 in
+    -n)  # filename_only
+      dst="$base/$1$srcdot$srcext" ;;
+    -e)  # extension_only
+      dst="$base/$srcfn$srcdot$1" ;;
+    *)   # full rename
+      dst="$base/$1" ;;
+  esac
+
+  please=''
+  for path in $f $dst
+  do
+    [ ! -w $(dirname "$path") ] &amp;&amp; please='sudo' &amp;&amp; break
+  done
+  [ $# -eq 0 ] &amp;&amp; echo "Destination not given." &amp;&amp; exit 1
+  [ -e "$dst" ] &amp;&amp;
+    printf "  Not renamed: "$dst" exists." ||
+    $please mv "$f" "$dst"
+}}
+</code></pre>
+
+<p>It is a rename function for the current file your cursor points to. Use it yourself: inside LF, type the following while pointing to &#8220;somefile.png":</p>
+
+<div class="codehilite"><pre><span></span><code><span class="p">:</span>rename someanotherfile.png
+</code></pre></div>
+
+<p>Press enter, and now &#8220;somefile.png&#8221; is called someanotherfile.png&#8221;.</p>
+
+<p>With <code>-n</code> option for rename, as in <code>:rename -n newname</code>, it just renames the filename, without extension. In the other hand, with the <code>-e</code> option, as in <code>:rename -e jpg</code>, it just changes the file extension to &#8220;jpg&#8221;. Anyway, options are really just fancy stuff. Look at how we are going to use this function in our mappings:</p>
+
+<div class="codehilite"><pre><span></span><code># unmap <span class="k">c</span>
+map <span class="k">c</span>
+# <span class="k">make</span> cW push <span class="s2">&quot;:rename &quot;</span> into <span class="k">lf</span>
+map cW &amp;<span class="k">lf</span> <span class="p">-</span>remote <span class="s2">&quot;send $id push :rename&lt;space&gt;&quot;</span>
+</code></pre></div>
+
+<p>What the third line above does is: whenever <code>cW</code> is pressed from LF, user is prompted with our rename function. This approach is certainly useful, but it turns out that LF freezes a little when &#8220;:&#8221; is pushed, as it is leaving normal mode and entering command mode. For it being frozen, sometimes the next character after &#8220;:&#8221; is not typed and we end up with <code>:ename -n</code> after pressing &#8220;cW&#8221; at a file&#8230; So, to avoid it, we can send two push commands to lf:
+  1. one for sending just &#8220;:&#8221;;
+  2. another one for sending the rest of the text.</p>
+
+<p>I created another command to push these vim-like renaming commands to screen, which is called &#8220;vim-rename&#8221;. Our final polished mappings become:</p>
+
+<pre><code>map c
+
+map a  vim-rename append word
+map I  vim-rename prepend word
+map A  vim-rename append WORD
+map C  vim-rename change WORD
+map cW vim-rename change WORD
+map cw vim-rename change word
+map ce vim-rename change extension
+
+
+cmd vim-rename &amp;{{
+  # entering command mode
+  lf -remote "send $id push :"
+  # setting variables
+  fn="$(basename $f)"
+  name="${fn%.*}"
+  [ $(echo "$fn" | grep "\." 2&gt;/dev/null) ] &amp;&amp; dot='.' &amp;&amp; ext="${fn##*.}"
+  # reading options
+  case "$@" in
+    'change WORD') fn='' ;;
+    'change word')
+      fn=$(printf "$dot$ext")
+      go_left=0 &amp;&amp; [ ! -z $dot ] &amp;&amp; go_left=$(echo "$ext" | wc -c)
+      move="$(awk 'BEGIN{ for(c=0; c&lt;'$go_left'; c++) printf "&lt;left&gt;" }')"
+      ;;
+    'prepend word')
+      go_right=$(echo 'rename' | wc -c)
+      move="&lt;home&gt;$(awk 'BEGIN{ for(c=0;c&lt;'$go_right';c++) printf "&lt;right&gt;" }')"
+      ;;
+    'append word')
+      go_left=0
+      [ ! -z $dot ] &amp;&amp; go_left=$(echo "$ext" | wc -c)
+      move="$(awk 'BEGIN{ for (c=0; c&lt;'$go_left'; c++) printf "&lt;left&gt;" }')"
+      ;;
+    'change extension')
+      fn="$name$dot"
+      ;;
+    'append WORD') ;;
+  esac
+  lf -remote "send $id push $(echo "rename $fn$move" | sed 's/\s/&lt;space&gt;/g')"
+}}
+</code></pre>
+
+<p>Now:</p>
+
+<ul>
+<li><strong>A</strong>: &#8220;append WORD&#8221; &#8212; prompts filename and puts cursor at the end of it;</li>
+<li><strong>I</strong>: &#8220;prepend word&#8221; &#8212; prompts filename and puts cursor at it&#8217;s begining</li>
+<li><strong>a</strong>: &#8220;append word&#8221; &#8212; prompts filename and puts cursor right before the first &#8220;.&#8221; (before extension);</li>
+<li><strong>cw</strong>: &#8220;change word&#8221; &#8212; clears filename and puts cursof before extension (and dot, if existent);</li>
+<li><strong>ce</strong>: &#8220;change extension&#8221; &#8212; clears extension and puts cursof after filename (and dot, if existent); and</li>
+<li><strong>cW</strong> and <strong>C</strong>: &#8220;change WORD&#8221; &#8212; clear prompt for new filename.</li>
+</ul>
+
+<h2>bulk-rename</h2>
+
+<p>bulk-rename here reads to &#8220;rename various files in a text editor&#8221;.</p>
+
+<p>My code for this functionality is inpired by @EmmChriss&#8217;s response at <a href="https://github.com/gokcehan/lf/issues/149">github/gokcehan/lf/issues/149</a>. It has grown a bit, so I&#8217;ll tell you why you should use it first:</p>
+
+<ol>
+<li>You can rename various files in the program you&#8217;ve set for $EDITOR;</li>
+<li>Have you ever wanted to rename both a movie and its subtitle to the same name but not to bother with their extensions in the process? Here you can bulk-rename without extension (and the task easily becomes as simple as &#8220;yypGddZZ&#8221; at VIM screen). This is done by using <code>-n</code> option.</li>
+<li>Have you ever wanted to transform that bunch of free note text files into <code>.md</code>&#8217;s? You can rename just extensions! The option for this is <code>-e</code>.</li>
+<li>You can also rename including all filepath (using option <code>-A</code>);</li>
+</ol>
+
+<p>Running <code>:bulk-rename</code> function in LF will take items in selection and show their names for edition in your text editor. If there are no items selected, all the current directory files are to be renamed, instead.</p>
+
+<p>Everything you need to do is sign a pact by adding this to your <code>lfrc</code>:</p>
+
+<pre><code>cmd bulk-rename ${{
+  case $1 in
+    # do not query extensions for renaming
+    -n) mode="no-exts" ;;
+    # only rename extensions
+    -e) mode="only-exts" ;;
+    # rename entire filepaths
+    -A) mode="all-path" ;;
+    # else, just rename filenames
+  esac
+  # make tmp files
+  oldnames=$(mktemp /tmp/lf-bulk-oldnames.XXXXXXXXXX)
+  newnames=$(mktemp /tmp/lf-bulk-newnames.XXXXXXXXXX)
+  if [ "$mode" != "all-path" ]
+  then
+    dirnames=$(mktemp /tmp/lf-bulk-dirnames.XXXXXXXXXX)
+    aux=$(mktemp /tmp/lf-bulk-aux.XXXXXXXXXX)
+  fi
+  # query selected files or all files in directory
+  if [ -n "$fs" ]
+  then
+    index="$fs"
+  else
+    index="$(ls $(dirname "$f"))"
+  fi
+  # separate and save useful variables in files
+  for path in $index
+  do
+    dir="$(dirname "$path")"
+    fullfilename=$(basename -- "$path")
+    filename="${fullfilename%.*}"  # must be here
+    ext="" &amp;&amp; [ $(echo $fullfilename | grep "\." 2&gt;/dev/null) ] &amp;&amp; ext="${fullfilename##*.}"
+
+    case "$mode" in
+      "all-path") echo "$(realpath "$path")" &gt;&gt; $oldnames ;;
+      "no-exts")
+        echo "$filename" &gt;&gt; $oldnames
+        [ "$ext" != "" ] &amp;&amp; ext=".$ext"
+        echo "$ext" &gt;&gt; $aux
+        ;;
+      "only-exts")
+        echo "$ext" &gt;&gt; $oldnames
+        echo $filename &gt;&gt; $aux
+        ;;
+      "") echo "$fullfilename" &gt;&gt; $oldnames ;;
+    esac
+    [ "$mode" != "all-path" ] &amp;&amp; echo "$dir" &gt;&gt; $dirnames
+  done
+  cp $oldnames $newnames
+  # interact with user
+  $EDITOR $newnames
+  # run mv on each path if they were modified
+  n=$(cat $oldnames | wc -l)
+  if [ $(cat $newnames | wc -l) -eq $n ]
+  then
+    counter=1
+    while [ $counter -le $((n+1)) ]
+    do
+      case $mode in
+        "no-exts")
+          dir="$(cat $dirnames | sed "${counter}q;d")"
+          old="$(cat $oldnames | sed "${counter}q;d")"
+          new="$(cat $newnames | sed "${counter}q;d")"
+          ext="$(cat $aux      | sed "${counter}q;d")"
+          old="$dir/$old$ext" ; new="$dir/$new$ext"
+        ;;
+        "all-path")
+          old="$(cat $oldnames | sed "${counter}q;d")"
+          new="$(cat $newnames | sed "${counter}q;d")"
+        ;;
+        "only-exts")
+          old="$(cat $oldnames | sed "${counter}q;d")"
+          new="$(cat $newnames | sed "${counter}q;d")"
+          filename="$(cat $aux | sed "${counter}q;d")"
+          echo $old $new
+          [ "$old" != "" ] &amp;&amp; old=".$old"
+          [ "$new" != "" ] &amp;&amp; new=".$new"
+          old="$dir/$filename$old"
+          new="$dir/$filename$new"
+        ;;
+        *)
+          dir="$(cat $dirnames | sed "${counter}q;d")"
+          old="$(cat $oldnames | sed "${counter}q;d")"
+          new="$(cat $newnames | sed "${counter}q;d")"
+          old="$dir/$old" ; new="$dir/$new"
+        ;;
+      esac
+      counter=$(($counter+1))
+      [ "$old" = "$new" ] &amp;&amp; continue
+      [ -e "$new" ] &amp;&amp; echo "File exists: $b" &amp;&amp; continue
+      # check write permission
+      please=''
+      for path in $old $new
+      do
+        [ ! -w $(dirname "$path") ] &amp;&amp; please='sudo' &amp;&amp; break
+      done
+      $please mv "$old" "$new"
+    done
+  else
+    echo "Number of filenames differ."
+  fi
+
+  # removing tmp files
+  rm $oldnames $newnames
+  if [ "$mode" != "all-path" ]
+  then
+    rm $dirnames
+    rm $aux
+  fi
+}}
+</code></pre>
+
+<p>I hope you enjoy my codes!</p>
+
+</article>
+<article>
+<header>
+<h1><a id='post_title' href='content/blog/20200228_tui_file_managers_battle.html'>20200228 TUI file managers battle</a></h1>
+<p>Comparing `ranger`, `Vifm` and `LF`</p>
+</header>
+<h1> </h1>
+
+<p>Since two years ago, I&#8217;ve tried some terminal file managers and ended up finding three of my taste.</p>
+
+<p>The first one was <code>ranger</code>. It conquered me for being controled in a vim-like style, having a vim-like config file, having 3 panes (the first showing the parent directory files, the middle one, the files at your directory, and the third, a preview of the selected folder/file), being able to show me pitures directly on the terminal via <code>w3m</code> (although it was not very stable), and also been written in <em>Python</em>, which was my first programming language! Then I perceived it was really a good piece of software, but this last &#8220;advatage&#8221; turned out to be a disgustful characteristic: anything written in <em>Python</em> is inherently slower than it might be. And <code>ranger</code> is really slow, sometimes as slow as a gui file browser.</p>
+
+<p>So I tried <code>Vifm</code> and loved it: it is written in <em>C</em>, that is a language that not only I comprehend, as it is usually refference in velocity marks. And <code>Vifm</code> is <em>de facto</em> way faster than <code>ranger</code>. I could also preview images here, both using w3m or, better, using <code>ueberzug</code>, that is much better (gets me no fickering or instabilities). Another thing I liked about <code>Vifm</code> was that its config files were even closer to <code>vim</code>&#8217;s than <code>ranger</code>&#8217;s were.</p>
+
+<p>Well, the only thing that annoyed me was its panes. You always open to directories at once and looks at them both in panes. It makes te screen a mess by default. You could hide the seccond, but, if you wanted to preview a file with a pager or anything, you would have to reopen it and transform that seccond pane into a preview pane. I didn&#8217;t like it at all.</p>
+
+<p>So some time ago I&#8217;ve discovered <code>LF</code>. <code>LF</code> is basically <code>ranger</code>, but almost as fast as <code>Vifm</code>, as it is well written in <em>Go</em>. It has some advantages, though: you can create functions inside the config file, and you write it in <em>shell script</em>, not in <em>Python</em> (it has never made sense). Also, the overall advage is: it launches a daemon at the first time you launch the program. And what it means? It means you can copy a file at one instance of <code>LF</code>, open another one in another terminal or multiplexer section, and then paste the file there! It is just amazing, something I missed in my previous TUI file managers. The only current disavantage is: image previwing is still not easily solved. I&#8217;m trying to make it work, though!</p>
+
+<p>So I&#8217;ll make them three be evaluated in a table:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Atribute \ File manager</th>
+  <th align="center">ranger</th>
+  <th align="center">vifm</th>
+  <th align="center"><strong>lf</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Velocity</td>
+  <td align="center">3</td>
+  <td align="center"><strong>10</strong></td>
+  <td align="center">9</td>
+</tr>
+<tr>
+  <td>Ease viewing of files</td>
+  <td align="center"><strong>10</strong></td>
+  <td align="center">3</td>
+  <td align="center"><strong>10</strong></td>
+</tr>
+<tr>
+  <td>Integrated multple instances</td>
+  <td align="center">0</td>
+  <td align="center">0</td>
+  <td align="center"><strong>10</strong></td>
+</tr>
+<tr>
+  <td>Improvability</td>
+  <td align="center">4</td>
+  <td align="center">8</td>
+  <td align="center"><strong>10</strong></td>
+</tr>
+<tr>
+  <td>Vim-like</td>
+  <td align="center">8</td>
+  <td align="center"><strong>9</strong></td>
+  <td align="center"><strong>9</strong></td>
+</tr>
+<tr>
+  <td>Image previews</td>
+  <td align="center">5</td>
+  <td align="center"><strong>8</strong></td>
+  <td align="center">0</td>
+</tr>
+<tr>
+  <td><strong>Rounded Normalized total</strong></td>
+  <td align="center">6</td>
+  <td align="center">7</td>
+  <td align="center"><strong>9</strong></td>
+</tr>
+</tbody>
+</table>
+
+<p>Then I conclude with my criteria that <code>LF</code> is the most switable TUI file manager for users like me. It is a very extensible tool and I recommend you to check my <em>lfrc</em> &#8212; the LF configuration file &#8212; settings in <a href="https://github.com/marcosrdac/dotfiles/blob/dotfiles_bspwm/.config/lf/lfrc">my dotfiles at GitHub</a>.</p>
+
+<p>For Arch users: both <code>ranger</code> and <code>vifm</code> are in Arch&#8217;s official repositories. You can install <code>LF</code> from AUR.</p>
+
+</article>
+
+
+<article>
+<header>
+<h1><a id='post_title' href='content/blog/20180930_melhoria_no_script_de_postagem.html'>20180930 Melhoria no script de postagem</a></h1>
 
 </header>
-<p>Eu sou <strong>Marcos Conceição</strong>. Recebi esse nome assim, e fiz dele o meu ao longo da minha vida.</p>
+<p>Melhorei muito o script de postagem do qual tinha me referido no 20180920. Agora ele gerencia o site como um todo: não apenas os posts da página principal, mas também as páginas que ficam na aba &#8220;links&#8221; do site. Além disso, agora posso escrever as páginas e os posts em markdown, como eu queria antes! :D</p>
 
-<p>Moraria num bom abraço.</p>
+<p>O que sinto falta é que a tradução de markdown para HTML não está completa ainda. Você ainda pode encontrar alguns asteriscos por aí&#8230;</p>
 
-<p>Passo muito tempo livre passeando por universos formalistas. Universos onde comunicação equivale a perfeição. Gosto disso.</p>
+<p>A estrutura do script ficou bem diferente de antes; defini funções para facilitar a escrita do resto do algoritmo desta vez&#8230; Sabe, não sou o programador mais eficiente nas primeiras escritas de código! Inclusive, ele não está otimizado ainda, nem bem comentado&#8230; Na medida em que eu for escrevendo a partir de agora, espero ativamente que ele fique mais legível hahaha.</p>
 
-<p>Ouço músicas de muitos estilos, depende do tempo. Mas sempre ouço músicas!</p>
+</article>
+<article>
+<header>
+<h1><a id='post_title' href='content/blog/20180920_1_desenvolvimento_da_equacao_de_potencial_elétrico_causado_por_um_eletrodo_em_profundidade.html'>20180920 Desenvolvimento da equação do potencial elétrico para um único eletrodo de corrente em subsuperfície homogênea e isotrópica</a></h1>
 
-<p>Gosto muito de <em>podcasts</em>, apesar de ouvir com baixa frequência hoje.</p>
+</header>
+<p>A equação laplaciana para o potencial é \(\vec{\nabla}^2 V = 0\). Além disso, \( V = V(r,\theta,\phi) = V(r) \), uma vez que o meio é homogêneo e isotrópico. Nestas condições, a equação laplaciana se escreve:</p>
 
-<p>Sou geofísico em formação pela Universidade Federal da Bahia e me especializo na área de Ciência de Dados. Também sou técnico em Edificações pelo Instituto Federal de Educação, Ciência e Tecnologia da Bahia.</p>
+<p>
+\( {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) +\)
+\( {1 \over r^2 \sin \theta} {\partial \over \partial \theta}  \left( \sin \theta {\partial V\over \partial \theta} \right) +\)
+\({1 \over r^2 \sin^2 \theta} {\partial^2 V \over \partial \phi^2} = 0\)
+</p>
 
-<p>Gosto de me comunicar por e-mails (só não me encha o saco).</p>
+<p>
+\( \longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) = 0 \)
+</p>
 
-<p>Tenho problemas em resolução e em procrastinação.</p>
+<p>
+\( \longrightarrow \frac{\partial^2 V}{\partial r^2} + {2 \over r} {\partial V \over \partial r}= 0 \)
+</p>
 
-<p>Minha felicidade é um tecido de muitos fios, e muitos deles são os meus amigos. Se eles estão para cima, eu subo em alegria; se eles estão para baixo, eu desabo. Mas tecidos têm muitos fios, e por isso sou relativamente estável.</p>
+<p>
+\( \longrightarrow {\partial V \over {\partial r}} = {C_1 \over {r^2}}, \qquad C_1 \in \Re \)
+</p>
 
-<p>Me afasto do que tenho conhecimento de que não gosto, pelo bem do meu corpo.</p>
+<p>
+\[ \therefore V = -{C_1 \over {r}} + C_2, \qquad C_1, C_2 \in \Re \]
+</p>
 
-<p>Não gosto de expressões de reatividade.</p>
+<p>
+donde \(C_2\) pode ser arbitrariamente escolhido \(0\):
+</p>
 
-<p>Me aproximo do que tenho conhecimento de que gosto, pelo bem do meu corpo.</p>
+<p>
+\[ \therefore V = -{C_1 \over {r}}, \qquad C_1 \in \Re \]
+</p>
 
-<p>Gosto de expressões de afirmação.</p>
+</article>
+<article>
+<header>
+<h1><a id='post_title' href='content/blog/20180920_0_fiz_um_script_de_postagem.html'>20180920 Fiz um script de postagem</a></h1>
 
-<p>Gosto de simplicidade, e simplicidade não é sinônimo de facilidade.</p>
+</header>
+<p>Investi 30 minutos modificando o sistema de arquivos do blog e produzindo um script, hoje. Ele pega o layout deste blog, bem como meus posts salvos em html puro &#8211; localizados numa determinada pasta &#8211;, e junta tudo num único arquivo chamado &#8220;index.html&#8221;, que se torna a página que você está vendo. O script foi feito em Python e é parte de uma busca por simplicidade. No futuro, farei algo para que eu só tenha que escrever os posts em markdown, não mais em html, porque escrever em html custa mais aos meus dedos e ao diálogo entre o que escrevo e minha organização mental&#8230; Não é natural para mim. No momento, o script está no meu repositório do GitHub que corresponde a este blog.</p>
 
-<p>Sou homem e sou heterossexual.</p>
+</article>
+<article>
+<header>
+<h1><a id='post_title' href='content/blog/20180918_monstro_sonolento.html'>20180918 monstro_sonolento</a></h1>
 
-<p>Gosto de trocar conversas, momentos e silêncio.</p>
+</header>
+<p><center>hoje me vi um monstro<br />
+cristão<br />
+quero dizer que fui tentado<br />
+por qualquer demônio<br />
+porque quero ser cristão</center></p>
 
-<p>Sou gente, gosto de gente.</p>
+<p><center>porque agora sofro muito<br />
+quero me limpar por minha boca com entidades<br />
+quero me limpar por minha boca com tratos e conversas<br />
+quero desabar, pois vejo que é tudo tão egoico</center></p>
+
+<p><center>e me pergunto a um deus<br />
+que destino ele guarda para mim<br />
+em sua onisciência<br />
+que destino tem um monstro?<br />
+</center></p>
+
+<p><center>bem, para toda contingência<br />
+não é apenas tautologia moral<br />
+desta vez é deformação, malevolência<br />
+é encarceramento em autodefesa</center></p>
+
+<p><center>cultivarei meu sofrimento irresponsável<br />
+cultivarei para que ele me marque<br />
+não quero limpar minha boca, senão com água<br />
+muito menos com a ajuda deste papel<br />
+</center></p>
+
+</article>
+<article>
+<header>
+<h1><a id='post_title' href='content/blog/20160715_socialismos_existiram.html'>20160715 Socialismos existiram</a></h1>
+
+</header>
+<p>Tive que explicar isso muitas vezes ultimamente, então talvez não seja tão óbvio: Comunismo nunca existiu na realidade concreta. O Estado, sendo a entidade responsável por legitimar a propriedade privada, não faz sentido numa sociedade sem propriedade privada. A partir disso, entende-se o porquê de não haver Estado no comunismo.</p>
+
+<p>Marx aponta para o Comunismo e dá como solução para a transição entre os sistemas capitalista e o comunista - fundamentalmente diferentes - o Socialismo. O Socialismo ocorreu e manteve a presença de um Estado autoritário em todas as aparições. Apesar disso, muitos marxistas defendem formas diferentes de se chegar à sociedade ideal de Marx. Perceba que se você diz algo como &#8220;o comunismo foi ruim em todas as aparições&#8221;, você está enganado. Comunismo ainda não aconteceu.</p>
+
+<p>Por outro lado, pra que alguém realmente espere por uma sociedade desprovida de propriedade privada - na qual eu me disponibilizaria a viver -, ela teria que ter uma quantidade de fé indescritível. Uma quantidade de fé na humanidade que eu não consigo ter. Não é impossível que ocorra tal sociedade. Mas que se mantenha, cercada de outros sistemas imperialistas, é algo minimamente duvidoso. Basta olhar para as tentativas anarquistas de sociedade como a Colônia Cecília no Brasil. Comunidades descentralizadas de uma figura como o Estado são vistas como fracas, instáveis e temporárias e são tratadas como tal. Daí são arruinadas pela pressão exterior, que age de inúmeras formas. Por essas improbabilidades, sou quase completamente descrente de um comunismo enquanto realidade.</p>
+
+</article>
+<article>
+<header>
+<h1><a id='post_title' href='content/blog/20160618_nem_todos_os_homens_sao_estupradores_potenciais.html'>20160618 Nem todos os homens são estupradores potenciais</a></h1>
+
+</header>
+<p>Nem todos os homens são estupradores potenciais. Alguns já os são em ato.</p>
+
+<p>Para que se tenha potencial a cair, basta não estar no chão. E é certo também que nem toda potência — na verdade apenas uma desprezível minoria delas — se torna ato, pois para cada ato firmado, uma infinidade de potencias surge.</p>
+
+<p>Potência é diferença; dizer que todos os homens são potenciais estupradores é dizer que sempre existe uma diferença entre esses dois tipos. Pois, se TODOS são potência, NENHUM é em ato, o que não procede.</p>
+
+<p>&#8220;Qualquer homem pode ser um estuprador potencial&#8221; me parece mais sensato. Perde força de oratória, mas é verdadeiro.</p>
+
+</article>
+<article>
+<header>
+<h1><a id='post_title' href='content/blog/20160110_o_acaso_e_mais_importante.html'>20160110 o Acaso é mais importante</a></h1>
+
+</header>
+<p>Você não precisa saber a fórmula de Bhaskara para resolver equações do segundo grau. Pra isso, você só precisa saber completar quadrados ou tornar polinomiais incompletas. Você não precisa saber a fórmula Tartaglia para resolver equações do terceiro grau. Basta entender como manipular variáveis artificiais em uma equação (e tirar raízes de complexos).</p>
+
+<p>A cada dia que passa abraço mais a ideia de que não vale a pena buscar por fórmulas prontas para a maioria das coisas. É muito mais importante entender os métodos que os anciões usaram e focar nas circunstâncias para escolher qual usar. A palavra é circunstância. A cada dia que passa abraço mais a ideia de que o Acaso é, realmente, a coisa mais importante.</p>
+
+</article>
+<article>
+<header>
+<h1><a id='post_title' href='content/blog/20150727_o_discurso_do_metodo_3_parte_consideracoes_sobre_a_moral_resumo.html'>20150727 O Discurso do Método - 3ª parte: Considerações Sobre a Moral [resumo]</a></h1>
+
+</header>
+<p>Antes de chegar à moral perfeita – depois do conhecimento de tudo ter sido alcançado –, Descartes cria para si uma moral provisória, sobre a qual poderia criar a primeira, aludindo-a ao canteiro de uma obra. Divide esta moral primeira em quatro princípios e explicita-os. São eles:</p>
+
+<h1>Obedecer às leis e aos costumes locais e conservar em si a religião de seu Deus</h1>
+
+<p>O pensador renascentista afirma que o primeiro ponto de sua moral básica diz respeito à religião. Segundo ele, Deus sempre o permitiu agir sob moderação e assim conseguir evoluir seu espírito, e, portanto, a religião tem valor capital para sua moral. A moderação é chave para agir corretamente, pois os excessos são, pelos dados do real, geralmente resultantes de coisas ruins.</p>
+
+<p>Descartes diz também que qualquer escolha que subtrai do homem sua liberdade é um excesso. As leis, apesar disso, são um excesso válido, pois “remediam a inconstância dos espíritos fracos” – algo que Hobbes discutirá melhor –. Caso haja dúvida sobre como agir, fazer como os mais sensatos locais fazem, a fim de não iniciar muito longe da verdade.</p>
+
+<h1>Ser resoluto nas ações</h1>
+
+<p>Mesmo que ainda irresoluto nos juízos, dever-se-á ser assertivo nas ações, a fim de diminuir os erros. Por mais que o primeiro passo seja dado ao acaso, deve-continuar na mesma direção – a menos que hajam obstáculos significativos no caminho – para que, ao contrário do que andam em caminhos aleatórios, não se perca. Pois, uma vez perdido no meio de uma floresta, para qualquer lugar que se ande o suficiente, há de se encontrar uma saída.</p>
+
+<h1>Vencer-te a ti mesmo antes da fortuna</h1>
+
+<p>Aqui Decartes expressa sua forte influência dos estóicos. Diz que além dos pensamentos, não temos controle sobre nada por inteiro. É interessante saber que isso não era unanimidade entre os pensadores contemporâneos a ele. Montaigne, por exemplo, tinha suas dúvidas quanto a isso. Crer nisso – que pouco está sob nosso controle – possibilita a <em>apatia</em> estóica como virtude que leva à <em>ataraxia</em>. Possibilita também o entendimento de que não devemos buscar o impossível e assim, sermos felizes.</p>
+
+<h1>Tentar cada vez mais melhorar o juízo</h1>
+
+<p>Descartes afirmava que devemos cada vez mais melhorar a capacidade de bem julgar as coisas. Só desta forma nos aproximamos mais do conhecimento da verdade. “Basta bem julgar para bem proceder, e julgar o melhor possivel para agir da melhor maneira.”. Diz ainda que os antigos valores que antes foram tomados como importantes não podem virar-se completamente inúteis, e a partir do julgamento, devemos procurar pelas partes boas dos mesmos.</p>
+
+<p>Ainda antes de completar a terceira parte do livro, o autor faz uma consideração sobre um ponto sobre o qual é, ainda hoje, mal-interpretado. A de que sua dúvida sobre todos os assuntos não é como a dos céticos. Estes últimos duvidavam sem razão e por isso são criticados. Eles entendiam que o estado padrão, natural e final de todo pensamento é a dúvida, pois não é possível conhecer o real. Descartes concordava que o real é incognoscível, mas se diferencia no sentido que tomava da dúvida. A “dúvida” de Descartes diz respeito a saber da eterna e incontornável possibilidade de não ter a descrição correta do real, sendo ela não um obstáculo, mas uma razão para chegar a uma conclusão sobre ele que se possa considerar segura: “todo o meu propósito só tendia a me dar segurança e me afastar a areia movediça e a areia para encontrar a rocha e a argila” – para quem está por fora, rocha e argila são estágios extremos, o que é uma alusão ao seu desejo de chegar a pontos fixos. A rocha é o princípio, a argila, o produto final da meteorização.</p>
 
 </article>
       </main>

@@ -39,7 +39,7 @@ content_sign = '<!-- content here --!>'      # HTML sign to put contents
 page_name_sign = '<! -- page name here -->'  # HTML sign to put page name
 relpath_sign = '<!-- root path --!>'         # HTML sign for root path
 
-index_page_name = 'about'        # page chosen to be main
+index_page_name = 'blog'        # page chosen to be main
 
 _content_dir_path = '_content'  # input markdown folder
 content_dir_path = 'content'    # output HTML folder
