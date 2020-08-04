@@ -5,6 +5,8 @@ date: 20200310
 draft: false
 ---
 
+\[20200803 Disclaimer\] I'll probably post a new version for the bulk-rename part soon and link it here.
+
 I've definitely changed to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger's and VIFM's "I", "A" and "a" mappings, or their "bulk-rename" function. So today I'm going to show you how to get those functionalities in LF.
 
 
