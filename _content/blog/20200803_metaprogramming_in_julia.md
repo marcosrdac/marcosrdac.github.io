@@ -22,7 +22,7 @@ function h(x)
 end
 ```
 
-But I know, when you were about to write "function" for the seccond time, you were already be thinking, "man, there must be a way for me to do it faster...". **And you would be right!** Lets expand our objectives for 6 functions and do it without all this machine work!
+But I know, when you were about to write "function" for the second time, you were already be thinking, "man, there must be a way for me to do it faster...". **And you would be right!** Lets expand our objectives for 6 functions and do it without all this machine work!
 
 ```julia
 for func in (:f, :g, :h, :i, :j, :k)
