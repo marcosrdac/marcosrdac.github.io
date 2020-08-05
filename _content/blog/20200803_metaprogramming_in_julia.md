@@ -1,10 +1,10 @@
 ---
 date: 20200803
-title: 3 functions, 1 easy block of code
+title: Making various functions in one only block of code
 subtitle: a little of metaprogramming in julia
 ---
 
-Have you ever needed to create three very similar functions? Today I'm showing you how to do that thing that you always wanted to do, in three minutes, using pure julia. I think I don't even need to explain it for you to get what's going on!
+Have you ever needed to create numerous very similar functions? Today I'm showing you how to do that thing you always wanted to do in pure julia: create various functions in a loop.
 
 <p>Supose you want to create three functions in julia: \(f(x)=x\), \(g(x)=x^2\) and \(h(x)=x^3\). So you could workfully write:</p>
 
@@ -22,7 +22,7 @@ function h(x)
 end
 ```
 
-But I know, when you were about to write "function" for the second time, you were already be thinking, "man, there must be a way for me to do it faster...". **And you would be right!** Lets expand our objectives for 6 functions and do it without all this machine work!
+But I know, when you are about to write "function" for the second time, your thoughts sudenly start to bother you: "man, there must be a way for me to do it efficiently...". I'm glad to tell you that **you would be right!** Lets expand our objectives for 6 functions and do it without all this machine work!
 
 ```julia
 for func in (:f, :g, :h, :i, :j, :k)
@@ -49,7 +49,7 @@ end
 
 # The downside
 
-Although you might think that your code would then be slower at runtime, after all it's all super high level, it will not. These definitions are run at parse time, before actual compilation. So, roughly speaking, the only downside is that compiling your code is going to take more time.
+Although you might think that our last code would then be slower at runtime, after all it's all super high level code, it will not. These definitions are run at parse time, before actual compilation. So, roughly speaking, the only downside is that compiling your code is going to take more time.
 
 
 # For those who want to understand what's going on...
@@ -60,13 +60,13 @@ Although you might think that your code would then be slower at runtime, after a
   - the end: all inside this quotation returns a block object and, by itself, does nothing. It only becomes code when put this result inside the `eval` function. I could indeed be done like this:
 
 ```julia
-eval(
-  quote
-    function $func(x)
-      return x^$E
+  eval(
+    quote
+      function $func(x)
+        return x^$E
+      end
     end
-  end
-)
+  )
 ```
 
   but I think it's prettier to pipe the quotation end to the eval function with `|> eval`.

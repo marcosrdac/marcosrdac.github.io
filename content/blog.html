@@ -40,10 +40,10 @@
 
 <article>
 <header>
-<h1><a id='post_title' href='blog/20200803_metaprogramming_in_julia.html'>20200803 3 functions, 1 easy block of code</a></h1>
+<h1><a id='post_title' href='blog/20200803_metaprogramming_in_julia.html'>20200803 Making various functions in one only block of code</a></h1>
 <p>a little of metaprogramming in julia</p>
 </header>
-<p>Have you ever needed to create three very similar functions? Today I&#8217;m showing you how to do that thing that you always wanted to do, in three minutes, using pure julia. I think I don&#8217;t even need to explain it for you to get what&#8217;s going on!</p>
+<p>Have you ever needed to create numerous very similar functions? Today I&#8217;m showing you how to do that thing you always wanted to do in pure julia: create various functions in a loop.</p>
 
 <p>Supose you want to create three functions in julia: \(f(x)=x\), \(g(x)=x^2\) and \(h(x)=x^3\). So you could workfully write:</p>
 
@@ -60,7 +60,7 @@
 <span class="k">end</span>
 </code></pre></div>
 
-<p>But I know, when you were about to write &#8220;function&#8221; for the second time, you were already be thinking, &#8220;man, there must be a way for me to do it faster&#8230;&#8221;. <strong>And you would be right!</strong> Lets expand our objectives for 6 functions and do it without all this machine work!</p>
+<p>But I know, when you are about to write &#8220;function&#8221; for the second time, your thoughts sudenly start to bother you: &#8220;man, there must be a way for me to do it efficiently&#8230;&#8221;. I&#8217;m glad to tell you that <strong>you would be right!</strong> Lets expand our objectives for 6 functions and do it without all this machine work!</p>
 
 <div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">func</span> <span class="kp">in</span> <span class="p">(</span><span class="o">:</span><span class="n">f</span><span class="p">,</span> <span class="o">:</span><span class="n">g</span><span class="p">,</span> <span class="o">:</span><span class="n">h</span><span class="p">,</span> <span class="o">:</span><span class="n">i</span><span class="p">,</span> <span class="o">:</span><span class="n">j</span><span class="p">,</span> <span class="o">:</span><span class="n">k</span><span class="p">)</span>
 
@@ -85,7 +85,7 @@
 
 <h1>The downside</h1>
 
-<p>Although you might think that your code would then be slower at runtime, after all it&#8217;s all super high level, it will not. These definitions are run at parse time, before actual compilation. So, roughly speaking, the only downside is that compiling your code is going to take more time.</p>
+<p>Although you might think that our last code would then be slower at runtime, after all it&#8217;s all super high level code, it will not. These definitions are run at parse time, before actual compilation. So, roughly speaking, the only downside is that compiling your code is going to take more time.</p>
 
 <h1>For those who want to understand what&#8217;s going on&#8230;</h1>
 
@@ -96,13 +96,13 @@
 <li>the end: all inside this quotation returns a block object and, by itself, does nothing. It only becomes code when put this result inside the <code>eval</code> function. I could indeed be done like this:</li>
 </ul>
 
-<div class="codehilite"><pre><span></span><code><span class="n">eval</span><span class="p">(</span>
-  <span class="k">quote</span>
-    <span class="k">function</span> <span class="o">$</span><span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-      <span class="k">return</span> <span class="n">x</span><span class="o">^$</span><span class="n">E</span>
+<div class="codehilite"><pre><span></span><code>  <span class="n">eval</span><span class="p">(</span>
+    <span class="k">quote</span>
+      <span class="k">function</span> <span class="o">$</span><span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span><span class="o">^$</span><span class="n">E</span>
+      <span class="k">end</span>
     <span class="k">end</span>
-  <span class="k">end</span>
-<span class="p">)</span>
+  <span class="p">)</span>
 </code></pre></div>
 
 <p>but I think it&#8217;s prettier to pipe the quotation end to the eval function with <code>|&gt; eval</code>.</p>
