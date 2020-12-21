@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-beta1/katex.min.css" integrity="sha384-VEnyslhHLHiYPca9KFkBB3CMeslnM9CzwjxsEbZTeA21JBm7tdLwKoZmCt3cZTYD" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-beta1/katex.min.js" integrity="sha384-O4hpKqcplNCe+jLuBVEXC10Rn1QEqAmX98lKAIFBEDxZI0a+6Z2w2n8AEtQbR4CD" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-beta1/contrib/auto-render.min.js" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet/less" type="text/css" href="http://127.0.0.1:8000/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+        disabled="disabled"
+    href="http://127.0.0.1:8000/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+            disabled="disabled"
+          href="http://127.0.0.1:8000/theme/pygments/fruity.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="http://127.0.0.1:8000/theme/pygments/fruity.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/font-awesome/css/solid.css">
+
+
+
+
+
+  
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#091B2A">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#091B2A">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#091B2A">
+
+<meta name="author" content="Marcos Conceição" />
+<meta name="description" content="[20200803 Disclaimer] I&#39;ll probably post a new version for the bulk-rename part soon and link it here. I&#39;ve definitely changed to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger&#39;s and VIFM&#39;s &#34;I&#34;, &#34;A&#34; and &#34;a&#34; mappings, or their &#34;bulk-rename …" />
+<meta name="keywords" content="">
+
+
+<meta property="og:site_name" content="Marcos Conceição"/>
+<meta property="og:title" content="Proper renaming for LF"/>
+<meta property="og:description" content="[20200803 Disclaimer] I&#39;ll probably post a new version for the bulk-rename part soon and link it here. I&#39;ve definitely changed to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger&#39;s and VIFM&#39;s &#34;I&#34;, &#34;A&#34; and &#34;a&#34; mappings, or their &#34;bulk-rename …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://127.0.0.1:8000/proper-renaming-for-lf.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-03-10 00:00:00-03:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://127.0.0.1:8000/author/marcos-conceicao.html">
+<meta property="article:section" content="blog"/>
+<meta property="og:image" content="/images/base/me.png">
+
+  <title>Marcos Conceição &ndash; Proper renaming for LF</title>
+
+</head>
+<body class="light-theme">
+  <aside>
+    <div>
+      <a href="http://127.0.0.1:8000">
+        <img src="/images/base/me.png" alt="Marcos Conceição" title="Marcos Conceição">
+      </a>
+
+      <h1>
+        <a href="http://127.0.0.1:8000">Marcos Conceição</a>
+      </h1>
+
+<p>My personal site</p>
+
+      <nav>
+        <ul class="list">
+
+
+              <li>
+                <a target="_self"
+                   href="http://127.0.0.1:8000/pages/about.html#about">
+                  About
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="http://127.0.0.1:8000/pages/contact.html#contact">
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="http://127.0.0.1:8000/pages/portfolio.html#portfolio">
+                  Portfolio
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="http://127.0.0.1:8000/pages/services.html#services">
+                  Services
+                </a>
+              </li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/marcosrdac" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/marcos-concei%C3%A7%C3%A3o-3ba173189/" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-youtube" href="https://www.youtube.com/channel/UCeMnyCimF8pJjTM5MxFdRlw" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://127.0.0.1:8000">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="proper-renaming-for-lf">Proper renaming for LF</h1>
+    <p>
+      Posted on Tue 10 March 2020 in <a href="http://127.0.0.1:8000/category/blog.html">blog</a>
+
+        &#8226; 5 min read
+    </p>
+  </header>
+
+
+  <div>
+    <p>[20200803 Disclaimer] I'll probably post a new version for the bulk-rename part soon and link it here.</p>
+<p>I've definitely changed to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger's and VIFM's "I", "A" and "a" mappings, or their "bulk-rename" function. So today I'm going to show you how to get those functionalities in LF.</p>
+<h2>rename</h2>
+<p>I've written this on my <code>lfrc</code> (inside <code>$HOME/.config/lf/</code>):</p>
+<div class="highlight"><pre><span></span><code>cmd rename %{{
+  base=&quot;$(dirname &quot;<span class="nv">$f</span>&quot;)&quot;
+  srcfn=$(basename -- &quot;<span class="nv">$f</span>&quot;)
+  srcext=&quot;<span class="cp">${</span><span class="n">srcfn</span><span class="c1">##*.</span><span class="cp">}</span>&quot;
+  srcfn=&quot;$(basename &quot;<span class="nv">$f</span>&quot; &quot;.<span class="nv">$srcext</span>&quot;)&quot;
+  srcdot=&quot;&quot; <span class="err">&amp;&amp;</span> [ ! -z <span class="nv">$srcext</span> ] <span class="err">&amp;&amp;</span> srcdot=&quot;.&quot;
+
+  case $1 in
+    -n)  # filename_only
+      dst=&quot;<span class="nv">$base</span>/$1<span class="nv">$srcdot$srcext</span>&quot; ;;
+    -e)  # extension_only
+      dst=&quot;<span class="nv">$base</span>/<span class="nv">$srcfn$srcdot</span>$1&quot; ;;
+    *)   # full rename
+      dst=&quot;<span class="nv">$base</span>/$1&quot; ;;
+  esac
+
+  please=&#39;&#39;
+  for path in <span class="nv">$f</span> <span class="nv">$dst</span>
+  do
+    [ ! -w $(dirname &quot;<span class="nv">$path</span>&quot;) ] <span class="err">&amp;&amp;</span> please=&#39;sudo&#39; <span class="err">&amp;&amp;</span> break
+  done
+  [ $# -eq 0 ] <span class="err">&amp;&amp;</span> echo &quot;Destination not given.&quot; <span class="err">&amp;&amp;</span> exit 1
+  [ -e &quot;<span class="nv">$dst</span>&quot; ] <span class="err">&amp;&amp;</span>
+    printf &quot;  Not renamed: &quot;<span class="nv">$dst</span>&quot; exists.&quot; ||
+    <span class="nv">$please</span> mv &quot;<span class="nv">$f</span>&quot; &quot;<span class="nv">$dst</span>&quot;
+}}
+</code></pre></div>
+
+
+<p>It is a rename function for the current file your cursor points to. Use it yourself: inside LF, type the following while pointing to "somefile.png":</p>
+<div class="highlight"><pre><span></span><code><span class="p">:</span>rename someanotherfile.png
+</code></pre></div>
+
+
+<p>Press enter, and now "somefile.png" is called someanotherfile.png".</p>
+<p>With <code>-n</code> option for rename, as in <code>:rename -n newname</code>, it just renames the filename, without extension. In the other hand, with the <code>-e</code> option, as in <code>:rename -e jpg</code>, it just changes the file extension to "jpg". Anyway, options are really just fancy stuff. Look at how we are going to use this function in our mappings:</p>
+<div class="highlight"><pre><span></span><code># unmap <span class="k">c</span>
+map <span class="k">c</span>
+# <span class="k">make</span> cW push <span class="s2">&quot;:rename &quot;</span> into <span class="k">lf</span>
+map cW &amp;<span class="k">lf</span> <span class="p">-</span>remote <span class="s2">&quot;send $id push :rename&lt;space&gt;&quot;</span>
+</code></pre></div>
+
+
+<p>What the third line above does is: whenever <code>cW</code> is pressed from LF, user is prompted with our rename function. This approach is certainly useful, but it turns out that LF freezes a little when ":" is pushed, as it is leaving normal mode and entering command mode. For it being frozen, sometimes the next character after ":" is not typed and we end up with <code>:ename -n</code> after pressing "cW" at a file... So, to avoid it, we can send two push commands to lf:
+  1. one for sending just ":";
+  2. another one for sending the rest of the text.</p>
+<p>I created another command to push these vim-like renaming commands to screen, which is called "vim-rename". Our final polished mappings become:</p>
+<div class="highlight"><pre><span></span><code><span class="n">map</span> <span class="n">c</span>
+
+<span class="n">map</span> <span class="n">a</span>  <span class="n">vim</span><span class="o">-</span><span class="n">rename</span> <span class="n">append</span> <span class="n">word</span>
+<span class="n">map</span> <span class="n">I</span>  <span class="n">vim</span><span class="o">-</span><span class="n">rename</span> <span class="n">prepend</span> <span class="n">word</span>
+<span class="n">map</span> <span class="n">A</span>  <span class="n">vim</span><span class="o">-</span><span class="n">rename</span> <span class="n">append</span> <span class="n">WORD</span>
+<span class="n">map</span> <span class="n">C</span>  <span class="n">vim</span><span class="o">-</span><span class="n">rename</span> <span class="n">change</span> <span class="n">WORD</span>
+<span class="n">map</span> <span class="n">cW</span> <span class="n">vim</span><span class="o">-</span><span class="n">rename</span> <span class="n">change</span> <span class="n">WORD</span>
+<span class="n">map</span> <span class="n">cw</span> <span class="n">vim</span><span class="o">-</span><span class="n">rename</span> <span class="n">change</span> <span class="n">word</span>
+<span class="n">map</span> <span class="n">ce</span> <span class="n">vim</span><span class="o">-</span><span class="n">rename</span> <span class="n">change</span> <span class="n">extension</span>
+
+
+<span class="n">cmd</span> <span class="n">vim</span><span class="o">-</span><span class="n">rename</span> <span class="o">&amp;</span><span class="p">{{</span>
+  <span class="cp"># entering command mode</span>
+  <span class="n">lf</span> <span class="o">-</span><span class="n">remote</span> <span class="s">&quot;send $id push :&quot;</span>
+  <span class="cp"># setting variables</span>
+  <span class="n">fn</span><span class="o">=</span><span class="s">&quot;$(basename $f)&quot;</span>
+  <span class="n">name</span><span class="o">=</span><span class="s">&quot;${fn%.*}&quot;</span>
+  <span class="p">[</span> <span class="err">$</span><span class="p">(</span><span class="n">echo</span> <span class="s">&quot;$fn&quot;</span> <span class="o">|</span> <span class="n">grep</span> <span class="s">&quot;\.&quot;</span> <span class="mi">2</span><span class="o">&gt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span><span class="p">)</span> <span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">dot</span><span class="o">=</span><span class="sc">&#39;.&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">ext</span><span class="o">=</span><span class="s">&quot;${fn##*.}&quot;</span>
+  <span class="cp"># reading options</span>
+  <span class="k">case</span> <span class="s">&quot;$@&quot;</span> <span class="k">in</span>
+    <span class="err">&#39;</span><span class="n">change</span> <span class="n">WORD</span><span class="err">&#39;</span><span class="p">)</span> <span class="n">fn</span><span class="o">=</span><span class="err">&#39;&#39;</span> <span class="p">;;</span>
+    <span class="err">&#39;</span><span class="n">change</span> <span class="n">word</span><span class="err">&#39;</span><span class="p">)</span>
+      <span class="n">fn</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">printf</span> <span class="s">&quot;$dot$ext&quot;</span><span class="p">)</span>
+      <span class="n">go_left</span><span class="o">=</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="p">[</span> <span class="o">!</span> <span class="o">-</span><span class="n">z</span> <span class="err">$</span><span class="n">dot</span> <span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">go_left</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">echo</span> <span class="s">&quot;$ext&quot;</span> <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">c</span><span class="p">)</span>
+      <span class="n">move</span><span class="o">=</span><span class="s">&quot;$(awk &#39;BEGIN{ for(c=0; c&lt;&#39;$go_left&#39;; c++) printf &quot;</span><span class="o">&lt;</span><span class="n">left</span><span class="o">&gt;</span><span class="s">&quot; }&#39;)&quot;</span>
+      <span class="p">;;</span>
+    <span class="err">&#39;</span><span class="n">prepend</span> <span class="n">word</span><span class="err">&#39;</span><span class="p">)</span>
+      <span class="n">go_right</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">echo</span> <span class="err">&#39;</span><span class="n">rename</span><span class="err">&#39;</span> <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">c</span><span class="p">)</span>
+      <span class="n">move</span><span class="o">=</span><span class="s">&quot;&lt;home&gt;$(awk &#39;BEGIN{ for(c=0;c&lt;&#39;$go_right&#39;;c++) printf &quot;</span><span class="o">&lt;</span><span class="n">right</span><span class="o">&gt;</span><span class="s">&quot; }&#39;)&quot;</span>
+      <span class="p">;;</span>
+    <span class="err">&#39;</span><span class="n">append</span> <span class="n">word</span><span class="err">&#39;</span><span class="p">)</span>
+      <span class="n">go_left</span><span class="o">=</span><span class="mi">0</span>
+      <span class="p">[</span> <span class="o">!</span> <span class="o">-</span><span class="n">z</span> <span class="err">$</span><span class="n">dot</span> <span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">go_left</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">echo</span> <span class="s">&quot;$ext&quot;</span> <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">c</span><span class="p">)</span>
+      <span class="n">move</span><span class="o">=</span><span class="s">&quot;$(awk &#39;BEGIN{ for (c=0; c&lt;&#39;$go_left&#39;; c++) printf &quot;</span><span class="o">&lt;</span><span class="n">left</span><span class="o">&gt;</span><span class="s">&quot; }&#39;)&quot;</span>
+      <span class="p">;;</span>
+    <span class="err">&#39;</span><span class="n">change</span> <span class="n">extension</span><span class="err">&#39;</span><span class="p">)</span>
+      <span class="n">fn</span><span class="o">=</span><span class="s">&quot;$name$dot&quot;</span>
+      <span class="p">;;</span>
+    <span class="err">&#39;</span><span class="n">append</span> <span class="n">WORD</span><span class="err">&#39;</span><span class="p">)</span> <span class="p">;;</span>
+  <span class="n">esac</span>
+  <span class="n">lf</span> <span class="o">-</span><span class="n">remote</span> <span class="s">&quot;send $id push $(echo &quot;</span><span class="n">rename</span> <span class="err">$</span><span class="n">fn</span><span class="err">$</span><span class="n">move</span><span class="s">&quot; | sed &#39;s/\s/&lt;space&gt;/g&#39;)&quot;</span>
+<span class="p">}}</span>
+</code></pre></div>
+
+
+<p>Now:</p>
+<ul>
+<li><strong>A</strong>: "append WORD" --- prompts filename and puts cursor at the end of it;</li>
+<li><strong>I</strong>: "prepend word" --- prompts filename and puts cursor at it's begining</li>
+<li><strong>a</strong>: "append word" --- prompts filename and puts cursor right before the first "." (before extension);</li>
+<li><strong>cw</strong>: "change word" --- clears filename and puts cursof before extension (and dot, if existent);</li>
+<li><strong>ce</strong>: "change extension" --- clears extension and puts cursof after filename (and dot, if existent); and</li>
+<li><strong>cW</strong> and <strong>C</strong>: "change WORD" --- clear prompt for new filename.</li>
+</ul>
+<h2>bulk-rename</h2>
+<p>bulk-rename here reads to "rename various files in a text editor".</p>
+<p>My code for this functionality is inpired by @EmmChriss's response at <a href="https://github.com/gokcehan/lf/issues/149">github/gokcehan/lf/issues/149</a>. It has grown a bit, so I'll tell you why you should use it first:</p>
+<ol>
+<li>You can rename various files in the program you've set for $EDITOR;</li>
+<li>Have you ever wanted to rename both a movie and its subtitle to the same name but not to bother with their extensions in the process? Here you can bulk-rename without extension (and the task easily becomes as simple as "yypGddZZ" at VIM screen). This is done by using <code>-n</code> option.</li>
+<li>Have you ever wanted to transform that bunch of free note text files into <code>.md</code>'s? You can rename just extensions! The option for this is <code>-e</code>.</li>
+<li>You can also rename including all filepath (using option <code>-A</code>);</li>
+</ol>
+<p>Running <code>:bulk-rename</code> function in LF will take items in selection and show their names for edition in your text editor. If there are no items selected, all the current directory files are to be renamed, instead.</p>
+<p>Everything you need to do is sign a pact by adding this to your <code>lfrc</code>:</p>
+<div class="highlight"><pre><span></span><code>cmd bulk-rename <span class="cp">${</span><span class="p">{</span>
+  <span class="n">case</span> <span class="err">$</span><span class="mi">1</span> <span class="ow">in</span>
+    <span class="c1"># do not query extensions for renaming</span>
+    <span class="o">-</span><span class="n">n</span><span class="p">)</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;no-exts&quot;</span> <span class="p">;;</span>
+    <span class="c1"># only rename extensions</span>
+    <span class="o">-</span><span class="n">e</span><span class="p">)</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;only-exts&quot;</span> <span class="p">;;</span>
+    <span class="c1"># rename entire filepaths</span>
+    <span class="o">-</span><span class="n">A</span><span class="p">)</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;all-path&quot;</span> <span class="p">;;</span>
+    <span class="c1"># else, just rename filenames</span>
+  <span class="n">esac</span>
+  <span class="c1"># make tmp files</span>
+  <span class="n">oldnames</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">mktemp</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">lf</span><span class="o">-</span><span class="n">bulk</span><span class="o">-</span><span class="n">oldnames</span><span class="o">.</span><span class="n">XXXXXXXXXX</span><span class="p">)</span>
+  <span class="n">newnames</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">mktemp</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">lf</span><span class="o">-</span><span class="n">bulk</span><span class="o">-</span><span class="n">newnames</span><span class="o">.</span><span class="n">XXXXXXXXXX</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">[</span> <span class="s2">&quot;$mode&quot;</span> <span class="o">!=</span> <span class="s2">&quot;all-path&quot;</span> <span class="p">]</span>
+  <span class="n">then</span>
+    <span class="n">dirnames</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">mktemp</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">lf</span><span class="o">-</span><span class="n">bulk</span><span class="o">-</span><span class="n">dirnames</span><span class="o">.</span><span class="n">XXXXXXXXXX</span><span class="p">)</span>
+    <span class="n">aux</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">mktemp</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">lf</span><span class="o">-</span><span class="n">bulk</span><span class="o">-</span><span class="n">aux</span><span class="o">.</span><span class="n">XXXXXXXXXX</span><span class="p">)</span>
+  <span class="n">fi</span>
+  <span class="c1"># query selected files or all files in directory</span>
+  <span class="k">if</span> <span class="p">[</span> <span class="o">-</span><span class="n">n</span> <span class="s2">&quot;$fs&quot;</span> <span class="p">]</span>
+  <span class="n">then</span>
+    <span class="n">index</span><span class="o">=</span><span class="s2">&quot;$fs&quot;</span>
+  <span class="k">else</span>
+    <span class="n">index</span><span class="o">=</span><span class="s2">&quot;$(ls $(dirname &quot;</span><span class="err">$</span><span class="sa">f</span><span class="s2">&quot;))&quot;</span>
+  <span class="n">fi</span>
+  <span class="c1"># separate and save useful variables in files</span>
+  <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="err">$</span><span class="n">index</span>
+  <span class="n">do</span>
+    <span class="nb">dir</span><span class="o">=</span><span class="s2">&quot;$(dirname &quot;</span><span class="err">$</span><span class="n">path</span><span class="s2">&quot;)&quot;</span>
+    <span class="n">fullfilename</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">basename</span> <span class="o">--</span> <span class="s2">&quot;$path&quot;</span><span class="p">)</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;${fullfilename%.*</span><span class="cp">}</span>&quot;  # must be here
+    ext=&quot;&quot; <span class="err">&amp;&amp;</span> [ $(echo <span class="nv">$fullfilename</span> | grep &quot;\.&quot; 2&gt;/dev/null) ] <span class="err">&amp;&amp;</span> ext=&quot;<span class="cp">${</span><span class="n">fullfilename</span><span class="c1">##*.</span><span class="cp">}</span>&quot;
+
+    case &quot;<span class="nv">$mode</span>&quot; in
+      &quot;all-path&quot;) echo &quot;$(realpath &quot;<span class="nv">$path</span>&quot;)&quot; &gt;&gt; <span class="nv">$oldnames</span> ;;
+      &quot;no-exts&quot;)
+        echo &quot;<span class="nv">$filename</span>&quot; &gt;&gt; <span class="nv">$oldnames</span>
+        [ &quot;<span class="nv">$ext</span>&quot; != &quot;&quot; ] <span class="err">&amp;&amp;</span> ext=&quot;.<span class="nv">$ext</span>&quot;
+        echo &quot;<span class="nv">$ext</span>&quot; &gt;&gt; <span class="nv">$aux</span>
+        ;;
+      &quot;only-exts&quot;)
+        echo &quot;<span class="nv">$ext</span>&quot; &gt;&gt; <span class="nv">$oldnames</span>
+        echo <span class="nv">$filename</span> &gt;&gt; <span class="nv">$aux</span>
+        ;;
+      &quot;&quot;) echo &quot;<span class="nv">$fullfilename</span>&quot; &gt;&gt; <span class="nv">$oldnames</span> ;;
+    esac
+    [ &quot;<span class="nv">$mode</span>&quot; != &quot;all-path&quot; ] <span class="err">&amp;&amp;</span> echo &quot;<span class="nv">$dir</span>&quot; &gt;&gt; <span class="nv">$dirnames</span>
+  done
+  cp <span class="nv">$oldnames</span> <span class="nv">$newnames</span>
+  # interact with user
+  <span class="nv">$EDITOR</span> <span class="nv">$newnames</span>
+  # run mv on each path if they were modified
+  n=$(cat <span class="nv">$oldnames</span> | wc -l)
+  if [ $(cat <span class="nv">$newnames</span> | wc -l) -eq <span class="nv">$n</span> ]
+  then
+    counter=1
+    while [ <span class="nv">$counter</span> -le $((n+1)) ]
+    do
+      case <span class="nv">$mode</span> in
+        &quot;no-exts&quot;)
+          dir=&quot;$(cat <span class="nv">$dirnames</span> | sed &quot;<span class="cp">${</span><span class="n">counter</span><span class="cp">}</span>q;d&quot;)&quot;
+          old=&quot;$(cat <span class="nv">$oldnames</span> | sed &quot;<span class="cp">${</span><span class="n">counter</span><span class="cp">}</span>q;d&quot;)&quot;
+          new=&quot;$(cat <span class="nv">$newnames</span> | sed &quot;<span class="cp">${</span><span class="n">counter</span><span class="cp">}</span>q;d&quot;)&quot;
+          ext=&quot;$(cat <span class="nv">$aux</span>      | sed &quot;<span class="cp">${</span><span class="n">counter</span><span class="cp">}</span>q;d&quot;)&quot;
+          old=&quot;<span class="nv">$dir</span>/<span class="nv">$old$ext</span>&quot; ; new=&quot;<span class="nv">$dir</span>/<span class="nv">$new$ext</span>&quot;
+        ;;
+        &quot;all-path&quot;)
+          old=&quot;$(cat <span class="nv">$oldnames</span> | sed &quot;<span class="cp">${</span><span class="n">counter</span><span class="cp">}</span>q;d&quot;)&quot;
+          new=&quot;$(cat <span class="nv">$newnames</span> | sed &quot;<span class="cp">${</span><span class="n">counter</span><span class="cp">}</span>q;d&quot;)&quot;
+        ;;
+        &quot;only-exts&quot;)
+          old=&quot;$(cat <span class="nv">$oldnames</span> | sed &quot;<span class="cp">${</span><span class="n">counter</span><span class="cp">}</span>q;d&quot;)&quot;
+          new=&quot;$(cat <span class="nv">$newnames</span> | sed &quot;<span class="cp">${</span><span class="n">counter</span><span class="cp">}</span>q;d&quot;)&quot;
+          filename=&quot;$(cat <span class="nv">$aux</span> | sed &quot;<span class="cp">${</span><span class="n">counter</span><span class="cp">}</span>q;d&quot;)&quot;
+          echo <span class="nv">$old</span> <span class="nv">$new</span>
+          [ &quot;<span class="nv">$old</span>&quot; != &quot;&quot; ] <span class="err">&amp;&amp;</span> old=&quot;.<span class="nv">$old</span>&quot;
+          [ &quot;<span class="nv">$new</span>&quot; != &quot;&quot; ] <span class="err">&amp;&amp;</span> new=&quot;.<span class="nv">$new</span>&quot;
+          old=&quot;<span class="nv">$dir</span>/<span class="nv">$filename$old</span>&quot;
+          new=&quot;<span class="nv">$dir</span>/<span class="nv">$filename$new</span>&quot;
+        ;;
+        *)
+          dir=&quot;$(cat <span class="nv">$dirnames</span> | sed &quot;<span class="cp">${</span><span class="n">counter</span><span class="cp">}</span>q;d&quot;)&quot;
+          old=&quot;$(cat <span class="nv">$oldnames</span> | sed &quot;<span class="cp">${</span><span class="n">counter</span><span class="cp">}</span>q;d&quot;)&quot;
+          new=&quot;$(cat <span class="nv">$newnames</span> | sed &quot;<span class="cp">${</span><span class="n">counter</span><span class="cp">}</span>q;d&quot;)&quot;
+          old=&quot;<span class="nv">$dir</span>/<span class="nv">$old</span>&quot; ; new=&quot;<span class="nv">$dir</span>/<span class="nv">$new</span>&quot;
+        ;;
+      esac
+      counter=$((<span class="nv">$counter</span>+1))
+      [ &quot;<span class="nv">$old</span>&quot; = &quot;<span class="nv">$new</span>&quot; ] <span class="err">&amp;&amp;</span> continue
+      [ -e &quot;<span class="nv">$new</span>&quot; ] <span class="err">&amp;&amp;</span> echo &quot;File exists: <span class="nv">$b</span>&quot; <span class="err">&amp;&amp;</span> continue
+      # check write permission
+      please=&#39;&#39;
+      for path in <span class="nv">$old</span> <span class="nv">$new</span>
+      do
+        [ ! -w $(dirname &quot;<span class="nv">$path</span>&quot;) ] <span class="err">&amp;&amp;</span> please=&#39;sudo&#39; <span class="err">&amp;&amp;</span> break
+      done
+      <span class="nv">$please</span> mv &quot;<span class="nv">$old</span>&quot; &quot;<span class="nv">$new</span>&quot;
+    done
+  else
+    echo &quot;Number of filenames differ.&quot;
+  fi
+
+  # removing tmp files
+  rm <span class="nv">$oldnames</span> <span class="nv">$newnames</span>
+  if [ &quot;<span class="nv">$mode</span>&quot; != &quot;all-path&quot; ]
+  then
+    rm <span class="nv">$dirnames</span>
+    rm <span class="nv">$aux</span>
+  fi
+}}
+</code></pre></div>
+
+
+<p>I hope you enjoy my codes!</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="http://127.0.0.1:8000/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="false"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Marcos Conceição ",
+  "url" : "http://127.0.0.1:8000",
+  "image": "/images/base/me.png",
+  "description": "A site by Marcos Conceição."
+}
+</script>
+
+
+</body>
+
+<!-- KaTeX -->
+<script>renderMathInElement(document.body);</script>
+
+</html>
