@@ -50,13 +50,13 @@
     <meta name="msapplication-TileColor" content="#091B2A">
 
 <meta name="author" content="Marcos Conceição" />
-<meta name="description" content="Have you ever needed to create numerous very similar functions? Today I&#39;m showing you how to do that thing you always wanted to do in pure julia: create various functions in a loop. Supose you want to create three functions in julia: \(f(x)=x\), \(g(x)=x^2\) and …if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width" />
+<meta name="description" content="Have you ever needed to create numerous, very similar functions? Today I&#39;m showing you how to do that thing you always wanted to do in pure julia: create various functions in a loop. Supose you want to create three functions in julia: \(f(x)=x\), \(g(x)=x^2\) and …if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width" />
 <meta name="keywords" content="">
 
 
 <meta property="og:site_name" content="Marcos Conceição"/>
 <meta property="og:title" content="Making various functions in one only block of code"/>
-<meta property="og:description" content="Have you ever needed to create numerous very similar functions? Today I&#39;m showing you how to do that thing you always wanted to do in pure julia: create various functions in a loop. Supose you want to create three functions in julia: \(f(x)=x\), \(g(x)=x^2\) and …if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width"/>
+<meta property="og:description" content="Have you ever needed to create numerous, very similar functions? Today I&#39;m showing you how to do that thing you always wanted to do in pure julia: create various functions in a loop. Supose you want to create three functions in julia: \(f(x)=x\), \(g(x)=x^2\) and …if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="http://www.marcosrdac.com/making-various-functions-in-one-only-block-of-code.html"/>
 <meta property="og:type" content="article"/>
@@ -79,6 +79,13 @@
       <h1>
         <a href="http://www.marcosrdac.com">Marcos Conceição</a>
       </h1>
+
+
+
+      <ul class=languages>
+      <li class="active"><a class="btn" href="http://www.marcosrdac.com/">English</a></li>
+      <li><a class="btn" href="http://www.marcosrdac.com/pt_br/">Português</a></li>
+      </ul>
 
 
 
@@ -133,6 +140,7 @@
       </ul>
     </div>
 
+
   </aside>
   <main>
 
@@ -165,7 +173,7 @@
 
 
   <div>
-    <p>Have you ever needed to create numerous very similar functions? Today I'm showing you how to do that thing you always wanted to do in pure julia: create various functions in a loop.</p>
+    <p>Have you ever needed to create numerous, very similar functions? Today I'm showing you how to do that thing you always wanted to do in pure julia: create various functions in a loop.</p>
 <p>Supose you want to create three functions in julia: <span class="math">\(f(x)=x\)</span>, <span class="math">\(g(x)=x^2\)</span> and <span class="math">\(h(x)=x^3\)</span>. So you could workfully write:</p>
 <div class="highlight"><pre><span></span><code><span class="k">function</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
   <span class="k">return</span> <span class="n">x</span>

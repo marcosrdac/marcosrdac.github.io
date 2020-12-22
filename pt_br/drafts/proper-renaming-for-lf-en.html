@@ -50,13 +50,13 @@
     <meta name="msapplication-TileColor" content="#091B2A">
 
 <meta name="author" content="Marcos Conceição" />
-<meta name="description" content="[20200803 Disclaimer] I&#39;ll probably post a new version for the bulk-rename part soon and link it here. I&#39;ve definitely changed to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger&#39;s and VIFM&#39;s &#34;I&#34;, &#34;A&#34; and &#34;a&#34; mappings, or their &#34;bulk-rename …" />
+<meta name="description" content="I&#39;ve definitely moved to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger&#39;s and VIFM&#39;s &#34;I&#34;, &#34;A&#34; and &#34;a&#34; mappings, or their &#34;bulk-rename&#34; function. So today I&#39;m going to show you how to get those functionalities in LF. rename I&#39;ve …" />
 <meta name="keywords" content="">
 
 
 <meta property="og:site_name" content="Marcos Conceição"/>
 <meta property="og:title" content="Proper renaming for LF"/>
-<meta property="og:description" content="[20200803 Disclaimer] I&#39;ll probably post a new version for the bulk-rename part soon and link it here. I&#39;ve definitely changed to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger&#39;s and VIFM&#39;s &#34;I&#34;, &#34;A&#34; and &#34;a&#34; mappings, or their &#34;bulk-rename …"/>
+<meta property="og:description" content="I&#39;ve definitely moved to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger&#39;s and VIFM&#39;s &#34;I&#34;, &#34;A&#34; and &#34;a&#34; mappings, or their &#34;bulk-rename&#34; function. So today I&#39;m going to show you how to get those functionalities in LF. rename I&#39;ve …"/>
 <meta property="og:locale" content="pt_BR"/>
 <meta property="og:url" content="http://www.marcosrdac.com/pt_br/drafts/proper-renaming-for-lf-en.html"/>
 <meta property="og:type" content="article"/>
@@ -79,6 +79,13 @@
       <h1>
         <a href="http://www.marcosrdac.com/pt_br">Marcos Conceição</a>
       </h1>
+
+
+
+      <ul class=languages>
+      <li><a class="btn" href="http://www.marcosrdac.com/">English</a></li>
+      <li class="active"><a class="btn" href="http://www.marcosrdac.com/pt_br/">Português</a></li>
+      </ul>
 
 
 
@@ -133,6 +140,7 @@
       </ul>
     </div>
 
+
   </aside>
   <main>
 
@@ -165,8 +173,7 @@
 
 
   <div>
-    <p>[20200803 Disclaimer] I'll probably post a new version for the bulk-rename part soon and link it here.</p>
-<p>I've definitely changed to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger's and VIFM's "I", "A" and "a" mappings, or their "bulk-rename" function. So today I'm going to show you how to get those functionalities in LF.</p>
+    <p>I've definitely moved to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger's and VIFM's "I", "A" and "a" mappings, or their "bulk-rename" function. So today I'm going to show you how to get those functionalities in LF.</p>
 <h2>rename</h2>
 <p>I've written this on my <code>lfrc</code> (inside <code>$HOME/.config/lf/</code>):</p>
 <div class="highlight"><pre><span></span><code>cmd rename %{{
