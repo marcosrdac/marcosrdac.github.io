@@ -49,17 +49,24 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#091B2A">
 
-    <meta name="author" content="Marcos Conceição" />
-    <meta name="description" content="A site by Marcos Conceição." />
+<meta name="author" content="Marcos Conceição" />
+<meta name="description" content="A equação laplaciana para o potencial é \(\vec{\nabla}^2 V = 0\). Além disso, \(V = V(r,\theta,\phi) = V(r)\), uma vez que o meio é homogêneo e isotrópico. Nestas condições, a equação laplaciana se escreve: \({1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V …if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width" />
+<meta name="keywords" content="">
+
+
 <meta property="og:site_name" content="Marcos Conceição"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="Marcos Conceição"/>
-<meta property="og:description" content="A site by Marcos Conceição."/>
+<meta property="og:title" content="Desenvolvimento da equação do potencial elétrico para um único eletrodo de corrente em subsuperfície homogênea e isotrópica"/>
+<meta property="og:description" content="A equação laplaciana para o potencial é \(\vec{\nabla}^2 V = 0\). Além disso, \(V = V(r,\theta,\phi) = V(r)\), uma vez que o meio é homogêneo e isotrópico. Nestas condições, a equação laplaciana se escreve: \({1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V …if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="http://127.0.0.1:8000"/>
+<meta property="og:url" content="http://127.0.0.1:8000/drafts/desenvolvimento-da-equacao-do-potencial-eletrico-para-um-unico-eletrodo-de-corrente-em-subsuperficie-homogenea-e-isotropica-pt_br.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-09-20 00:00:00-03:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://127.0.0.1:8000/author/marcos-conceicao.html">
+<meta property="article:section" content="blog"/>
 <meta property="og:image" content="/images/base/me.png">
 
-  <title>Marcos Conceição</title>
+  <title>Marcos Conceição &ndash; Desenvolvimento da equação do potencial elétrico para um único eletrodo de corrente em subsuperfície homogênea e isotrópica</title>
 
 </head>
 <body class="light-theme">
@@ -145,21 +152,30 @@
 
     </nav>
 
-
-
-<article>
+<article class="single">
   <header>
-    <h2><a href="http://127.0.0.1:8000/making-various-functions-in-one-only-block-of-code.html#making-various-functions-in-one-only-block-of-code">Making various functions in one only block of code</a></h2>
+      
+    <h1 id="desenvolvimento-da-equacao-do-potencial-eletrico-para-um-unico-eletrodo-de-corrente-em-subsuperficie-homogenea-e-isotropica">Desenvolvimento da equação do potencial elétrico para um único eletrodo de corrente em subsuperfície homogênea e isotrópica</h1>
     <p>
-      Posted on Mon 03 August 2020 in <a href="http://127.0.0.1:8000/category/blog.html">blog</a>
+      Posted on Thu 20 September 2018 in <a href="http://127.0.0.1:8000/category/blog.html">blog</a>
 
-
-        &#8226; 2 min read
+        &#8226; 1 min read
     </p>
   </header>
+
+
   <div>
-      <p>Have you ever needed to create numerous very similar functions? Today I'm showing you how to do that thing you always wanted to do in pure julia: create various functions in a loop.</p>
-<p>Supose you want to create three functions in julia: <span class="math">\(f(x)=x\)</span>, <span class="math">\(g(x)=x^2\)</span> and …</p><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    <p>A equação laplaciana para o potencial é <span class="math">\(\vec{\nabla}^2 V = 0\)</span>. Além disso, <span class="math">\(V = V(r,\theta,\phi) = V(r)\)</span>, uma vez que o meio é homogêneo e isotrópico. Nestas condições, a equação laplaciana se escreve:</p>
+<p><span class="math">\({1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) +\)</span>
+<span class="math">\({1 \over r^2 \sin \theta} {\partial \over \partial \theta}  \left( \sin \theta {\partial V\over \partial \theta} \right) +\)</span>
+<span class="math">\({1 \over r^2 \sin^2 \theta} {\partial^2 V \over \partial \phi^2} = 0\)</span></p>
+<p><span class="math">\(\longrightarrow {1 \over r^2} {\partial \over \partial r} \left( r^2 {\partial V \over \partial r} \right) = 0\)</span></p>
+<p><span class="math">\(\longrightarrow \frac{\partial^2 V}{\partial r^2} + {2 \over r} {\partial V \over \partial r}= 0\)</span></p>
+<p><span class="math">\(\longrightarrow {\partial V \over {\partial r}} = {C_1 \over {r^2}}, \qquad C_1 \in \Re\)</span></p>
+<div class="math">$$\therefore V = -{C_1 \over {r}} + C_2, \qquad C_1, C_2 \in \Re$$</div>
+<p>donde <span class="math">\(C_2\)</span> pode ser arbitrariamente escolhido <span class="math">\(0\)</span>:</p>
+<div class="math">$$\therefore V = -{C_1 \over {r}}, \qquad C_1 \in \Re$$</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
         linebreak = "false";
@@ -221,91 +237,17 @@
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 </script>
-        <br>
-        <a class="btn"
-           href="http://127.0.0.1:8000/making-various-functions-in-one-only-block-of-code.html#making-various-functions-in-one-only-block-of-code">
-          Continue reading
-        </a>
   </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="http://127.0.0.1:8000/proper-renaming-for-lf.html#proper-renaming-for-lf">Proper renaming for LF</a></h2>
+  <div class="tag-cloud">
     <p>
-      Posted on Tue 10 March 2020 in <a href="http://127.0.0.1:8000/category/blog.html">blog</a>
-
-
-        &#8226; 5 min read
     </p>
-  </header>
-  <div>
-      <p>[20200803 Disclaimer] I'll probably post a new version for the bulk-rename part soon and link it here.</p>
-<p>I've definitely changed to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger's and VIFM's "I", "A" and "a" mappings, or their "bulk-rename …</p>
-        <br>
-        <a class="btn"
-           href="http://127.0.0.1:8000/proper-renaming-for-lf.html#proper-renaming-for-lf">
-          Continue reading
-        </a>
   </div>
-  <hr />
+
+
+
+
+
 </article>
-<article>
-  <header>
-    <h2><a href="http://127.0.0.1:8000/tui-file-managers-battle.html#tui-file-managers-battle">TUI file managers battle</a></h2>
-    <p>
-      Posted on Fri 28 February 2020 in <a href="http://127.0.0.1:8000/category/blog.html">blog</a>
-
-
-        &#8226; 3 min read
-    </p>
-  </header>
-  <div>
-      <h1></h1>
-<p>Since two years ago, I've tried some terminal file managers and ended up finding three of my taste.</p>
-<p>The first one was <code>ranger</code>. It conquered me for being controled in a vim-like style, having a vim-like config file, having 3 panes (the first showing the parent directory files, the middle …</p>
-        <br>
-        <a class="btn"
-           href="http://127.0.0.1:8000/tui-file-managers-battle.html#tui-file-managers-battle">
-          Continue reading
-        </a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="http://127.0.0.1:8000/monstro_sonolento.html#monstro_sonolento">monstro_sonolento</a></h2>
-    <p>
-      Posted on Tue 18 September 2018 in <a href="http://127.0.0.1:8000/category/poem.html">poem</a>
-
-
-        &#8226; 1 min read
-    </p>
-  </header>
-  <div>
-      <p><center>
-hoje me vi um monstro<br>
-cristão<br>
-quero dizer que fui tentado<br>
-por qualquer demônio<br>
-porque quero ser cristão  </p>
-<p>porque agora sofro muito<br>
-quero me limpar por minha boca com entidades<br>
-quero me limpar por minha boca com tratos e conversas<br>
-quero desabar, pois vejo que é tudo tão egoico  </p>
-<p>e …</p>
-        <br>
-        <a class="btn"
-           href="http://127.0.0.1:8000/monstro_sonolento.html#monstro_sonolento">
-          Continue reading
-        </a>
-  </div>
-</article>
-
-  <div class="pagination">
-  </div>
-
-
 
     <footer>
 <p>&copy;  </p>
