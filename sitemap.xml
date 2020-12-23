@@ -4,84 +4,84 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://www.marcosrdac.com/</loc>
-<lastmod>2020-12-22T18:06:19-00:00</lastmod>
+<loc>http://127.0.0.1:8000/</loc>
+<lastmod>2020-12-23T15:52:09-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://www.marcosrdac.com/pages/about.html</loc>
-<lastmod>2020-12-22T18:06:19-00:00</lastmod>
+<loc>http://127.0.0.1:8000/pages/about.html</loc>
+<lastmod>2020-12-23T15:52:09-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://www.marcosrdac.com/pages/contact.html</loc>
-<lastmod>2020-12-22T18:06:19-00:00</lastmod>
+<loc>http://127.0.0.1:8000/pages/contact.html</loc>
+<lastmod>2020-12-23T15:52:09-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://www.marcosrdac.com/pages/portfolio.html</loc>
-<lastmod>2020-12-22T18:06:19-00:00</lastmod>
+<loc>http://127.0.0.1:8000/pages/portfolio.html</loc>
+<lastmod>2020-12-23T15:52:09-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://www.marcosrdac.com/pages/services.html</loc>
-<lastmod>2020-12-22T18:06:19-00:00</lastmod>
+<loc>http://127.0.0.1:8000/pages/services.html</loc>
+<lastmod>2020-12-23T15:52:09-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://www.marcosrdac.com/making-various-functions-in-one-only-block-of-code.html</loc>
+<loc>http://127.0.0.1:8000/making-various-functions-in-one-only-block-of-code.html</loc>
 <lastmod>2020-08-03T00:00:00-03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://www.marcosrdac.com/proper-renaming-for-lf.html</loc>
+<loc>http://127.0.0.1:8000/proper-renaming-for-lf-prepend-append-change-extension-and-more.html</loc>
 <lastmod>2020-03-10T00:00:00-03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://www.marcosrdac.com/tui-file-managers-battle.html</loc>
+<loc>http://127.0.0.1:8000/tui-file-managers-battle.html</loc>
 <lastmod>2020-02-28T00:00:00-03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://www.marcosrdac.com/monstro_sonolento.html</loc>
+<loc>http://127.0.0.1:8000/monstro_sonolento.html</loc>
 <lastmod>2018-09-18T00:00:00-03:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://www.marcosrdac.com/category/blog.html</loc>
+<loc>http://127.0.0.1:8000/category/blog.html</loc>
 <lastmod>2020-08-03T00:00:00-02:34</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://www.marcosrdac.com/category/poem.html</loc>
+<loc>http://127.0.0.1:8000/category/poem.html</loc>
 <lastmod>2018-09-18T00:00:00-02:34</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://www.marcosrdac.com/author/marcos-conceicao.html</loc>
+<loc>http://127.0.0.1:8000/author/marcos-conceicao.html</loc>
 <lastmod>2020-08-03T00:00:00-02:34</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
