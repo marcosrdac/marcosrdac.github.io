@@ -49,17 +49,24 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#091B2A">
 
-    <meta name="author" content="Marcos Conceição" />
-    <meta name="description" content="A site by Marcos Conceição." />
+<meta name="author" content="Marcos Conceição" />
+<meta name="description" content="Have you ever needed to create numerous, very similar functions? Today I&#39;m showing you how to do that thing you always wanted to do in pure Julia: create various functions in a loop. Supose you want to create three functions in Julia: \(f(x)=x\), \(g(x)=x^2\) and …if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width" />
+<meta name="keywords" content="">
+
+
 <meta property="og:site_name" content="Marcos Conceição"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="Marcos Conceição"/>
-<meta property="og:description" content="A site by Marcos Conceição."/>
+<meta property="og:title" content="Various functions out of a block of code: a little of metaprogramming in Julia"/>
+<meta property="og:description" content="Have you ever needed to create numerous, very similar functions? Today I&#39;m showing you how to do that thing you always wanted to do in pure Julia: create various functions in a loop. Supose you want to create three functions in Julia: \(f(x)=x\), \(g(x)=x^2\) and …if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width"/>
 <meta property="og:locale" content="pt_BR"/>
-<meta property="og:url" content="http://www.marcosrdac.com/pt_br"/>
+<meta property="og:url" content="http://www.marcosrdac.com/pt_br/drafts/various-functions-out-of-a-block-of-code-a-little-of-metaprogramming-in-julia-en.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-08-03 00:00:00-03:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://www.marcosrdac.com/pt_br/author/marcos-conceicao.html">
+<meta property="article:section" content="blog"/>
 <meta property="og:image" content="/images/base/me.png">
 
-  <title>Marcos Conceição &ndash; Publicações de Marcos Conceição:</title>
+  <title>Marcos Conceição &ndash; Various functions out of a block of code: a little of metaprogramming in Julia</title>
 
 </head>
 <body class="light-theme">
@@ -153,20 +160,80 @@
 
     </nav>
 
-
-
-<article>
+<article class="single">
   <header>
-    <h2><a href="http://www.marcosrdac.com/pt_br/desenvolvimento-da-equacao-do-potencial-eletrico-para-um-unico-eletrodo-de-corrente-em-subsuperficie-homogenea-e-isotropica.html#desenvolvimento-da-equacao-do-potencial-eletrico-para-um-unico-eletrodo-de-corrente-em-subsuperficie-homogenea-e-isotropica">Desenvolvimento da equação do potencial elétrico para um único eletrodo de corrente em subsuperfície homogênea e isotrópica</a></h2>
+      
+    <h1 id="various-functions-out-of-a-block-of-code-a-little-of-metaprogramming-in-julia">Various functions out of a block of code: a little of metaprogramming in Julia</h1>
     <p>
-      Publicado em qui 20 setembro 2018 na categoria <a href="http://www.marcosrdac.com/pt_br/category/blog.html">blog</a>
+      Publicado em seg 03 agosto 2020 na categoria <a href="http://www.marcosrdac.com/pt_br/category/blog.html">blog</a>
 
-
-        &#8226; 1 min de leitura 
+        &#8226; 2 min de leitura 
     </p>
   </header>
+
+
   <div>
-      <p>A equação laplaciana para o potencial é <span class="math">\(\vec{\nabla}^2 V = 0\)</span>. Além disso, <span class="math">\(V = V(r,\theta,\phi) = V(r)\)</span>, uma vez que o meio é homogêneo e isotrópico. Nestas condições, a equação laplaciana se escreve...</p>
+    <!-- subtitle: a little of metaprogramming in Julia -->
+
+<p>Have you ever needed to create numerous, very similar functions? Today I'm showing you how to do that thing you always wanted to do in pure Julia: create various functions in a loop.</p>
+<p>Supose you want to create three functions in Julia: <span class="math">\(f(x)=x\)</span>, <span class="math">\(g(x)=x^2\)</span> and <span class="math">\(h(x)=x^3\)</span>. So you could workfully write:</p>
+<div class="highlight"><pre><span></span><code><span class="k">function</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">x</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">x</span><span class="o">^</span><span class="mi">2</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">x</span><span class="o">^</span><span class="mi">3</span>
+<span class="k">end</span>
+</code></pre></div>
+
+
+<p>But I know, when you are about to write "function" for the second time, your thoughts sudenly start to bother you: "man, there must be a way for me to do it efficiently...". I'm glad to tell you that <strong>you would be right!</strong> Lets expand our objectives for 6 functions and do it without all this machine work!</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">func</span> <span class="kp">in</span> <span class="p">(</span><span class="o">:</span><span class="n">f</span><span class="p">,</span> <span class="o">:</span><span class="n">g</span><span class="p">,</span> <span class="o">:</span><span class="n">h</span><span class="p">,</span> <span class="o">:</span><span class="n">i</span><span class="p">,</span> <span class="o">:</span><span class="n">j</span><span class="p">,</span> <span class="o">:</span><span class="n">k</span><span class="p">)</span>
+
+  <span class="k">if</span>     <span class="n">func</span> <span class="o">==</span> <span class="o">:</span><span class="n">f</span>  <span class="n">E</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">elseif</span> <span class="n">func</span> <span class="o">==</span> <span class="o">:</span><span class="n">g</span>  <span class="n">E</span> <span class="o">=</span> <span class="mi">2</span>
+  <span class="k">elseif</span> <span class="n">func</span> <span class="o">==</span> <span class="o">:</span><span class="n">h</span>  <span class="n">E</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="k">elseif</span> <span class="n">func</span> <span class="o">==</span> <span class="o">:</span><span class="n">i</span>  <span class="n">E</span> <span class="o">=</span> <span class="mi">4</span>
+  <span class="k">elseif</span> <span class="n">func</span> <span class="o">==</span> <span class="o">:</span><span class="n">j</span>  <span class="n">E</span> <span class="o">=</span> <span class="mi">5</span>
+  <span class="k">elseif</span> <span class="n">func</span> <span class="o">==</span> <span class="o">:</span><span class="n">k</span>  <span class="n">E</span> <span class="o">=</span> <span class="mi">6</span>
+  <span class="k">end</span>
+
+  <span class="k">quote</span>
+    <span class="k">function</span> <span class="o">$</span><span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">x</span><span class="o">^$</span><span class="n">E</span>
+    <span class="k">end</span>
+  <span class="k">end</span> <span class="o">|&gt;</span> <span class="n">eval</span>
+
+<span class="k">end</span>
+</code></pre></div>
+
+
+<p>And you can then start using $k(x)$ to get $x^6$.</p>
+
+<h1>The downside</h1>
+<p>Although you might think that our last code would then be slower at runtime, after all it's all super high level code, it will not. These definitions are run at parse time, before actual compilation. So, roughly speaking, the only downside is that compiling your code is going to take more time.</p>
+<h1>For those who want to understand what's going on...</h1>
+<ul>
+<li>we enter a loop block at line 1. One iteration is done for each of the symbols f, g, h, i, j, k. At each iteration, func is assigned to one of them.</li>
+<li>then we enter the <code>if elseif</code> block. Depending on the symbol we are working on, we define a constant value E, the exponent used in the function.</li>
+<li>the next block <code>quote</code>s the code that we actually want to run: the function definition. We make use of the symbols previously defined by interpolating their values. For that we make use of the \$ operator.</li>
+<li>the end: all inside this quotation returns a block object and, by itself, does nothing. It only becomes code when put this result inside the <code>eval</code> function. I could indeed be done like this:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>  <span class="n">eval</span><span class="p">(</span>
+    <span class="k">quote</span>
+      <span class="k">function</span> <span class="o">$</span><span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span><span class="o">^$</span><span class="n">E</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="p">)</span>
+</code></pre></div>
+
+
+<p>but I think it's prettier to pipe the quotation end to the eval function with <code>|&gt; eval</code>.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -228,167 +295,18 @@
     (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-</script><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-
-    var configscript = document.createElement('script');
-    configscript.type = 'text/x-mathjax-config';
-    configscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        availableFonts: ['STIX', 'TeX']," +
-        "        preferredFont: 'STIX'," +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
 </script>
-        <br>
-        <a class="btn"
-           href="http://www.marcosrdac.com/pt_br/desenvolvimento-da-equacao-do-potencial-eletrico-para-um-unico-eletrodo-de-corrente-em-subsuperficie-homogenea-e-isotropica.html#desenvolvimento-da-equacao-do-potencial-eletrico-para-um-unico-eletrodo-de-corrente-em-subsuperficie-homogenea-e-isotropica">
-          Continue lendo
-        </a>
   </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="http://www.marcosrdac.com/pt_br/monstro_sonolento.html#monstro_sonolento">monstro_sonolento</a></h2>
+  <div class="tag-cloud">
     <p>
-      Publicado em ter 18 setembro 2018 na categoria <a href="http://www.marcosrdac.com/pt_br/category/poem.html">poem</a>
-
-
-        &#8226; 1 min de leitura 
     </p>
-  </header>
-  <div>
-      <p><center>
-hoje me vi um monstro<br/>
-cristão<br/>
-quero dizer que fui tentado<br/>
-por qualquer demônio<br/>
-</center></p>
-        <br>
-        <a class="btn"
-           href="http://www.marcosrdac.com/pt_br/monstro_sonolento.html#monstro_sonolento">
-          Continue lendo
-        </a>
   </div>
-  <hr />
+
+
+
+
+
 </article>
-<article>
-  <header>
-    <h2><a href="http://www.marcosrdac.com/pt_br/nem-todos-os-homens-sao-estupradores-potenciais.html#nem-todos-os-homens-sao-estupradores-potenciais">Nem todos os homens são estupradores potenciais</a></h2>
-    <p>
-      Publicado em sáb 18 junho 2016 na categoria <a href="http://www.marcosrdac.com/pt_br/category/blog.html">blog</a>
-
-
-        &#8226; 1 min de leitura 
-    </p>
-  </header>
-  <div>
-      <p>Nem todos os homens são estupradores potenciais. Alguns já os são em ato.</p>
-<p>Para que se tenha potencial a cair, basta não estar no chão. E é certo também que nem toda potência — na verdade apenas uma desprezível minoria delas — se torna ato, pois para cada ato firmado, uma infinidade …</p>
-        <br>
-        <a class="btn"
-           href="http://www.marcosrdac.com/pt_br/nem-todos-os-homens-sao-estupradores-potenciais.html#nem-todos-os-homens-sao-estupradores-potenciais">
-          Continue lendo
-        </a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="http://www.marcosrdac.com/pt_br/o-acaso-e-mais-importante.html#o-acaso-e-mais-importante">o Acaso é mais importante</a></h2>
-    <p>
-      Publicado em dom 10 janeiro 2016 na categoria <a href="http://www.marcosrdac.com/pt_br/category/blog.html">blog</a>
-
-
-        &#8226; 1 min de leitura 
-    </p>
-  </header>
-  <div>
-      <p>Você não precisa saber a fórmula de Bhaskara para resolver equações do segundo grau. Pra isso, você só precisa saber completar quadrados ou tornar polinomiais incompletas. Você não precisa saber a fórmula Tartaglia para resolver equações do terceiro grau. Basta entender como manipular variáveis artificiais em uma equação (e tirar …</p>
-        <br>
-        <a class="btn"
-           href="http://www.marcosrdac.com/pt_br/o-acaso-e-mais-importante.html#o-acaso-e-mais-importante">
-          Continue lendo
-        </a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="http://www.marcosrdac.com/pt_br/o-discurso-do-metodo-3a-parte-consideracoes-sobre-a-moral-resumo.html#o-discurso-do-metodo-3a-parte-consideracoes-sobre-a-moral-resumo">O Discurso do Método - 3ª parte: Considerações Sobre a Moral [resumo]</a></h2>
-    <p>
-      Publicado em seg 27 julho 2015 na categoria <a href="http://www.marcosrdac.com/pt_br/category/blog.html">blog</a>
-
-
-        &#8226; 3 min de leitura 
-    </p>
-  </header>
-  <div>
-      <p>Antes de chegar à moral perfeita – depois do conhecimento de tudo ter sido alcançado –, Descartes cria para si uma moral provisória, sobre a qual poderia criar a primeira, aludindo-a ao canteiro de uma obra. Divide esta moral primeira em quatro princípios e explicita-os. São eles:</p>
-<h1>Obedecer às leis e aos …</h1>
-        <br>
-        <a class="btn"
-           href="http://www.marcosrdac.com/pt_br/o-discurso-do-metodo-3a-parte-consideracoes-sobre-a-moral-resumo.html#o-discurso-do-metodo-3a-parte-consideracoes-sobre-a-moral-resumo">
-          Continue lendo
-        </a>
-  </div>
-</article>
-
-  <div class="pagination">
-  </div>
-
-
 
     <footer>
 <p>&copy;  </p>
