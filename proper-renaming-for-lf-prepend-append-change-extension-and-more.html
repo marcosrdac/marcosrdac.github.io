@@ -50,13 +50,13 @@
     <meta name="msapplication-TileColor" content="#091B2A">
 
 <meta name="author" content="Marcos Conceição" />
-<meta name="description" content="I&#39;ve definitely moved to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger&#39;s and VIFM&#39;s &#34;I&#34;, &#34;A&#34; and &#34;a&#34; mappings, or their &#34;bulk-rename&#34; function. So today I&#39;m going to show you how to get those functionalities in LF." />
+<meta name="description" content="I’ve definitely moved to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger’s and VIFM’s “I”, “A” and “a” mappings, or their “bulk-rename” function. So today I’m going to show you how to get those functionalities in LF." />
 <meta name="keywords" content="">
 
 
 <meta property="og:site_name" content="Marcos Conceição"/>
 <meta property="og:title" content="Proper renaming for LF: prepend, append, change extension and more"/>
-<meta property="og:description" content="I&#39;ve definitely moved to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger&#39;s and VIFM&#39;s &#34;I&#34;, &#34;A&#34; and &#34;a&#34; mappings, or their &#34;bulk-rename&#34; function. So today I&#39;m going to show you how to get those functionalities in LF."/>
+<meta property="og:description" content="I’ve definitely moved to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger’s and VIFM’s “I”, “A” and “a” mappings, or their “bulk-rename” function. So today I’m going to show you how to get those functionalities in LF."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="http://www.marcosrdac.com/proper-renaming-for-lf-prepend-append-change-extension-and-more.html"/>
 <meta property="og:type" content="article"/>
@@ -64,7 +64,7 @@
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="http://www.marcosrdac.com/author/marcos-conceicao.html">
 <meta property="article:section" content="blog"/>
-<meta property="og:image" content="/images/base/me.png">
+<meta property="og:image" content="/res/base/me.png">
 
   <title>Marcos Conceição &ndash; Proper renaming for LF: prepend, append, change extension and more</title>
 
@@ -73,7 +73,7 @@
   <aside>
     <div>
       <a href="http://www.marcosrdac.com">
-        <img src="/images/base/me.png" alt="Marcos Conceição" title="Marcos Conceição">
+        <img src="/res/base/me.png" alt="Marcos Conceição" title="Marcos Conceição">
       </a>
 
       <h1>
@@ -173,9 +173,9 @@
 
 
   <div>
-    <p>I've definitely moved to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger's and VIFM's "I", "A" and "a" mappings, or their "bulk-rename" function. So today I'm going to show you how to get those functionalities in LF.</p>
+    <p>I&rsquo;ve definitely moved to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger&rsquo;s and VIFM&rsquo;s &ldquo;I&rdquo;, &ldquo;A&rdquo; and &ldquo;a&rdquo; mappings, or their &ldquo;bulk-rename&rdquo; function. So today I&rsquo;m going to show you how to get those functionalities in LF.</p>
 <h2>rename</h2>
-<p>I've written this on my <code>lfrc</code> (inside <code>$HOME/.config/lf/</code>):</p>
+<p>I&rsquo;ve written this on my <code>lfrc</code> (inside <code>$HOME/.config/lf/</code>):</p>
 <div class="highlight"><pre><span></span><code>cmd rename %{{
   base=&quot;$(dirname &quot;<span class="nv">$f</span>&quot;)&quot;
   srcfn=$(basename -- &quot;<span class="nv">$f</span>&quot;)
@@ -205,13 +205,13 @@
 </code></pre></div>
 
 
-<p>It is a rename function for the current file your cursor points to. Use it yourself: inside LF, type the following while pointing to "somefile.png":</p>
+<p>It is a rename function for the current file your cursor points to. Use it yourself: inside LF, type the following while pointing to &ldquo;somefile.png&rdquo;:</p>
 <div class="highlight"><pre><span></span><code><span class="p">:</span>rename someanotherfile.png
 </code></pre></div>
 
 
-<p>Press enter, and now "somefile.png" is called someanotherfile.png".</p>
-<p>With <code>-n</code> option for rename, as in <code>:rename -n newname</code>, it just renames the filename, without extension. In the other hand, with the <code>-e</code> option, as in <code>:rename -e jpg</code>, it just changes the file extension to "jpg". Anyway, options are really just fancy stuff. Look at how we are going to use this function in our mappings:</p>
+<p>Press enter, and now &ldquo;somefile.png&rdquo; is called someanotherfile.png&rdquo;.</p>
+<p>With <code>-n</code> option for rename, as in <code>:rename -n newname</code>, it just renames the filename, without extension. In the other hand, with the <code>-e</code> option, as in <code>:rename -e jpg</code>, it just changes the file extension to &ldquo;jpg&rdquo;. Anyway, options are really just fancy stuff. Look at how we are going to use this function in our mappings:</p>
 <div class="highlight"><pre><span></span><code># unmap <span class="k">c</span>
 map <span class="k">c</span>
 # <span class="k">make</span> cW push <span class="s2">&quot;:rename &quot;</span> into <span class="k">lf</span>
@@ -219,10 +219,10 @@ map cW &amp;<span class="k">lf</span> <span class="p">-</span>remote <span class
 </code></pre></div>
 
 
-<p>What the third line above does is: whenever <code>cW</code> is pressed from LF, user is prompted with our rename function. This approach is certainly useful, but it turns out that LF freezes a little when ":" is pushed, as it is leaving normal mode and entering command mode. For it being frozen, sometimes the next character after ":" is not typed and we end up with <code>:ename -n</code> after pressing "cW" at a file... So, to avoid it, we can send two push commands to lf:
-  1. one for sending just ":";
+<p>What the third line above does is: whenever <code>cW</code> is pressed from LF, user is prompted with our rename function. This approach is certainly useful, but it turns out that LF freezes a little when &ldquo;:&rdquo; is pushed, as it is leaving normal mode and entering command mode. For it being frozen, sometimes the next character after &ldquo;:&rdquo; is not typed and we end up with <code>:ename -n</code> after pressing &ldquo;cW&rdquo; at a file&hellip; So, to avoid it, we can send two push commands to lf:
+  1. one for sending just &ldquo;:&rdquo;;
   2. another one for sending the rest of the text.</p>
-<p>I created another command to push these vim-like renaming commands to screen, which is called "vim-rename". Our final polished mappings become:</p>
+<p>I created another command to push these vim-like renaming commands to screen, which is called &ldquo;vim-rename&rdquo;. Our final polished mappings become:</p>
 <div class="highlight"><pre><span></span><code><span class="n">map</span> <span class="n">c</span>
 
 <span class="n">map</span> <span class="n">a</span>  <span class="n">vim</span><span class="o">-</span><span class="n">rename</span> <span class="n">append</span> <span class="n">word</span>
@@ -270,20 +270,20 @@ map cW &amp;<span class="k">lf</span> <span class="p">-</span>remote <span class
 
 <p>Now:</p>
 <ul>
-<li><strong>A</strong>: "append WORD" --- prompts filename and puts cursor at the end of it;</li>
-<li><strong>I</strong>: "prepend word" --- prompts filename and puts cursor at it's begining</li>
-<li><strong>a</strong>: "append word" --- prompts filename and puts cursor right before the first "." (before extension);</li>
-<li><strong>cw</strong>: "change word" --- clears filename and puts cursof before extension (and dot, if existent);</li>
-<li><strong>ce</strong>: "change extension" --- clears extension and puts cursof after filename (and dot, if existent); and</li>
-<li><strong>cW</strong> and <strong>C</strong>: "change WORD" --- clear prompt for new filename.</li>
+<li><strong>A</strong>: &ldquo;append WORD&rdquo; &mdash; prompts filename and puts cursor at the end of it;</li>
+<li><strong>I</strong>: &ldquo;prepend word&rdquo; &mdash; prompts filename and puts cursor at it&rsquo;s begining</li>
+<li><strong>a</strong>: &ldquo;append word&rdquo; &mdash; prompts filename and puts cursor right before the first &ldquo;.&rdquo; (before extension);</li>
+<li><strong>cw</strong>: &ldquo;change word&rdquo; &mdash; clears filename and puts cursof before extension (and dot, if existent);</li>
+<li><strong>ce</strong>: &ldquo;change extension&rdquo; &mdash; clears extension and puts cursof after filename (and dot, if existent); and</li>
+<li><strong>cW</strong> and <strong>C</strong>: &ldquo;change WORD&rdquo; &mdash; clear prompt for new filename.</li>
 </ul>
 <h2>bulk-rename</h2>
-<p>bulk-rename here reads to "rename various files in a text editor".</p>
-<p>My code for this functionality is inpired by @EmmChriss's response at <a href="https://github.com/gokcehan/lf/issues/149">github/gokcehan/lf/issues/149</a>. It has grown a bit, so I'll tell you why you should use it first:</p>
+<p>bulk-rename here reads to &ldquo;rename various files in a text editor&rdquo;.</p>
+<p>My code for this functionality is inpired by @EmmChriss&rsquo;s response at <a href="https://github.com/gokcehan/lf/issues/149">github/gokcehan/lf/issues/149</a>. It has grown a bit, so I&rsquo;ll tell you why you should use it first:</p>
 <ol>
-<li>You can rename various files in the program you've set for $EDITOR;</li>
-<li>Have you ever wanted to rename both a movie and its subtitle to the same name but not to bother with their extensions in the process? Here you can bulk-rename without extension (and the task easily becomes as simple as "yypGddZZ" at VIM screen). This is done by using <code>-n</code> option.</li>
-<li>Have you ever wanted to transform that bunch of free note text files into <code>.md</code>'s? You can rename just extensions! The option for this is <code>-e</code>.</li>
+<li>You can rename various files in the program you&rsquo;ve set for $EDITOR;</li>
+<li>Have you ever wanted to rename both a movie and its subtitle to the same name but not to bother with their extensions in the process? Here you can bulk-rename without extension (and the task easily becomes as simple as &ldquo;yypGddZZ&rdquo; at VIM screen). This is done by using <code>-n</code> option.</li>
+<li>Have you ever wanted to transform that bunch of free note text files into <code>.md</code>&lsquo;s? You can rename just extensions! The option for this is <code>-e</code>.</li>
 <li>You can also rename including all filepath (using option <code>-A</code>);</li>
 </ol>
 <p>Running <code>:bulk-rename</code> function in LF will take items in selection and show their names for edition in your text editor. If there are no items selected, all the current directory files are to be renamed, instead.</p>
@@ -438,7 +438,7 @@ Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a 
   "@type" : "Blog",
   "name": " Marcos Conceição ",
   "url" : "http://www.marcosrdac.com",
-  "image": "/images/base/me.png",
+  "image": "/res/base/me.png",
   "description": "A site by Marcos Conceição."
 }
 </script>

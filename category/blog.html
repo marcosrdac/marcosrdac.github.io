@@ -57,7 +57,7 @@
 <meta property="og:description" content="A site by Marcos Conceição."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="http://www.marcosrdac.com"/>
-<meta property="og:image" content="/images/base/me.png">
+<meta property="og:image" content="/res/base/me.png">
 
   <title>Marcos Conceição &ndash; Category blog</title>
 
@@ -66,7 +66,7 @@
   <aside>
     <div>
       <a href="http://www.marcosrdac.com">
-        <img src="/images/base/me.png" alt="Marcos Conceição" title="Marcos Conceição">
+        <img src="/res/base/me.png" alt="Marcos Conceição" title="Marcos Conceição">
       </a>
 
       <h1>
@@ -157,19 +157,101 @@
 
 <article>
   <header>
+    <h2><a href="http://www.marcosrdac.com/kmeans.html#kmeans">The simplest k-means implementation in Numpy</a></h2>
+    <p>
+      Posted on Fri 25 December 2020 in <a href="http://www.marcosrdac.com/category/blog.html">blog</a>
+
+          &#8226; Tagged with
+              <a href="http://www.marcosrdac.com/tag/python.html">python</a>,              <a href="http://www.marcosrdac.com/tag/numpy.html">numpy</a>,              <a href="http://www.marcosrdac.com/tag/k-means.html">k-means</a>,              <a href="http://www.marcosrdac.com/tag/cluster-analysis.html">cluster analysis</a>,              <a href="http://www.marcosrdac.com/tag/machine-learning.html">machine learning</a>,              <a href="http://www.marcosrdac.com/tag/data-science.html">data science</a>
+        &#8226; 4 min read
+    </p>
+  </header>
+  <div>
+      <p>k-means is a very simple algorithm to group data based on their similarity, being a reliable solution to many data analysis problems. People generally come up with good lower-level implementation of it in mathematical languages like Fortran or C++. In the other hand, when it comes to Python, they will frequently translate low-level code line by line to get their implementations. This is very problematic, as Python has deep performance problems with&hellip;</p>
+        <br>
+        <a class="btn"
+           href="http://www.marcosrdac.com/kmeans.html#kmeans">
+          Continue reading
+        </a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
     <h2><a href="http://www.marcosrdac.com/various-functions-out-of-a-block-of-code-a-little-of-metaprogramming-in-julia.html#various-functions-out-of-a-block-of-code-a-little-of-metaprogramming-in-julia">Various functions out of a block of code: a little of metaprogramming in Julia</a></h2>
     <p>
       Posted on Mon 03 August 2020 in <a href="http://www.marcosrdac.com/category/blog.html">blog</a>
 
-
+          &#8226; Tagged with
+              <a href="http://www.marcosrdac.com/tag/julia.html">julia</a>,              <a href="http://www.marcosrdac.com/tag/metaprogramming.html">metaprogramming</a>
         &#8226; 2 min read
     </p>
   </header>
   <div>
-      <!-- subtitle: a little of metaprogramming in Julia -->
+      <p>Have you ever needed to create numerous, very similar functions? Today I&rsquo;m showing you how to do that thing you always wanted to do in pure Julia: create various functions in a loop.
+Supose you want to create three functions in Julia: <span class="math">\(f(x)=x\)</span>, <span class="math">\(g(x)=x^2\)</span> and <span class="math">\(h(x)=x^3\)</span>.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
 
-<p>Have you ever needed to create numerous, very similar functions? Today I'm showing you how to do that thing you always wanted to do in pure Julia: create various functions in a loop.</p>
-<p>Supose you want to create three functions in Julia: <span class="math">\(f(x)=x\)</span>, <span class="math">\(g(x)=x^2\)</span> and …</p><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
         linebreak = "false";
@@ -250,7 +332,7 @@
     </p>
   </header>
   <div>
-      <p>I've definitely moved to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger's and VIFM's "I", "A" and "a" mappings, or their "bulk-rename" function. So today I'm going to show you how to get those functionalities in LF.</p>
+      <p>I&rsquo;ve definitely moved to LF file manager, but I still wanted the renaming power I had with other TUI file managers, like ranger&rsquo;s and VIFM&rsquo;s &ldquo;I&rdquo;, &ldquo;A&rdquo; and &ldquo;a&rdquo; mappings, or their &ldquo;bulk-rename&rdquo; function. So today I&rsquo;m going to show you how to get those functionalities in LF.</p>
         <br>
         <a class="btn"
            href="http://www.marcosrdac.com/proper-renaming-for-lf-prepend-append-change-extension-and-more.html#proper-renaming-for-lf-prepend-append-change-extension-and-more">
@@ -271,8 +353,8 @@
   </header>
   <div>
       <h1></h1>
-<p>Since two years ago, I've tried some terminal file managers and ended up finding three of my taste.</p>
-<p>The first one was <code>ranger</code>. It conquered me for being controled in a vim-like style, having a vim-like config file, having 3 panes (the first showing the parent directory files, the middle …</p>
+<p>Since two years ago, I&rsquo;ve tried some terminal file managers and ended up finding three of my taste.</p>
+<p>The first one was <code>ranger</code>. It conquered me for being controled in a vim-like style, having a vim-like config file, having 3 panes (the first showing the parent directory files, the …</p>
         <br>
         <a class="btn"
            href="http://www.marcosrdac.com/tui-file-managers-battle.html#tui-file-managers-battle">
@@ -310,7 +392,7 @@ Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a 
   "@type" : "Blog",
   "name": " Marcos Conceição ",
   "url" : "http://www.marcosrdac.com",
-  "image": "/images/base/me.png",
+  "image": "/res/base/me.png",
   "description": "A site by Marcos Conceição."
 }
 </script>

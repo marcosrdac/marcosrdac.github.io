@@ -64,7 +64,7 @@
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="http://www.marcosrdac.com/author/marcos-conceicao.html">
 <meta property="article:section" content="blog"/>
-<meta property="og:image" content="/images/base/me.png">
+<meta property="og:image" content="/res/base/me.png">
 
   <title>Marcos Conceição &ndash; Python virtual environments: from &#34;virtualenvwrapper + pip&#34; to &#34;pew + pipenv&#34;</title>
 
@@ -73,7 +73,7 @@
   <aside>
     <div>
       <a href="http://www.marcosrdac.com">
-        <img src="/images/base/me.png" alt="Marcos Conceição" title="Marcos Conceição">
+        <img src="/res/base/me.png" alt="Marcos Conceição" title="Marcos Conceição">
       </a>
 
       <h1>
@@ -173,8 +173,8 @@
 
 
   <div>
-    <p>Ever since I started using <code>Python</code> environments, I am using <code>virtualenvwrapper</code>. It is nice to to be able to isolate a version of the language interpreter and its libraries and access it so easly. Though the proccess of installing this wrapper is a mess. You must set your shell to load one of its codes, and then, when you perceive you've done something that is really freezing every terminal window when it starts... So that you look up in the docs for them to say that you could source another script instead of the first one, so that your terminal isn't that way anymore... You know, this is not very didatic when I am teaching Python.</p>
-<p>I'm happy to show you here that you can easily manage your virtual environments with two modern tools: <code>pew</code> and <code>pipenv</code>.</p>
+    <p>Ever since I started using <code>Python</code> environments, I am using <code>virtualenvwrapper</code>. It is nice to to be able to isolate a version of the language interpreter and its libraries and access it so easly. Though the proccess of installing this wrapper is a mess. You must set your shell to load one of its codes, and then, when you perceive you&rsquo;ve done something that is really freezing every terminal window when it starts&hellip; So that you look up in the docs for them to say that you could source another script instead of the first one, so that your terminal isn&rsquo;t that way anymore&hellip; You know, this is not very didatic when I am teaching Python.</p>
+<p>I&rsquo;m happy to show you here that you can easily manage your virtual environments with two modern tools: <code>pew</code> and <code>pipenv</code>.</p>
 <h2><code>pew</code></h2>
 <p>Pew is a tool very similar to virtualenvwrapper, but it only requires the variable <code>$WORKON_HOME</code> to be defined in your environment. It is a useful tool for creating general Python virtual environments, and can easily be installed with pip:</p>
 <div class="highlight"><pre><span></span><code>sudo pip install pew
@@ -186,12 +186,12 @@
 </code></pre></div>
 
 
-<p>I usually set "$WORKON_HOME" to to be at <code>$HOME/.local/lib/pipenvs</code> (<code>$HOME</code> means <code>/home/&lt;YOUR_USERNAME&gt;</code> --- it is pre-defined shell variable), but it is really arbitrary. If you use a common bash shell, to set <code>$WORKON_HOME</code> means to add this line to your <code>$HOME/.bashrc</code>:</p>
+<p>I usually set &ldquo;$WORKON_HOME&rdquo; to to be at <code>$HOME/.local/lib/pipenvs</code> (<code>$HOME</code> means <code>/home/&lt;YOUR_USERNAME&gt;</code> &mdash; it is pre-defined shell variable), but it is really arbitrary. If you use a common bash shell, to set <code>$WORKON_HOME</code> means to add this line to your <code>$HOME/.bashrc</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">WORKON_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.local/lib/pipenvs&quot;</span>
 </code></pre></div>
 
 
-<p>Else, if you divide env and rc configuration and files, put this line ate one of the env ones. In that case, it's safe that you restart your session. If you are a common user, you can just close your terminal and open it again. type <code>echo $WORKON_HOME</code> and you should see the path you just set. Anyway, let's get back to pew!</p>
+<p>Else, if you divide env and rc configuration and files, put this line ate one of the env ones. In that case, it&rsquo;s safe that you restart your session. If you are a common user, you can just close your terminal and open it again. type <code>echo $WORKON_HOME</code> and you should see the path you just set. Anyway, let&rsquo;s get back to pew!</p>
 <p>You can create a virtual environments named <code>m</code> with:</p>
 <div class="highlight"><pre><span></span><code>pew new m
 <span class="c1"># or, to specify a python executble,</span>
@@ -238,7 +238,7 @@ Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a 
   "@type" : "Blog",
   "name": " Marcos Conceição ",
   "url" : "http://www.marcosrdac.com",
-  "image": "/images/base/me.png",
+  "image": "/res/base/me.png",
   "description": "A site by Marcos Conceição."
 }
 </script>

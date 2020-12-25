@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-beta1/katex.min.css" integrity="sha384-VEnyslhHLHiYPca9KFkBB3CMeslnM9CzwjxsEbZTeA21JBm7tdLwKoZmCt3cZTYD" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-beta1/katex.min.js" integrity="sha384-O4hpKqcplNCe+jLuBVEXC10Rn1QEqAmX98lKAIFBEDxZI0a+6Z2w2n8AEtQbR4CD" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-beta1/contrib/auto-render.min.js" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet/less" type="text/css" href="http://127.0.0.1:8000/theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+        disabled="disabled"
+    href="http://127.0.0.1:8000/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+            disabled="disabled"
+          href="http://127.0.0.1:8000/theme/pygments/fruity.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="http://127.0.0.1:8000/theme/pygments/fruity.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/font-awesome/css/solid.css">
+
+
+
+
+
+  
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#091B2A">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#091B2A">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#091B2A">
+
+<meta name="author" content="Marcos Conceição" />
+<meta name="description" content="k-means is a very simple algorithm to group data based on their similarity, being a reliable solution to many data analysis problems. People generally come up with good lower-level implementation of it in mathematical languages like Fortran or C++. When it comes to Python, people will frequently translate C/Fortran …" />
+<meta name="keywords" content="python, numpy, k-means, cluster analysis, machine learning, data science">
+
+
+<meta property="og:site_name" content="Marcos Conceição"/>
+<meta property="og:title" content="The simplest k-means implementation in Numpy"/>
+<meta property="og:description" content="k-means is a very simple algorithm to group data based on their similarity, being a reliable solution to many data analysis problems. People generally come up with good lower-level implementation of it in mathematical languages like Fortran or C++. When it comes to Python, people will frequently translate C/Fortran …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://127.0.0.1:8000/the-simplest-k-means-implementation-in-numpy.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-12-25 00:00:00-03:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://127.0.0.1:8000/author/marcos-conceicao.html">
+<meta property="article:section" content="blog"/>
+<meta property="article:tag" content="python"/>
+<meta property="article:tag" content="numpy"/>
+<meta property="article:tag" content="k-means"/>
+<meta property="article:tag" content="cluster analysis"/>
+<meta property="article:tag" content="machine learning"/>
+<meta property="article:tag" content="data science"/>
+<meta property="og:image" content="/res/base/me.png">
+
+  <title>Marcos Conceição &ndash; The simplest k-means implementation in Numpy</title>
+
+</head>
+<body class="light-theme">
+  <aside>
+    <div>
+      <a href="http://127.0.0.1:8000">
+        <img src="/res/base/me.png" alt="Marcos Conceição" title="Marcos Conceição">
+      </a>
+
+      <h1>
+        <a href="http://127.0.0.1:8000">Marcos Conceição</a>
+      </h1>
+
+
+
+      <ul class=languages>
+      <li class="active"><a class="btn" href="http://127.0.0.1:8000/">English</a></li>
+      <li><a class="btn" href="http://127.0.0.1:8000/pt_br/">Português</a></li>
+      </ul>
+
+
+
+      <nav>
+        <ul class="list">
+
+
+              <li>
+                <a target="_self"
+                   href="http://127.0.0.1:8000/pages/about.html#about">
+                  About
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="http://127.0.0.1:8000/pages/contact.html#contact">
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="http://127.0.0.1:8000/pages/portfolio.html#portfolio">
+                  Portfolio
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="http://127.0.0.1:8000/pages/services.html#services">
+                  Services
+                </a>
+              </li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/marcosrdac" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/marcos-concei%C3%A7%C3%A3o-3ba173189/" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-youtube" href="https://www.youtube.com/channel/UCeMnyCimF8pJjTM5MxFdRlw" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://127.0.0.1:8000">Home</a>
+
+      <!--MODIFIED-->
+      <!--<a href="archives.html">Archives</a>-->
+      <a href="http://127.0.0.1:8000/archives.html">Archives</a>
+      <!--MODIFIED-->
+      <!--<a href="categories.html">Categories</a>-->
+      <a href="http://127.0.0.1:8000/categories.html">Categories</a>
+      <!--MODIFIED-->
+      <!--<a href="tags.html">Tags</a>-->
+      <a href="http://127.0.0.1:8000/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="the-simplest-k-means-implementation-in-numpy">The simplest k-means implementation in Numpy</h1>
+    <p>
+      Posted on Fri 25 December 2020 in <a href="http://127.0.0.1:8000/category/blog.html">blog</a>
+
+        &#8226; 4 min read
+    </p>
+  </header>
+
+
+  <div>
+    <p>k-means is a very simple algorithm to group data based on their similarity, being a reliable solution to many data analysis problems. People generally come up with good lower-level implementation of it in mathematical languages like Fortran or C++. When it comes to Python, people will frequently translate C/Fortran code line by line to get their implementations. This is very proproblematic, as Python has deep performance problems with explicit loops. Of course there are sophisticated ways to solve this problem, but they will often cost more time to implement or need more dependencies than just vanilla Numpy (or both). So very frequently a good solution comes from taking advantage of Numpy tools to increase Python performance.</p>
+<p>I have recently coded my own k-means implementation and I think it is an optimum point between readability and performance for numerical code. Follow me below to get my tips!</p>
+<p>Before we start we need to import 2 libraries: numpy and matplotlib's plotting module.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</code></pre></div>
+
+
+<p>We also need some data for us to work on. Let's create 2 normal distributions in a plane: 2 globs, each of which with 100 points and varying centers positions, <span class="math">\(c\)</span>, and dispersions, <span class="math">\(\sigma\)</span>, coded as <code>sigma</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># generating globs</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span>
+  <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>   <span class="c1"># 1st glob center coordinates</span>
+   <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],]</span>  <span class="c1"># 2nd glob center coordinates</span>
+<span class="p">)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+<span class="n">xy0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">N</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">xy1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">N</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Where <code>xy1</code> and <code>xy2</code> are arrays whose rows are point coordinates. They can be seen below along with their centers:</p>
+<p><center>
+<img alt="Distributions' scatter plot and centroids" src="/res/kmeans/distributions.svg">
+</center></p>
+<p>Now, we can unite both distributions into a dataset matrix <code>X</code>. We will also save each point's group (0 or 1) ground truth for future comparison to k-means results. We will call it <code>y</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># dataset generation</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">xy0</span><span class="p">,</span> <span class="n">xy1</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">xy</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">xy</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">xy0</span><span class="p">,</span> <span class="n">xy1</span><span class="p">])])</span>
+</code></pre></div>
+
+
+<h2>k-means</h2>
+<p>Now we introduce the k-means method. The algorithm suposes that the dataset is composed of <span class="math">\(k\)</span> groups whose points are coordinates around determined centroids (<em>centroid</em> means center-like, as we are not talking about perfect circles). In our case, the number of groups is <span class="math">\(k=2\)</span>. The heuristic behind k-means has the goal of classifying points based on their centroids by moving them in a way that maximizes intra-group similarity (i.e. minimizes intra-group distances/variance).</p>
+<p>One way to acquire it is by first giving a random label (an initial <code>y</code>) to the dataset points, then entering a loop of getting mean coordinates (the centroid <span class="math">\(c_i\)</span>) of each label and relabeling based on the nearest center's group label.</p>
+<p>In these terms, I write below my k-means implementation:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">kmeans</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Function to calculate centroids and predict labels of distributions with</span>
+<span class="sd">    K-means algorithm.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">dists</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">M</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+            <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">dists</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="o">-</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">dists</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">c</span><span class="p">,</span> <span class="n">y</span>
+</code></pre></div>
+
+
+<p>Let's take a look at what happens on each line (after documentation string):</p>
+<ul>
+<li><strong>#1</strong>: we unpack the number of rows and columns of the input dataset <code>X</code> into variables <code>N</code> and <code>M</code>, respectively;</li>
+<li><strong>#2</strong> &amp; <strong>#3</strong>: we declare the arrays that will receive distance (<code>dists</code>) and centroid (<code>c</code>) calculations. Yes! They told you that declaration is not needed in Python, but it is certainly not the case when it comes to numerical problems. Declaring variables prepares your memory for computations, so that it can reward you with better perfomance;</li>
+<li><strong>#4</strong>: we assign random group labels (from 0 to <code>k</code>) to each of the <code>N</code> dataset points;</li>
+<li><strong>#5</strong>: at each iteration do:<ul>
+<li><strong>#6</strong>: for group do:<ul>
+<li><strong>#7</strong>: compute centroids as a mean of point coordinates with label <code>i</code>;</li>
+<li><strong>#8</strong>: compute the distance of each point to the <code>i</code>th centroid and save them as the column <code>i</code> of the distances matrix, <code>dists</code>;</li>
+</ul>
+</li>
+<li><strong>#9</strong>: relabel dataset points as the group of nearest centroid. In other words, as <code>dists</code> is a <span class="math">\(N \times k\)</span> matrix, we want the column index of the smallest distance for each row (exactly what the argmin function does);</li>
+</ul>
+</li>
+<li><strong>#10</strong>: return centroid coodinates <code>c</code>, and estimated group labels, <code>y</code> for each class.</li>
+</ul>
+<p>Now running k-means on our dataset comes down to running <code>k-means</code> on our dataset <code>X</code>. We specify the number of groups to 2 and the number of epochs to 5, as k-means converges very quickly:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ĉ</span><span class="p">,</span> <span class="n">ŷ</span> <span class="o">=</span> <span class="n">kmeans</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Where we wrote <code>ĉ</code> and <code>ŷ</code> with hats, as we would in statistical notation. Let us take a look at the result:</p>
+<p><center>
+<img alt="k-means output" src="/res/kmeans/kmeans_output.svg">
+</center></p>
+<p>When we compare k-means clusters to the original data distributions, it is clear that the algorithm has generalized a meaningful partition method. It has some dificulties with points right between a cluster center and another, which is pretty acceptable &mdash; a human would also have a hard time on these cases.</p>
+<h2>Performance</h2>
+<p>I will show you another implementation, as an example of how you should not code k-means (or any other numerical algorithm) in Python:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">kmeans</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">M</span><span class="p">))</span>
+    <span class="n">dists</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+            <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">n_c</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">==</span> <span class="n">i</span><span class="p">:</span>
+                    <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+=</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                    <span class="n">n_c</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">/=</span> <span class="n">n_c</span>  <span class="c1"># average</span>
+
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+                <span class="n">dists</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">-</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
+            <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">dists</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span>
+</code></pre></div>
+
+
+<p>And why should you not use it? Well, I've made some benchmarks. For a dataset of 1000 rows and 2 columns, 50 epochs of k-means iterations takes, in average, for each implementation:</p>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th align="center">Implementation</th>
+<th align="center">Execution time (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1st</td>
+<td align="center">0.0150</td>
+</tr>
+<tr>
+<td align="center">2nd</td>
+<td align="center">2.92</td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<p>In other words, the first implementation is almost <strong>200 times faster</strong>. That is why. A second reason is that my first code is much more <strong>readable</strong>.</p>
+<h2>Final considerations</h2>
+<p>k-means is a very useful algorithm. It already has very good implementations in Python (see <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">Scikit's version</a> for example), but if you need to go low-level to solve your problem, avoid for explicit loops as it can significantly worsen your code's perfomance.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://127.0.0.1:8000/tag/python.html">python</a>
+      <a href="http://127.0.0.1:8000/tag/numpy.html">numpy</a>
+      <a href="http://127.0.0.1:8000/tag/k-means.html">k-means</a>
+      <a href="http://127.0.0.1:8000/tag/cluster-analysis.html">cluster analysis</a>
+      <a href="http://127.0.0.1:8000/tag/machine-learning.html">machine learning</a>
+      <a href="http://127.0.0.1:8000/tag/data-science.html">data science</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="http://127.0.0.1:8000/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="false"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Marcos Conceição ",
+  "url" : "http://127.0.0.1:8000",
+  "image": "/res/base/me.png",
+  "description": "A site by Marcos Conceição."
+}
+</script>
+
+
+</body>
+
+<!-- KaTeX -->
+<script>renderMathInElement(document.body);</script>
+
+</html>

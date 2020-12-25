@@ -50,13 +50,13 @@
     <meta name="msapplication-TileColor" content="#091B2A">
 
 <meta name="author" content="Marcos Conceição" />
-<meta name="description" content="Have you ever needed to create numerous, very similar functions? Today I&#39;m showing you how to do that thing you always wanted to do in pure Julia: create various functions in a loop. Supose you want to create three functions in Julia: \(f(x)=x\), \(g(x)=x^2\) and …if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width" />
-<meta name="keywords" content="">
+<meta name="description" content="Have you ever needed to create numerous, very similar functions? Today I’m showing you how to do that thing you always wanted to do in pure Julia: create various functions in a loop. Supose you want to create three functions in Julia: \(f(x)=x\), \(g(x)=x^2\) and \(h(x)=x^3\). if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width" />
+<meta name="keywords" content="julia, metaprogramming">
 
 
 <meta property="og:site_name" content="Marcos Conceição"/>
 <meta property="og:title" content="Various functions out of a block of code: a little of metaprogramming in Julia"/>
-<meta property="og:description" content="Have you ever needed to create numerous, very similar functions? Today I&#39;m showing you how to do that thing you always wanted to do in pure Julia: create various functions in a loop. Supose you want to create three functions in Julia: \(f(x)=x\), \(g(x)=x^2\) and …if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width"/>
+<meta property="og:description" content="Have you ever needed to create numerous, very similar functions? Today I’m showing you how to do that thing you always wanted to do in pure Julia: create various functions in a loop. Supose you want to create three functions in Julia: \(f(x)=x\), \(g(x)=x^2\) and \(h(x)=x^3\). if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="http://www.marcosrdac.com/various-functions-out-of-a-block-of-code-a-little-of-metaprogramming-in-julia.html"/>
 <meta property="og:type" content="article"/>
@@ -64,7 +64,9 @@
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="http://www.marcosrdac.com/author/marcos-conceicao.html">
 <meta property="article:section" content="blog"/>
-<meta property="og:image" content="/images/base/me.png">
+<meta property="article:tag" content="julia"/>
+<meta property="article:tag" content="metaprogramming"/>
+<meta property="og:image" content="/res/base/me.png">
 
   <title>Marcos Conceição &ndash; Various functions out of a block of code: a little of metaprogramming in Julia</title>
 
@@ -73,7 +75,7 @@
   <aside>
     <div>
       <a href="http://www.marcosrdac.com">
-        <img src="/images/base/me.png" alt="Marcos Conceição" title="Marcos Conceição">
+        <img src="/res/base/me.png" alt="Marcos Conceição" title="Marcos Conceição">
       </a>
 
       <h1>
@@ -173,9 +175,7 @@
 
 
   <div>
-    <!-- subtitle: a little of metaprogramming in Julia -->
-
-<p>Have you ever needed to create numerous, very similar functions? Today I'm showing you how to do that thing you always wanted to do in pure Julia: create various functions in a loop.</p>
+    <p>Have you ever needed to create numerous, very similar functions? Today I&rsquo;m showing you how to do that thing you always wanted to do in pure Julia: create various functions in a loop.</p>
 <p>Supose you want to create three functions in Julia: <span class="math">\(f(x)=x\)</span>, <span class="math">\(g(x)=x^2\)</span> and <span class="math">\(h(x)=x^3\)</span>. So you could workfully write:</p>
 <div class="highlight"><pre><span></span><code><span class="k">function</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
   <span class="k">return</span> <span class="n">x</span>
@@ -191,7 +191,7 @@
 </code></pre></div>
 
 
-<p>But I know, when you are about to write "function" for the second time, your thoughts sudenly start to bother you: "man, there must be a way for me to do it efficiently...". I'm glad to tell you that <strong>you would be right!</strong> Lets expand our objectives for 6 functions and do it without all this machine work!</p>
+<p>But I know, when you are about to write &ldquo;function&rdquo; for the second time, your thoughts sudenly start to bother you: &ldquo;man, there must be a way for me to do it efficiently&hellip;&rdquo;. I&rsquo;m glad to tell you that <strong>you would be right!</strong> Lets expand our objectives for 6 functions and do it without all this machine work!</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">func</span> <span class="kp">in</span> <span class="p">(</span><span class="o">:</span><span class="n">f</span><span class="p">,</span> <span class="o">:</span><span class="n">g</span><span class="p">,</span> <span class="o">:</span><span class="n">h</span><span class="p">,</span> <span class="o">:</span><span class="n">i</span><span class="p">,</span> <span class="o">:</span><span class="n">j</span><span class="p">,</span> <span class="o">:</span><span class="n">k</span><span class="p">)</span>
 
   <span class="k">if</span>     <span class="n">func</span> <span class="o">==</span> <span class="o">:</span><span class="n">f</span>  <span class="n">E</span> <span class="o">=</span> <span class="mi">1</span>
@@ -215,8 +215,8 @@
 <p>And you can then start using $k(x)$ to get $x^6$.</p>
 
 <h1>The downside</h1>
-<p>Although you might think that our last code would then be slower at runtime, after all it's all super high level code, it will not. These definitions are run at parse time, before actual compilation. So, roughly speaking, the only downside is that compiling your code is going to take more time.</p>
-<h1>For those who want to understand what's going on...</h1>
+<p>Although you might think that our last code would then be slower at runtime, after all it&rsquo;s all super high level code, it will not. These definitions are run at parse time, before actual compilation. So, roughly speaking, the only downside is that compiling your code is going to take more time.</p>
+<h1>For those who want to understand what&rsquo;s going on&hellip;</h1>
 <ul>
 <li>we enter a loop block at line 1. One iteration is done for each of the symbols f, g, h, i, j, k. At each iteration, func is assigned to one of them.</li>
 <li>then we enter the <code>if elseif</code> block. Depending on the symbol we are working on, we define a constant value E, the exponent used in the function.</li>
@@ -233,7 +233,7 @@
 </code></pre></div>
 
 
-<p>but I think it's prettier to pipe the quotation end to the eval function with <code>|&gt; eval</code>.</p>
+<p>but I think it&rsquo;s prettier to pipe the quotation end to the eval function with <code>|&gt; eval</code>.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -299,6 +299,8 @@
   </div>
   <div class="tag-cloud">
     <p>
+      <a href="http://www.marcosrdac.com/tag/julia.html">julia</a>
+      <a href="http://www.marcosrdac.com/tag/metaprogramming.html">metaprogramming</a>
     </p>
   </div>
 
@@ -332,7 +334,7 @@ Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a 
   "@type" : "Blog",
   "name": " Marcos Conceição ",
   "url" : "http://www.marcosrdac.com",
-  "image": "/images/base/me.png",
+  "image": "/res/base/me.png",
   "description": "A site by Marcos Conceição."
 }
 </script>
