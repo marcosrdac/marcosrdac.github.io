@@ -261,7 +261,7 @@
 </center></p>
 <p>When we compare k-means clusters to the original data distributions, it is clear that the algorithm has generalized a meaningful partition method. It has some dificulties with points right between a cluster center and another, which is pretty acceptable &mdash; a human would also have a hard time on these cases.</p>
 <h2>Performance</h2>
-<p>I will show you another implementation, as an example of how you should not code k-means (or any other numerical algorithm) in Python:</p>
+<p>I will show you another implementation, as an example of how you should not code k-means (or any other numerical algorithm) in Python, even when you are tempted to:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">kmeans</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
     <span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
@@ -308,7 +308,7 @@
 </tbody>
 </table>
 <p></center></p>
-<p>In other words, the first implementation is almost <strong>200 times faster</strong>. That is why. A second reason is that my first code is much more <strong>readable</strong>.</p>
+<p>In other words, the first implementation is almost <strong>200 times faster</strong>. That is why. As I said, explicit loops are not a good Python solution for numerical problems. A second reason is that my first code is much more <strong>readable</strong>.</p>
 <h2>Final considerations</h2>
 <p>k-means is a very useful clustering algorithm. It already has very good implementations in Python (see <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">Scikit&rsquo;s version</a> for example), but if you need to go low-level to solve your problem, avoid for explicit loops as it can significantly worsen your code&rsquo;s perfomance.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
