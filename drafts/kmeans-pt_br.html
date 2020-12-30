@@ -59,13 +59,13 @@
     <meta name="msapplication-TileColor" content="#091B2A">
 
 <meta name="author" content="Marcos Conceição" />
-<meta name="description" content="k-means is a very simple algorithm to group data based on their similarity, being a reliable solution to many data analysis problems. People generally come up with good lower-level implementation of it in mathematical languages like Fortran or C++. When it comes to Python, people will frequently translate C/Fortran …" />
+<meta name="description" content="k-means is a very simple algorithm to group data based on their similarity, being a reliable solution to many data analysis problems. People generally come up with good lower-level implementation of it in mathematical languages like Fortran or C++. In the other hand, when it comes to Python, they will frequently translate low-level code line by line to get their implementations. This is very problematic, as Python has deep performance problems with…" />
 <meta name="keywords" content="python, numpy, k-means, cluster analysis, machine learning, data science">
 
 
 <meta property="og:site_name" content="Marcos Conceição"/>
 <meta property="og:title" content="The simplest k-means implementation in NumPy"/>
-<meta property="og:description" content="k-means is a very simple algorithm to group data based on their similarity, being a reliable solution to many data analysis problems. People generally come up with good lower-level implementation of it in mathematical languages like Fortran or C++. When it comes to Python, people will frequently translate C/Fortran …"/>
+<meta property="og:description" content="k-means is a very simple algorithm to group data based on their similarity, being a reliable solution to many data analysis problems. People generally come up with good lower-level implementation of it in mathematical languages like Fortran or C++. In the other hand, when it comes to Python, they will frequently translate low-level code line by line to get their implementations. This is very problematic, as Python has deep performance problems with…"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="http://www.marcosrdac.com/drafts/kmeans-pt_br.html"/>
 <meta property="og:type" content="article"/>
@@ -188,8 +188,9 @@
 
 
   <div>
-    <p>k-means is a very simple algorithm to group data based on their similarity, being a reliable solution to many data analysis problems. People generally come up with good lower-level implementation of it in mathematical languages like Fortran or C++. When it comes to Python, people will frequently translate C/Fortran code line by line to get their implementations. This is very proproblematic, as Python has deep performance problems with explicit loops. Of course there are sophisticated ways to solve this problem, but they will often cost more time to implement or need more dependencies than just vanilla Numpy (or both). So very frequently a good solution comes from taking advantage of Numpy tools to increase Python performance.</p>
-<p>I have recently coded my own k-means implementation and I think it is an optimum point between readability and performance for numerical code. Follow me below to get my tips!</p>
+    <p>k-means is a very simple algorithm to group data based on their similarity, being a reliable solution to many data analysis problems. People generally come up with good lower-level implementation of it in mathematical languages like Fortran or C++. In the other hand, when it comes to Python, they will frequently translate low-level code line by line to get their implementations. This is very problematic, as Python has deep performance issues with explicit loops.</p>
+<p>Of course there are many sophisticated ways to solve this problem, but they will often cost more time to implement or need more dependencies than just vanilla Numpy (or both). So very frequently a good solution comes from taking advantage of Numpy tools to increase Python performance.</p>
+<p>I have recently implemented k-means algorithm in Python and I think it is an optimum point between readability and numerical code performance. Follow me below to get my tips!</p>
 <p>Before we start we need to import code from 2 libraries: NumPy and Matplotlib&rsquo;s plotting module.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -204,19 +205,19 @@
    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],]</span>  <span class="c1"># 2nd glob center coordinates</span>
 <span class="p">)</span>
 <span class="n">sigma</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
-<span class="n">xy0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">N</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">xy1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">N</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">N</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">N</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 
 
-<p>Where <code>xy1</code> and <code>xy2</code> are arrays whose rows are point coordinates. They can be seen below along with their centers:</p>
+<p>Where <code>x1</code> and <code>x2</code> are arrays whose rows are point coordinates. They can be seen below along with their centers:</p>
 <p><center>
 <img alt="Distributions' scatter plot and centroids" src="/res/kmeans/distributions.svg">
 </center></p>
 <p>Now, we can unite both distributions into a dataset matrix <code>X</code>. We will also save each point&rsquo;s group (0 or 1) ground truth for future comparison to k-means results. We will call it <code>y</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># dataset generation</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">xy0</span><span class="p">,</span> <span class="n">xy1</span><span class="p">])</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">xy</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">xy</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">xy0</span><span class="p">,</span> <span class="n">xy1</span><span class="p">])])</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">])])</span>
 </code></pre></div>
 
 
@@ -269,7 +270,7 @@
 </center></p>
 <p>When we compare k-means clusters to the original data distributions, it is clear that the algorithm has generalized a meaningful partition method. It has some dificulties with points right between a cluster center and another, which is pretty acceptable &mdash; a human would also have a hard time on these cases.</p>
 <h2>Performance</h2>
-<p>I will show you another implementation, as an example of how you should not code k-means (or any other numerical algorithm) in Python:</p>
+<p>I will show you another implementation, as an example of how you should not code k-means (or any other numerical algorithm) in Python, even when you are tempted to:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">kmeans</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
     <span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
@@ -306,17 +307,17 @@
 </thead>
 <tbody>
 <tr>
-<td align="center">1st</td>
+<td align="center">1</td>
 <td align="center">0.0150</td>
 </tr>
 <tr>
-<td align="center">2nd</td>
+<td align="center">2</td>
 <td align="center">2.92</td>
 </tr>
 </tbody>
 </table>
 <p></center></p>
-<p>In other words, the first implementation is almost <strong>200 times faster</strong>. That is why. A second reason is that my first code is much more <strong>readable</strong>.</p>
+<p>In other words, the first implementation is almost <strong>200 times faster</strong>. That is why. As I said, explicit loops are not a good Python solution for numerical problems. A second reason is that my first code is much more <strong>readable</strong>.</p>
 <h2>Final considerations</h2>
 <p>k-means is a very useful clustering algorithm. It already has very good implementations in Python (see <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">Scikit&rsquo;s version</a> for example), but if you need to go low-level to solve your problem, avoid for explicit loops as it can significantly worsen your code&rsquo;s perfomance.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
