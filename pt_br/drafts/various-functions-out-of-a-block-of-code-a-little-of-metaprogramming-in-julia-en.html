@@ -59,13 +59,13 @@
     <meta name="msapplication-TileColor" content="#091B2A">
 
 <meta name="author" content="Marcos Conceição" />
-<meta name="description" content="Have you ever needed to create numerous, very similar functions? Today I’m showing you how to do that thing you always wanted to do in pure Julia: create various functions in a loop. Supose you want to create three functions in Julia: \(f(x)=x\), \(g(x)=x^2\) and \(h(x)=x^3\). if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width" />
+<meta name="description" content="Have you ever needed to create numerous, very similar functions? Today I’m showing you how to do that thing you always wanted to do in pure Julia: create various functions in a loop. Supose you want to create three functions in Julia: \(f(x)=x\), \(g(x)=x^2\) and \(h(x)=x^3\). if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width" />
 <meta name="keywords" content="julia, metaprogramming">
 
 
 <meta property="og:site_name" content="Marcos Conceição"/>
 <meta property="og:title" content="Various functions out of a block of code: a little of metaprogramming in Julia"/>
-<meta property="og:description" content="Have you ever needed to create numerous, very similar functions? Today I’m showing you how to do that thing you always wanted to do in pure Julia: create various functions in a loop. Supose you want to create three functions in Julia: \(f(x)=x\), \(g(x)=x^2\) and \(h(x)=x^3\). if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width"/>
+<meta property="og:description" content="Have you ever needed to create numerous, very similar functions? Today I’m showing you how to do that thing you always wanted to do in pure Julia: create various functions in a loop. Supose you want to create three functions in Julia: \(f(x)=x\), \(g(x)=x^2\) and \(h(x)=x^3\). if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width"/>
 <meta property="og:locale" content="pt_BR"/>
 <meta property="og:url" content="http://www.marcosrdac.com/pt_br/drafts/various-functions-out-of-a-block-of-code-a-little-of-metaprogramming-in-julia-en.html"/>
 <meta property="og:type" content="article"/>
@@ -199,7 +199,6 @@
 <span class="k">end</span>
 </code></pre></div>
 
-
 <p>But I know, when you are about to write &ldquo;function&rdquo; for the second time, your thoughts sudenly start to bother you: &ldquo;man, there must be a way for me to do it efficiently&hellip;&rdquo;. I&rsquo;m glad to tell you that <strong>you would be right!</strong> Lets expand our objectives to 6 functions and do it without all this machine work!</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">func</span> <span class="kp">in</span> <span class="p">(</span><span class="o">:</span><span class="n">f</span><span class="p">,</span> <span class="o">:</span><span class="n">g</span><span class="p">,</span> <span class="o">:</span><span class="n">h</span><span class="p">,</span> <span class="o">:</span><span class="n">i</span><span class="p">,</span> <span class="o">:</span><span class="n">j</span><span class="p">,</span> <span class="o">:</span><span class="n">k</span><span class="p">)</span>
 
@@ -220,7 +219,6 @@
 <span class="k">end</span>
 </code></pre></div>
 
-
 <p>And you can then start using <span class="math">\(k(x)\)</span> to get <span class="math">\(x^6\)</span>.</p>
 <h1>The downside</h1>
 <p>Although you might think that our last code would then be slower at runtime, after all it&rsquo;s all super high level code, it will not. These definitions are run at parse time, before actual compilation. So, roughly speaking, the only downside is that compiling your code is going to take more time.</p>
@@ -239,7 +237,6 @@
     <span class="k">end</span>
   <span class="p">)</span>
 </code></pre></div>
-
 
 <p>but I think it&rsquo;s prettier to pipe the quotation end to the eval function with <code>|&gt; eval</code>.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {

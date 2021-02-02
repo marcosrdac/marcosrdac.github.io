@@ -196,7 +196,6 @@
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </code></pre></div>
 
-
 <p>We also need some data for us to work on. Let&rsquo;s create 2 normal distributions in a plane: 2 globs, each of which with 100 points and varying centers positions, <span class="math">\(c\)</span>, and dispersions, <span class="math">\(\sigma\)</span>, coded as <code>sigma</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># generating globs</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
@@ -209,7 +208,6 @@
 <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">N</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>Where <code>x1</code> and <code>x2</code> are arrays whose rows are point coordinates. They can be seen below along with their centers:</p>
 <p><center>
 <img alt="Distributions' scatter plot and centroids" src="/res/kmeans/distributions.svg">
@@ -219,7 +217,6 @@
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">])])</span>
 </code></pre></div>
-
 
 <h2>k-means</h2>
 <p>Now we introduce the k-means method. The algorithm suposes that the dataset is composed of <span class="math">\(k\)</span> clusters or groups whose points are coordinates around determined centroids (<em>centroid</em> means center-like, as we are not talking about perfect circles). In our case, the number of clusters is <span class="math">\(k=2\)</span>. The heuristic behind k-means has the goal of classifying points based on their centroids by moving them in a way that maximizes intra-cluster similarity (i.e. minimizes intra-group distances/variance).</p>
@@ -242,7 +239,6 @@
     <span class="k">return</span> <span class="n">c</span><span class="p">,</span> <span class="n">y</span>
 </code></pre></div>
 
-
 <p>Let&rsquo;s take a look at what happens on each line (after documentation string):</p>
 <ul>
 <li><strong>#1</strong>: we unpack the number of rows and columns of the input dataset <code>X</code> into variables <code>N</code> and <code>M</code>, respectively;</li>
@@ -262,7 +258,6 @@
 <p>Now running k-means on our dataset comes down to running <code>k-means</code> on our dataset <code>X</code>. We specify the number of groups to 2 and the number of epochs to 5, as k-means converges very quickly:</p>
 <div class="highlight"><pre><span></span><code><span class="n">ĉ</span><span class="p">,</span> <span class="n">ŷ</span> <span class="o">=</span> <span class="n">kmeans</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
-
 
 <p>Where we wrote <code>ĉ</code> and <code>ŷ</code> with hats, as we would in statistical notation. Let us take a look at the result:</p>
 <p><center>
@@ -294,7 +289,6 @@
 
     <span class="k">return</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span>
 </code></pre></div>
-
 
 <p>And why should you not use it? Well, I&rsquo;ve made some benchmarks. For a dataset of 1000 rows and 2 columns, 50 epochs of k-means iterations takes, in average, for each implementation:</p>
 <p><center></p>

@@ -182,7 +182,7 @@
 
 
   <div>
-    <p>Comecei a investir uma parte do que ganho no meu próprio ambiente de trabalho este ano. Passo a passo, comprei apoios de pulso para teclado e mouse, bem como apoios para os pés. Aumentei a altura do monitor com alguns livros e caixas, de maneira bem improvisada&hellip; E tudo isso melhorou bastante a saúde dos meus músculos dos braços, bem como da minha coluna. Desde então planejei a aquisição de um teclado mecânico. Finalmente, foi este o mês em que ele arrumou espaço na minha escrivaninha.</p>
+    <p>Comecei a investir uma parte do que ganho no meu próprio ambiente de trabalho no ano passado. Passo a passo, comprei apoios de pulso para teclado e mouse, bem como apoios para os pés. Aumentei a altura do monitor com alguns livros e caixas, de maneira bem improvisada&hellip; E tudo isso melhorou bastante a saúde dos meus músculos dos braços, bem como da minha coluna. Desde então planejei a aquisição de um teclado mecânico. Finalmente, foi este o mês em que ele arrumou espaço na minha escrivaninha.</p>
 <p>O meu teclado possui 82 teclas, incluindo as de função (<code>F1</code>, &hellip;, <code>F12</code>) e excluindo o teclado numérico, o que é bom para quem precisa usar o mouse com alguma frequência, pois este pode ficar mais próximo do centro do teclado, onde as mãos geralmente ficam. Recomendo essa configuração para programadores, mas não o faço caso você acredita sentir falta dos números em grade no seu teclado, porém.</p>
 <p>Um detalhe é que este é o primeiro teclado que usei com layout internacional para a língua inglesa. Eu sabia disto quando o comprei, mas aceitei o desafio de lidar com esta característica, e este post é possui duas soluções que encontrei. </p>
 <h2>Solução para quem tem pressa</h2>
@@ -191,17 +191,16 @@
 <div class="highlight"><pre><span></span><code>setxkbmap -model abnt2 -layout br
 </code></pre></div>
 
-
 <p>Mas se você também quiser trocar o caps-lock com o esc, basta adicionar esta opção:</p>
 <div class="highlight"><pre><span></span><code>setxkbmap -model abnt2 -layout br -option caps:swapescape
 </code></pre></div>
 
-
 <p>Adicionar um destes comandos no arquivo <em>~/.xprofile</em> torna esta mudança permanente para as próximas sessões.</p>
+<p>Essa solução é a mais rápida, sendo suficiente para muitas pessoas&hellip; Porém nela <strong>não há uma forma de digitar a barra invertida</strong> (<code>\</code>) quando se utiliza um teclado de 82 teclas. Como isso faz toda diferença em linguagens de programação, eu precisei achar a solução que julgo ser a melhor.</p>
 <h2>Solução para quem programa ou escreve em inglês</h2>
-<p>Passei um tempo na primeira solução, mas acabei me forçando um pouco a usar a versão internal do teclado, do jeito que ele foi feito. E aí descobri algo incrível: tanto programar quanto escrever textos em inglês é melhor no layout internacional, que é o estadunidense (us). O dedo mindinho da mão direita, que eu usava pouco no layout brasileiro, tem uma função geral no layout americano: usar acentuações. A única letra que você digita com ele é a letra <code>P</code>, pois do resto ele e só ele digita <code>[]</code>, <code>{}</code>, <code>/</code>, <code>?¿</code>, <code>:;</code>, <code>'"</code>, etc. Como no teclado nacional a gente acaba usando ele primariamente para escrever <code>P</code> e <code>Ç</code> é mais difícil generalizar essa coisa dos símbolos especiais em um dedo em nossas mentes. Mais do que isto, a falta da tecla cedilha reorganiza essas teclas em posições muito mais interessantes. E este detalhe muda tudo quando estamos escrevendo.</p>
+<p>Passei um tempo na primeira solução. Tive problemas com a inserção da barra invertida, o que acabou me forçando a usar a versão internal do teclado de tempo em tempo, do jeito que ele foi feito. E aí descobri algo nada trivial: tanto programar, quanto escrever textos em inglês são atividades muito melhor realizadas usando o layout internacional, que é o estadunidense (<em>us</em>). O dedo mindinho da mão direita, que eu usava pouco no layout brasileiro, tem uma função geral no layout americano: usar acentuações. A única letra que você digita com ele é a letra <code>P</code>, pois do resto ele e só ele digita <code>[]</code>, <code>{}</code>, <code>/</code>, <code>?¿</code>, <code>:;</code>, <code>'"</code>, etc. Como no teclado nacional a gente acaba usando ele primariamente para escrever letras (<code>P</code> e <code>Ç</code>) é mais difícil generalizar essa coisa de &ldquo;o dedo dos símbolos especiais&rdquo; neste caso. Mais do que isto, a falta da tecla cedilha reorganiza esses caracteres em posições muito mais interessantes. E este detalhe muda tudo quando estamos escrevendo.</p>
 <p><em>Mas Marcos, não tem cedilha!</em></p>
-<p>De fato, por padrão você não vai conseguir por cedilha ou acentuar as palavras. Daí vem a minha dica: use a versão do layout internacional com <em>dead keys</em>. Desta forma, as seguintes combinações geram símbolos comuns no português:</p>
+<p>De fato, por padrão você não vai conseguir por cedilha ou acentuar as palavras. Daí vem a minha dica: use a versão do layout internacional com <em>dead keys</em>. Desta forma, as seguintes combinações geram os símbolos comuns do português:</p>
 <table>
 <thead>
 <tr>
@@ -373,11 +372,9 @@
 <div class="highlight"><pre><span></span><code>setxkbmap -layout us -variant intl
 </code></pre></div>
 
-
 <p>Novamente, para trocar o <code>Caps Lock</code> com o <code>Esc</code> se usa:</p>
 <div class="highlight"><pre><span></span><code>setxkbmap -layout us -variant intl -option caps:swapescape
 </code></pre></div>
-
 
 <p>Espero que este post tenha sido útil para você. Tenha bom proveito com seu novo teclado!</p>
   </div>

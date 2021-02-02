@@ -213,11 +213,9 @@
 }}
 </code></pre></div>
 
-
 <p>It is a rename function for the current file your cursor points to. Use it yourself: inside LF, type the following while pointing to &ldquo;somefile.png&rdquo;:</p>
 <div class="highlight"><pre><span></span><code><span class="p">:</span>rename someanotherfile.png
 </code></pre></div>
-
 
 <p>Press enter, and now &ldquo;somefile.png&rdquo; is called someanotherfile.png&rdquo;.</p>
 <p>With <code>-n</code> option for rename, as in <code>:rename -n newname</code>, it just renames the filename, without extension. In the other hand, with the <code>-e</code> option, as in <code>:rename -e jpg</code>, it just changes the file extension to &ldquo;jpg&rdquo;. Anyway, options are really just fancy stuff. Look at how we are going to use this function in our mappings:</p>
@@ -226,7 +224,6 @@ map <span class="k">c</span>
 # <span class="k">make</span> cW push <span class="s2">&quot;:rename &quot;</span> into <span class="k">lf</span>
 map cW &amp;<span class="k">lf</span> <span class="p">-</span>remote <span class="s2">&quot;send $id push :rename&lt;space&gt;&quot;</span>
 </code></pre></div>
-
 
 <p>What the third line above does is: whenever <code>cW</code> is pressed from LF, user is prompted with our rename function. This approach is certainly useful, but it turns out that LF freezes a little when &ldquo;:&rdquo; is pushed, as it is leaving normal mode and entering command mode. For it being frozen, sometimes the next character after &ldquo;:&rdquo; is not typed and we end up with <code>:ename -n</code> after pressing &ldquo;cW&rdquo; at a file&hellip; So, to avoid it, we can send two push commands to lf:
   1. one for sending just &ldquo;:&rdquo;;
@@ -275,7 +272,6 @@ map cW &amp;<span class="k">lf</span> <span class="p">-</span>remote <span class
   <span class="n">lf</span> <span class="o">-</span><span class="n">remote</span> <span class="s">&quot;send $id push $(echo &quot;</span><span class="n">rename</span> <span class="err">$</span><span class="n">fn</span><span class="err">$</span><span class="n">move</span><span class="s">&quot; | sed &#39;s/\s/&lt;space&gt;/g&#39;)&quot;</span>
 <span class="p">}}</span>
 </code></pre></div>
-
 
 <p>Now:</p>
 <ul>
@@ -408,7 +404,6 @@ map cW &amp;<span class="k">lf</span> <span class="p">-</span>remote <span class
   fi
 }}
 </code></pre></div>
-
 
 <p>I hope you enjoy my codes!</p>
   </div>

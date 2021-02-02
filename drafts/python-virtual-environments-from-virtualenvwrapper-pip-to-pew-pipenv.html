@@ -189,16 +189,13 @@
 <div class="highlight"><pre><span></span><code>sudo pip install pew
 </code></pre></div>
 
-
 <p>Though, if you are an Arch user, it is recomended that you use <code>pacman</code> to install this kind of general software, that is not a library for a specific project:</p>
 <div class="highlight"><pre><span></span><code>sudo pacman -S python-pew
 </code></pre></div>
 
-
 <p>I usually set &ldquo;$WORKON_HOME&rdquo; to to be at <code>$HOME/.local/lib/pipenvs</code> (<code>$HOME</code> means <code>/home/&lt;YOUR_USERNAME&gt;</code> &mdash; it is pre-defined shell variable), but it is really arbitrary. If you use a common bash shell, to set <code>$WORKON_HOME</code> means to add this line to your <code>$HOME/.bashrc</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">WORKON_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.local/lib/pipenvs&quot;</span>
 </code></pre></div>
-
 
 <p>Else, if you divide env and rc configuration and files, put this line ate one of the env ones. In that case, it&rsquo;s safe that you restart your session. If you are a common user, you can just close your terminal and open it again. type <code>echo $WORKON_HOME</code> and you should see the path you just set. Anyway, let&rsquo;s get back to pew!</p>
 <p>You can create a virtual environments named <code>m</code> with:</p>
@@ -206,7 +203,6 @@
 <span class="c1"># or, to specify a python executble,</span>
 pew new m -p python3
 </code></pre></div>
-
 
 <p>After this you will be in the virtual environment <code>m</code>. You can use pip without sudo here, as it will only install packages for your environment (a folder at home).</p>
 <p>echo $VIRTUAL_ENV
